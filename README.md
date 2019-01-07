@@ -23,14 +23,14 @@ Zo kan je in één oog opslag zien wat er nu bezig is en wat er in de toekomst g
 ### Prerequisites
 
 #### Data sources
-https://pandascore.co/pricing -> Informatie over professionele wedstrijden.
+https://pandascore.co/pricing -> Informatie over professionele wedstrijden. \\
 https://dev.twitch.tv/docs/api/reference#get-streams -> Streamers die de games spelen.
 
 #### External components
 -
 
 #### Similar
-Waarschijnlijk kan ik inspiratie voor je layout halen uit apps gemaakt als Tv-gids.
+Waarschijnlijk kan ik inspiratie voor de layout halen uit apps gemaakt als Tv-gids.
 
 #### Hardest parts
 Het lastigst is denk ik het integreren van de API's, zodat deze de informatie geven die ik nodig heb. Daarnaast lijkt het me best lastig om een duidelijk overzicht te krijgen van alle informatie.
