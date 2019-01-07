@@ -11,6 +11,8 @@ Zo kan je in één oog opslag zien wat er nu bezig is en wat er in de toekomst g
 
 ### Schets
 
+https://pr.to/O6H70O/
+
 ##### Hoofd functies:
 *	De game kiezen waar je in geïnteresseerd bent
 *	Kijken welke wedstrijden er vandaag zijn en welke er gaan komen
