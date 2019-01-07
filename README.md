@@ -23,8 +23,8 @@ Zo kan je in één oog opslag zien wat er nu bezig is en wat er in de toekomst g
 ### Prerequisites
 
 #### Data sources
-https://pandascore.co/pricing -> Informatie over professionele wedstrijden
-https://dev.twitch.tv/docs/api/reference#get-streams -> Streamers die de games spelen
+https://pandascore.co/pricing -> Informatie over professionele wedstrijden.
+https://dev.twitch.tv/docs/api/reference#get-streams -> Streamers die de games spelen.
 
 #### External components
 -
