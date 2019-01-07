@@ -27,7 +27,7 @@ https://pandascore.co/pricing -> Informatie over professionele wedstrijden.
 https://dev.twitch.tv/docs/api/reference#get-streams -> Streamers die de games spelen.
 
 #### External components
--
+Momenteel geen.
 
 #### Similar
 Waarschijnlijk kan ik inspiratie voor de layout halen uit apps gemaakt als Tv-gids.
