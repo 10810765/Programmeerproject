@@ -13,6 +13,11 @@ Zo kan je in één oog opslag zien wat er nu bezig is en wat er in de toekomst g
 
 https://pr.to/O6H70O/
 
+![Schets 1](https://github.com/10810765/Programmeerproject/blob/master/doc/Schets_1.png)
+![Schets 2](https://github.com/10810765/Programmeerproject/blob/master/doc/Schets_2.png)
+![Schets 3](https://github.com/10810765/Programmeerproject/blob/master/doc/Schets_3.png)
+![Schets 4](https://github.com/10810765/Programmeerproject/blob/master/doc/Schets_4.png)
+
 ##### Hoofd functies:
 *	De game kiezen waar je in geïnteresseerd bent
 *	Kijken welke wedstrijden er vandaag zijn en welke er gaan komen
