@@ -2,7 +2,7 @@
 
 ## Marijn Meijering - 10810765
   
-### Advanced Sketchs of UI
+### Advanced Sketches of UI
 
 ![UI_Schets 1](https://github.com/10810765/Programmeerproject/blob/master/doc/Design_Document.png)
 
