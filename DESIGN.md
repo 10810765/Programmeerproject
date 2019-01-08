@@ -9,7 +9,7 @@
 ### Utility modules, classes and functions
 Voor mijn app heb ik in eerste instantie twee ArrayAdapters nodig, één Database en twee API Requests.
 
-![Diagram 1](https://github.com/10810765/Programmeerproject/blob/master/doc/App_Diagram.png)
+![Diagram 1](https://github.com/10810765/Programmeerproject/blob/master/doc/App_Diagram.PNG)
 
 ### List of API's
 https://pandascore.co/ -> Informatie over professionele wedstrijden.  
