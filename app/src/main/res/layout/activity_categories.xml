@@ -1,9 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".CategoriesActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Available Games"
+        tools:layout_editor_absoluteX="73dp"
+        tools:layout_editor_absoluteY="33dp" />
+
+    <Button
+        android:id="@+id/LoLButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="League of Legends"
+        tools:layout_editor_absoluteX="246dp"
+        tools:layout_editor_absoluteY="231dp" />
+
+    <Button
+        android:id="@+id/OverwatchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Overwatch"
+        tools:layout_editor_absoluteX="186dp"
+        tools:layout_editor_absoluteY="123dp" />
+
+    <Button
+        android:id="@+id/DotaButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dota 2"
+        tools:layout_editor_absoluteX="97dp"
+        tools:layout_editor_absoluteY="207dp" />
+
+    <Button
+        android:id="@+id/CSButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CS:GO"
+        tools:layout_editor_absoluteX="131dp"
+        tools:layout_editor_absoluteY="358dp" />
+</LinearLayout>
