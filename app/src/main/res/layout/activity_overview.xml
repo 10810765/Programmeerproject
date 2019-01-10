@@ -12,50 +12,115 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:layout_weight="1"
+        android:background="@android:color/darker_gray"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Event name" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Link to event" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/matchImage"
+                android:layout_width="100px"
+                android:layout_height="100px"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        </LinearLayout>
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/showMatches"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_gravity="bottom|center"
+            android:onClick="onMoreMatchesClicked"
+            android:text="Show more matches" />
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="@android:color/darker_gray">
 
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stream title" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Streamer name" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Amount of viewers" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/streamImage"
+                android:layout_width="100px"
+                android:layout_height="100px"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        </LinearLayout>
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/showStreams"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_gravity="bottom|center"
+            android:onClick="onMoreStreamsClicked"
+            android:text="Show more streams" />
     </FrameLayout>
 </LinearLayout>
