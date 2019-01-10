@@ -4,3 +4,5 @@ Vandaag vooral bezig geweest met het werkend krijgen van de API's. In de zin van
 ### day 2 (10/01/2019)
 
 Vandaag de app aangevult en alle activities die nodig zijn om de app werkend te krijgen aangemaakt. Tevens de indeling van de activities grotendeels gedaan en buttons toegevoegd. De buttons verwijzen naar de juiste activiteiten waardoor er momenteel een soort klikbaar prototype is ontstaan.
+
+### day 3 (11/01/2019)
