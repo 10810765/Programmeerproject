@@ -19,7 +19,7 @@ public class CategoriesActivity extends AppCompatActivity {
         Button pressedGame = findViewById(view.getId());
         String categoryId = String.valueOf(pressedGame.getTag());
 
-        // Pass the chosen category and the users name to the next activity
+        // Pass the chosen category to the next activity
         Intent intent = new Intent(this, OverviewActivity.class);
         intent.putExtra("category_id", categoryId);
         startActivity(intent);
