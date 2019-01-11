@@ -21,68 +21,55 @@ public class MatchesRequest implements Response.Listener<JSONObject>, Response.E
 
     // Notify the activity that instantiated the request through callback
     public interface Callback {
-        void gotTrivia(ArrayList<String> trivia);
-        void gotTriviaError(String message);
+        void gotMatches(MatchesInformation matches);
+        void gotMatchesError(String message);
     }
 
-    // Create context object to send internet requests
     public MatchesRequest(Context context) {
         this.context = context;
     }
 
-    // Method used to retrieve questions from API
-    public void getTrivia(Callback activity, String category) {
+    // Method will attempt to retrieve the categories from the API
+    public void getMatches(Callback activity) {
         this.activity = activity;
 
         // Create a new request queue
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // Create a JSON object request and add it to the queue
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest("https://opentdb.com/api.php?amount=10&category="+category+"&type=multiple", null, this, this);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest("https://api.pandascore.co/lol/matches/upcoming?page[size]=1&token=flAODiQVW9o9n8lVU1NWnZGfPLIAU9ClcrSxStPz7Wy5qZQVZOk", null, this, this);
         queue.add(jsonObjectRequest);
     }
 
     @Override // Handle on API error response
     public void onErrorResponse(VolleyError error) {
-        activity.gotTriviaError(error.getMessage());
-        Log.d("goTriviaError", error.getMessage());
+        activity.gotMatchesError(error.getMessage());
+        Log.d("gotMatchesError", error.getMessage());
     }
 
     @Override // Handle on API response
     public void onResponse(JSONObject response) {
+
+        // Instantiate array list
+        //MatchesInformation matchesArrayList;
+
         try {
-            // Instantiate array list
-            ArrayList<Trivia> triviaArrayList = new ArrayList<>();
 
-            JSONArray resultsArray = response.getJSONArray("results");
+            JSONArray arr = new JSONArray(response);
+            JSONObject match = arr.getJSONObject(0);
 
-            // Loop over the JSON array and extract the strings in it
-            for (int i = 0; i < resultsArray.length(); i++) {
 
-                JSONObject resultsObject = resultsArray.getJSONObject(i);
+            String date = match.getString("begin_at");
+            String title = match.getString("name");
+            String eventUrl = match.getString("name");
+            String imageUrl = match.getString("name");
 
-                String difficulty = resultsObject.getString("difficulty");
-                String question = resultsObject.getString("question");
-                String correctAnswer = resultsObject.getString("correct_answer");
-                String ID = String.valueOf(i);
+            // Add the information to the menu array list
+            MatchesInformation matchesArrayList = new MatchesInformation(date, title, eventUrl, imageUrl);
 
-                // Instantiate a second array list (used for the wrong answers per question)
-                ArrayList<String> incAnsArrayList = new ArrayList<>();
 
-                JSONArray incAnsArray = resultsObject.getJSONArray("incorrect_answers");
-
-                // Loop over the incorrect answer JSON array and extract the strings
-                for (int j = 0; j < incAnsArray.length(); j++) {
-                    // Add the incorrect answers to the incAnsArrayList
-                    incAnsArrayList.add(incAnsArray.getString(j));
-                }
-
-                // Add the information to the Trivia array list
-                triviaArrayList.add(new Trivia(difficulty, question, correctAnswer, incAnsArrayList, ID));
-
-            }
             // Pass the array list back to the activity that requested it
-            activity.gotTrivia(triviaArrayList);
+            activity.gotMatches(matchesArrayList);
 
         } catch (JSONException e) {
             // If an error occurs, print the error
