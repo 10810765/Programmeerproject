@@ -6,6 +6,7 @@ import android.util.Log;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -15,7 +16,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MatchesRequest implements Response.Listener<JSONObject>, Response.ErrorListener {
+public class MatchesRequest implements Response.Listener<JSONArray>, Response.ErrorListener {
     private Context context;
     private Callback activity;
 
@@ -37,8 +38,8 @@ public class MatchesRequest implements Response.Listener<JSONObject>, Response.E
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // Create a JSON object request and add it to the queue
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest("https://api.pandascore.co/lol/matches/upcoming?page[size]=1&token=flAODiQVW9o9n8lVU1NWnZGfPLIAU9ClcrSxStPz7Wy5qZQVZOk", null, this, this);
-        queue.add(jsonObjectRequest);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest("https://api.pandascore.co/lol/matches/upcoming?page[size]=1&token=flAODiQVW9o9n8lVU1NWnZGfPLIAU9ClcrSxStPz7Wy5qZQVZOk", this, this);
+        queue.add(jsonArrayRequest);
     }
 
     @Override // Handle on API error response
@@ -48,16 +49,14 @@ public class MatchesRequest implements Response.Listener<JSONObject>, Response.E
     }
 
     @Override // Handle on API response
-    public void onResponse(JSONObject response) {
+    public void onResponse(JSONArray response) {
 
         // Instantiate array list
         //MatchesInformation matchesArrayList;
 
         try {
 
-            JSONArray arr = new JSONArray(response);
-            JSONObject match = arr.getJSONObject(0);
-
+            JSONObject match = response.getJSONObject(0);
 
             String date = match.getString("begin_at");
             String title = match.getString("name");

@@ -3,6 +3,7 @@ package com.example.marijn.esportsapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -26,13 +27,13 @@ public class OverviewActivity extends AppCompatActivity implements MatchesReques
     @Override // Method that handles a successful call to the API
     public void gotMatches(MatchesInformation matchInf) {
 
-//        TextView date= findViewById(R.id.dateView);
-//        TextView title = findViewById(R.id.titleView);
-//        TextView url = findViewById(R.id.urlView);
-//
-//        date.setText(matchInf.getDate());
-//        title.setText(matchInf.getTitle());
-//        url.setText(matchInf.getEventUrl());
+        TextView date= findViewById(R.id.dateView);
+        TextView title = findViewById(R.id.titleView);
+        TextView url = findViewById(R.id.urlView);
+
+        date.setText(matchInf.getDate());
+        title.setText(matchInf.getTitle());
+        url.setText(matchInf.getEventUrl());
 
     }
 
@@ -40,6 +41,7 @@ public class OverviewActivity extends AppCompatActivity implements MatchesReques
     public void gotMatchesError(String message) {
         // Toast the error message to the screen
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        Log.d("error", message);
     }
 
     // On button click, show more matches
