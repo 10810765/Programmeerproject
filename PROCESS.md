@@ -7,6 +7,7 @@ Vandaag de app aangevult en alle activities die nodig zijn om de app werkend te 
 
 ### day 3 (11/01/2019)
 
-Bezig geweest met het implementeren van de eerste API (pandascore), deze is nu bijna werkend. De juiste informatie is al gefilterd alleen de textvelden moeten nog gevuld worden. Hier liep ik echter tegen een probleem aan wat ik moet verhelpen. Daarna kan ik verder met de tweede API (twitch).
+Bezig geweest met het implementeren van de eerste API (pandascore), deze is nu bijna werkend. De juiste informatie is al gefilterd alleen de textvelden moeten nog gevuld worden. Hier liep ik echter tegen een probleem aan wat ik moet verhelpen. Daarna kan ik verder met de tweede API (twitch). Plus matches information class toegevoegd.
 
 ### day 4 (12/01/2019)
+(Eindelijk) De call naar de pandascore API werkend gekregen, deze haalt nu de juiste informatie op en geeft het weer in de app!
