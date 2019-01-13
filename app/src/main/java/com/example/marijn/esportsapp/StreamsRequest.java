@@ -57,13 +57,13 @@ public class StreamsRequest implements Response.Listener<JSONObject>, Response.E
 
             String viewers = resultsObject.getString("viewers");
 
-            JSONArray channelJSONArray = resultsObject.getJSONArray("channel");
+            JSONObject channelJSONObject= resultsObject.getJSONObject("channel");
 
             // Add the incorrect answers to the incAnsArrayList
-            String title = channelJSONArray.getString(0);
-            String name = channelJSONArray.getString(0);
-            String language = channelJSONArray.getString(0);
-            String imageUrl = channelJSONArray.getString(0);
+            String title = channelJSONObject.getString("status");
+            String name = channelJSONObject.getString("display_name");
+            String language = channelJSONObject.getString("language");
+            String imageUrl = channelJSONObject.getString("logo");
 
             // Add the information to the menu array list
             StreamsInformation streams = new StreamsInformation(title, name, viewers, language, imageUrl);
