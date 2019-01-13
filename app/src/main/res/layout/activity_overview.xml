@@ -81,19 +81,19 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/streamTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Stream title" />
 
                 <TextView
-                    android:id="@+id/textView11"
+                    android:id="@+id/streamerName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Streamer name" />
 
                 <TextView
-                    android:id="@+id/textView13"
+                    android:id="@+id/viewerCount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Amount of viewers" />
