@@ -8,15 +8,15 @@ import java.util.ArrayList;
 
 public class MatchesActivity extends AppCompatActivity {
 
-    private ArrayList<MatchesInformation> matches;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matches);
 
+        ArrayList<MatchesInformation> arrayOfMatches = new ArrayList<MatchesInformation>();
+
         // Instantiate the adapter
-        MatchesAdapter matchAdapter = new MatchesAdapter(this, R.layout.match_row, matches);
+        MatchesAdapter matchAdapter = new MatchesAdapter(this, R.layout.match_row, arrayOfMatches);
 
         // Get list view ID and attach the adapter to it
         ListView matchList = findViewById(R.id.matchList);

@@ -70,12 +70,12 @@ public class OverviewActivity extends AppCompatActivity implements MatchesReques
     }
     // On button click, show more matches
     public void onMoreMatchesClicked(View view) {
-        startActivity(new Intent(this, StreamsActivity.class));
+        startActivity(new Intent(this, MatchesActivity.class));
     }
 
     // On button click, show more streams
     public void onMoreStreamsClicked(View view) {
-        startActivity(new Intent(this, MatchesActivity.class));
+        startActivity(new Intent(this, StreamsActivity.class));
     }
 
 }
