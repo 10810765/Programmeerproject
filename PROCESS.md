@@ -10,5 +10,8 @@ Bezig geweest met het implementeren van de eerste API (pandascore), deze is nu b
 ### day 4 (12/01/2019)
 (Eindelijk) De call naar de pandascore API werkend gekregen, deze haalt nu de juiste informatie op en geeft het weer in de app!
 
-### day 5 (1/01/2019)
+### day 5 (13/01/2019)
 De tweede API geÏmplementeerd (Twitch API), deze haalt nu de juiste informatie op en laat deze zien in textvelden. Tevens is, om de informatie op te slaan, een streams informatie class aangemaakt.
+
+### day 6 (14/01/2019)
+List adapter voor MatchesInformation (een lijst met professionele matches) bijna werkend. Daarnaast er na feedback voor gekozen om extra informatie bij matches weer te geven in de overview activity en de matches information activity. 
