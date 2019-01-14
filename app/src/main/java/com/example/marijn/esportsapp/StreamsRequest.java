@@ -36,7 +36,7 @@ public class StreamsRequest implements Response.Listener<JSONObject>, Response.E
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // Create a JSON object request and add it to the queue
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest("https://api.twitch.tv/kraken/streams/?game=league%20of%20legends&limit=1&client_id=43kgmi902ijvh15g5t0m3kxsjckjfn",null, this, this);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest("https://api.twitch.tv/kraken/streams/?game=league%20of%20legends&limit=10&client_id=43kgmi902ijvh15g5t0m3kxsjckjfn",null, this, this);
         queue.add(jsonObjectRequest);
     }
 

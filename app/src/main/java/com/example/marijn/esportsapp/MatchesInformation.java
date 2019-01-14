@@ -2,10 +2,10 @@ package com.example.marijn.esportsapp;
 
 public class MatchesInformation {
 
-    private String date, title, eventUrl, imageUrl;
+    private String date, title, teams, eventUrl, imageUrl;
 
     // Matches information constructor
-    public MatchesInformation(String date, String title, String eventUrl, String imageUrl) {
+    public MatchesInformation(String date, String title, String teams, String eventUrl, String imageUrl) {
         this.date = date;
         this.title = title;
         this.eventUrl = eventUrl;
@@ -27,6 +27,14 @@ public class MatchesInformation {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getTeams() {
+        return teams;
+    }
+
+    public void setTeams(String teams) {
+        this.teams = teams;
     }
 
     public String getEventUrl() {

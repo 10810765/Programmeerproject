@@ -38,7 +38,7 @@ public class MatchesRequest implements Response.Listener<JSONArray>, Response.Er
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // Create a JSON object request and add it to the queue
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest("https://api.pandascore.co/lol/matches/upcoming?page[size]=1&token=flAODiQVW9o9n8lVU1NWnZGfPLIAU9ClcrSxStPz7Wy5qZQVZOk", this, this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest("https://api.pandascore.co/lol/matches/upcoming?page[size]=10&token=flAODiQVW9o9n8lVU1NWnZGfPLIAU9ClcrSxStPz7Wy5qZQVZOk", this, this);
         queue.add(jsonArrayRequest);
     }
 
@@ -59,12 +59,16 @@ public class MatchesRequest implements Response.Listener<JSONArray>, Response.Er
             JSONObject match = response.getJSONObject(0);
 
             String date = match.getString("begin_at");
-            String title = match.getString("name");
-            String eventUrl = match.getString("name");
-            String imageUrl = match.getString("name");
+            String teams = match.getString("name");
+
+            JSONObject leagueJSONObject= match.getJSONObject("league");
+
+            String title = leagueJSONObject.getString("name");
+            String eventUrl = leagueJSONObject.getString("url");
+            String imageUrl = leagueJSONObject.getString("image_url");
 
             // Add the information to the menu array list
-            MatchesInformation matchesArrayList = new MatchesInformation(date, title, eventUrl, imageUrl);
+            MatchesInformation matchesArrayList = new MatchesInformation(date, title, teams, eventUrl, imageUrl);
 
 
             // Pass the array list back to the activity that requested it
