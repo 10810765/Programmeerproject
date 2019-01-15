@@ -15,3 +15,8 @@ De tweede API geÏmplementeerd (Twitch API), deze haalt nu de juiste informatie 
 
 ### day 6 (14/01/2019)
 List adapter voor MatchesInformation (een lijst met professionele matches) bijna werkend. Daarnaast er na feedback voor gekozen om extra informatie bij matches weer te geven in de overview activity en de matches information activity. 
+
+### day 7 (15/01/2019)
+List adapter voor zowel de matches als de streamers list werkend. Deze halen nu informatie op doormiddel van een API call en laten dit in een listView zien. Tevens na overleg met Martijn ervoor gekozen om wat wijzigingen aan het disign van de app toe te brengen. Zo zal ik een navigatie balk maken die altijd zichtbaar is om sneller tussen verschillende activities te wisselen. Tevens zal de overview activity een featured activity worden waar je suggesties kan zien ipv een voorvertoning van je gekozen game.
+
+### day 8 (16/01/2019)
