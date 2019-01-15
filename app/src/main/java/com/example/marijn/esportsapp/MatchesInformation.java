@@ -8,6 +8,7 @@ public class MatchesInformation {
     public MatchesInformation(String date, String title, String teams, String eventUrl, String imageUrl) {
         this.date = date;
         this.title = title;
+        this.teams = teams;
         this.eventUrl = eventUrl;
         this.imageUrl = imageUrl;
     }

@@ -13,8 +13,8 @@ import java.util.ArrayList;
 
 public class MatchesAdapter extends ArrayAdapter<MatchesInformation> {
 
-    public MatchesAdapter(@NonNull Context context, @NonNull ArrayList<MatchesInformation> objects) {
-        super(context, 0, objects);
+    public MatchesAdapter(@NonNull Context context, int resource, @NonNull ArrayList<MatchesInformation> objects) {
+        super(context, resource, objects);
     }
 
     @NonNull

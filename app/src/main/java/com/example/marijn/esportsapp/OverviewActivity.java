@@ -19,25 +19,25 @@ public class OverviewActivity extends AppCompatActivity implements MatchesReques
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
 
-        // Make a request for the menu categories
-        StreamsRequest streamRequest = new StreamsRequest(this);
-        streamRequest.getStreams(this);
-
-        // Make a request for the menu categories
+        // Make a request for the upcoming match
         MatchesRequest matchRequest = new MatchesRequest(this);
         matchRequest.getMatches(this, 1);
+
+        // Make a request for the most watched streamer
+        StreamsRequest streamRequest = new StreamsRequest(this);
+        streamRequest.getStreams(this, 1);
     }
 
     @Override // Method that handles a successful call to the API
-    public void gotMatches(MatchesInformation matchInf) {
+    public void gotMatches(ArrayList<MatchesInformation> matchInf) {
 
         TextView date= findViewById(R.id.dateView);
         TextView title = findViewById(R.id.titleView);
         TextView url = findViewById(R.id.urlView);
 
-        date.setText(matchInf.getDate());
-        title.setText(matchInf.getTitle());
-        url.setText(matchInf.getEventUrl());
+        date.setText(matchInf.get(0).getDate());
+        title.setText(matchInf.get(0).getTitle());
+        url.setText(matchInf.get(0).getEventUrl());
 
     }
 
@@ -49,15 +49,15 @@ public class OverviewActivity extends AppCompatActivity implements MatchesReques
     }
 
     @Override // Method that handles a successful call to the API
-    public void gotStreams(StreamsInformation streamInf) {
+    public void gotStreams(ArrayList<StreamsInformation> streamInf) {
 
         TextView title= findViewById(R.id.streamTitle);
         TextView name = findViewById(R.id.streamerName);
         TextView views = findViewById(R.id.viewerCount);
 
-        title.setText(streamInf.getTitle());
-        name.setText(streamInf.getName());
-        views.setText(streamInf.getViewers());
+        title.setText(streamInf.get(0).getTitle());
+        name.setText(streamInf.get(0).getName());
+        views.setText(streamInf.get(0).getViewers());
     }
 
     @Override // Method that handles an unsuccessful to the the API
