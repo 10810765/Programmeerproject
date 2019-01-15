@@ -13,16 +13,15 @@ import java.util.ArrayList;
 
 public class MatchesAdapter extends ArrayAdapter<MatchesInformation> {
 
-    private ArrayList matches;
-
-    public MatchesAdapter(@NonNull Context context, int resource, @NonNull ArrayList<MatchesInformation> objects) {
-        super(context, resource, objects);
-        this.matches = objects;
+    public MatchesAdapter(@NonNull Context context, @NonNull ArrayList<MatchesInformation> objects) {
+        super(context, 0, objects);
     }
 
     @NonNull
     @Override // Method that will be called every time a new list item (menu item) is to be displayed
     public View getView(int position, @NonNull View convertView, @NonNull ViewGroup parent) {
+
+        MatchesInformation matchInfo = getItem(position);
 
         // If the convert view is null, inflate a new one
         if (convertView == null) {
@@ -34,9 +33,6 @@ public class MatchesAdapter extends ArrayAdapter<MatchesInformation> {
         TextView title = convertView.findViewById(R.id.titleView);
         TextView teams = convertView.findViewById(R.id.teamsView);
         TextView link = convertView.findViewById(R.id.urlView);
-
-        // Get the index of the menu item that we want to display
-        MatchesInformation matchInfo = (MatchesInformation) matches.get(position);
 
         // Set the name and price of the dish
         date.setText(matchInfo.getDate());

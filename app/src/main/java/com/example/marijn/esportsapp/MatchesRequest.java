@@ -31,14 +31,14 @@ public class MatchesRequest implements Response.Listener<JSONArray>, Response.Er
     }
 
     // Method will attempt to retrieve the categories from the API
-    public void getMatches(Callback activity, int amount) {
+    public void getMatches(Callback activity) {
         this.activity = activity;
 
         // Create a new request queue
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // Create a JSON object request and add it to the queue
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest("https://api.pandascore.co/lol/matches/upcoming?page[size]="+amount+"&token=flAODiQVW9o9n8lVU1NWnZGfPLIAU9ClcrSxStPz7Wy5qZQVZOk", this, this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest("https://api.pandascore.co/lol/matches/upcoming?page[size]=10&token=flAODiQVW9o9n8lVU1NWnZGfPLIAU9ClcrSxStPz7Wy5qZQVZOk", this, this);
         queue.add(jsonArrayRequest);
     }
 
@@ -56,26 +56,22 @@ public class MatchesRequest implements Response.Listener<JSONArray>, Response.Er
 
         try {
 
-            for (int i = 0; i < response.length(); i++) {
+            JSONObject match = response.getJSONObject(0);
 
-                JSONObject match = response.getJSONObject(i);
+            String date = match.getString("begin_at");
+            String teams = match.getString("name");
 
-                String date = match.getString("begin_at");
-                String teams = match.getString("name");
+            JSONObject leagueJSONObject= match.getJSONObject("league");
 
-                JSONObject leagueJSONObject = match.getJSONObject("league");
+            String title = leagueJSONObject.getString("name");
+            String eventUrl = leagueJSONObject.getString("url");
+            String imageUrl = leagueJSONObject.getString("image_url");
 
-                String title = leagueJSONObject.getString("name");
-                String eventUrl = leagueJSONObject.getString("url");
-                String imageUrl = leagueJSONObject.getString("image_url");
+            // Add the information to the menu array list
+            MatchesInformation matchesArrayList = new MatchesInformation(date, title, teams, eventUrl, imageUrl);
 
-                // Add the information to the menu array list
-                MatchesInformation matchesArrayList = new MatchesInformation(date, title, teams, eventUrl, imageUrl);
-
-
-                // Pass the array list back to the activity that requested it
-                activity.gotMatches(matchesArrayList);
-            }
+            // Pass the array list back to the activity that requested it
+            activity.gotMatches(matchesArrayList);
 
         } catch (JSONException e) {
             // If an error occurs, print the error

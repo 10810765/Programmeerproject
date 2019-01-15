@@ -13,10 +13,10 @@ public class MatchesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matches);
 
-        ArrayList<MatchesInformation> arrayOfMatches = new ArrayList<MatchesInformation>();
+        ArrayList<MatchesInformation> arrayOfMatches = new ArrayList<>();
 
         // Instantiate the adapter
-        MatchesAdapter matchAdapter = new MatchesAdapter(this, R.layout.match_row, arrayOfMatches);
+        MatchesAdapter matchAdapter = new MatchesAdapter(this, arrayOfMatches);
 
         // Get list view ID and attach the adapter to it
         ListView matchList = findViewById(R.id.matchList);
