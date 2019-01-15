@@ -25,9 +25,7 @@ public class OverviewActivity extends AppCompatActivity implements MatchesReques
 
         // Make a request for the menu categories
         MatchesRequest matchRequest = new MatchesRequest(this);
-        matchRequest.getMatches(this);
-
-
+        matchRequest.getMatches(this, 1);
     }
 
     @Override // Method that handles a successful call to the API
