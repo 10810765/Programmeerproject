@@ -26,12 +26,16 @@ public class StreamsActivity extends AppCompatActivity implements StreamsRequest
 
         BottomNavigationView navBar = findViewById(R.id.navigation);
         navBar.setOnNavigationItemSelectedListener(navListener);
+        navBar.getMenu().findItem(R.id.navigate_stream).setChecked(true);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                    BottomNavigationView navBar = findViewById(R.id.navigation);
+                    navBar.getMenu().findItem(item.getItemId()).setChecked(true);
 
                     switch (item.getItemId()) {
                         case R.id.navigate_home:
