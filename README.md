@@ -3,7 +3,7 @@
 ## Marijn Meijering - 10810765
   
 ### Problem statement
-De eSports community wordt alsmaar groter, waardoor er steeds meer wedstrijden en streams over het internet verspreid zijn. Het wordt hierdoor onoverzichtelijk wanneer er professionele wedstrijden gespeeld worden van favoriete games. Net als mensen graag voetbal volgen, zijn er ook mensen die graag wedstrijden van eSports volgen. Daarnaast wil je graag snel kunnen zien of er streamers zijn die je wil zien of die je misschien leuk lijken. Hiervoor wil je niet naar een hoop verschillende websites gaan, maar dit wil je overzichtelijk hebben in één app! Dit is momenteel echter nog niet mogelijk.
+De eSports community wordt alsmaar groter, waardoor er steeds meer wedstrijden en streams over het internet verspreid zijn. Het wordt hierdoor onoverzichtelijk wanneer er professionele wedstrijden gespeeld worden van je favoriete games. Net als mensen graag voetbal volgen, zijn er ook mensen die graag wedstrijden van eSports volgen. Daarnaast wil je graag snel kunnen zien of er streamers zijn die je wil zien of die je misschien leuk lijken. Hiervoor wil je niet naar een hoop verschillende websites gaan, maar dit wil je overzichtelijk hebben in één app! Dit is momenteel echter nog niet mogelijk.
 
 #### eSportsGids
 Mijn app zal gericht zijn op (voornamelijk jongeren) met een interesse voor competitive gaming. Met competitive gaming bedoel ik hier het volgen van eSports net als je wedstrijden van je lievelings voetbalclub zou volgen. De app moet het eenvoudig maken om wedstrijden en streams te vinden van je lievelings game(s). Je moet kunnen zien welke streams er momenteel bezig zijn op twitch (wellicht ook youtube) en welke professionele wedstrijden er gespeeld gaan worden.
