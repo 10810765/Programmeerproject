@@ -4,88 +4,99 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_marginTop="6dp"
     android:orientation="vertical"
     tools:context=".CategoriesActivity">
 
-    <TextView
-        android:id="@+id/chooseCategory"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:fontFamily="casual"
-        android:text="Pick your game"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/LoLButton"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="1dp"
-        android:layout_weight="1"
-        android:fontFamily="casual"
-        android:onClick="onCategoryClicked"
-        android:tag="10"
-        android:text="League of Legends"
-        android:textColor="@color/colorPrimary"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/chooseCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:fontFamily="casual"
+            android:text="Pick your game"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/OverwatchButton"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="1dp"
-        android:layout_weight="1"
-        android:fontFamily="casual"
-        android:onClick="onCategoryClicked"
-        android:tag="11"
-        android:text="Overwatch"
-        android:textColor="@color/colorPrimary"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        <Button
+            android:id="@+id/LoLButton"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="1dp"
+            android:fontFamily="casual"
+            android:onClick="onCategoryClicked"
+            android:tag="10"
+            android:text="League of Legends"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/DotaButton"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="1dp"
-        android:layout_weight="1"
-        android:fontFamily="casual"
-        android:onClick="onCategoryClicked"
-        android:tag="12"
-        android:text="Dota 2"
-        android:textColor="@color/colorPrimary"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        <Button
+            android:id="@+id/OverwatchButton"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="1dp"
+            android:fontFamily="casual"
+            android:onClick="onCategoryClicked"
+            android:tag="11"
+            android:text="Overwatch"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/CSButton"
-        android:layout_width="250dp"
+        <Button
+            android:id="@+id/DotaButton"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="1dp"
+            android:fontFamily="casual"
+            android:onClick="onCategoryClicked"
+            android:tag="12"
+            android:text="Dota 2"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/CSButton"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="1dp"
+            android:fontFamily="casual"
+            android:onClick="onCategoryClicked"
+            android:tag="14"
+            android:text="CS:GO"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="1dp"
-        android:layout_weight="1"
-        android:fontFamily="casual"
-        android:onClick="onCategoryClicked"
-        android:tag="14"
-        android:text="CS:GO"
-        android:textColor="@color/colorPrimary"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:layout_gravity="bottom"
+        android:layout_weight="0"
+        app:menu="@menu/navigation_menu" />
 
 </LinearLayout>

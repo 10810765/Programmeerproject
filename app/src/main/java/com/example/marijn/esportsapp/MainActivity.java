@@ -15,8 +15,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BottomNavigationView bottomNav = findViewById(R.id.navigation);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
+        BottomNavigationView navBar = findViewById(R.id.navigation);
+        navBar.setOnNavigationItemSelectedListener(navListener);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
                     switch (item.getItemId()) {
                         case R.id.navigate_home:
-                            Intent home = new Intent(getApplicationContext(), CategoriesActivity.class);
+                            Intent home = new Intent(getApplicationContext(), OverviewActivity.class);
                             startActivity(home);
                             break;
                         case R.id.navigate_match:
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.navigate_refresh:
                             break;
                     }
+
                     return true;
                 }
             };
