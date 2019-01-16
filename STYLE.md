@@ -25,7 +25,7 @@ Basic rules (created with my team):
            + theFinalOne;
    ```
 
-6. It should all be in English and not in Dutch 
+6. Code and commets should be written in English and not in Dutch 
 
 7. Appropriate comments: one-line comment, multiline comments and parameters when using classes.
 
