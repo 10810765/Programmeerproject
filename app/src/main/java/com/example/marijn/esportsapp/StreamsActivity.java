@@ -8,7 +8,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -19,6 +21,13 @@ public class StreamsActivity extends AppCompatActivity implements StreamsRequest
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_streams);
+
+        Spinner mySpinner = findViewById(R.id.gameSpinner);
+
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.games));
+
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner.setAdapter(myAdapter);
 
         // Make a request for the top 20 streams
         StreamsRequest streamRequest = new StreamsRequest(this);
@@ -33,9 +42,6 @@ public class StreamsActivity extends AppCompatActivity implements StreamsRequest
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                    BottomNavigationView navBar = findViewById(R.id.navigation);
-                    navBar.getMenu().findItem(item.getItemId()).setChecked(true);
 
                     switch (item.getItemId()) {
                         case R.id.navigate_home:

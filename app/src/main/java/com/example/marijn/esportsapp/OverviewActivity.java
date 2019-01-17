@@ -40,9 +40,6 @@ public class OverviewActivity extends AppCompatActivity implements MatchesReques
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                    BottomNavigationView navBar = findViewById(R.id.navigation);
-                    navBar.getMenu().findItem(item.getItemId()).setChecked(true);
-
                     switch (item.getItemId()) {
                         case R.id.navigate_home:
                             Intent home = new Intent(getApplicationContext(), OverviewActivity.class);

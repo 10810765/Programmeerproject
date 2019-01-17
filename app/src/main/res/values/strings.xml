@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">eSportsApp</string>
+
+    <string-array name="games">
+        <item>League of Legends</item>
+        <item>Overwatch</item>
+        <item>Dota 2</item>
+        <item>CS:GO</item>
+    </string-array>
+
 </resources>
