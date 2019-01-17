@@ -22,7 +22,7 @@ public class MatchesActivity extends AppCompatActivity implements MatchesRequest
 
         // Make a request for the menu categories
         MatchesRequest matchRequest = new MatchesRequest(this);
-        matchRequest.getMatches(this, 20);
+        matchRequest.getMatches(this, "lol", 20);
 
         BottomNavigationView navBar = findViewById(R.id.navigation);
         navBar.setOnNavigationItemSelectedListener(navListener);

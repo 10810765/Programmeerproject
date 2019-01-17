@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -29,13 +31,24 @@ public class StreamsActivity extends AppCompatActivity implements StreamsRequest
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner.setAdapter(myAdapter);
 
-        // Make a request for the top 20 streams
-        StreamsRequest streamRequest = new StreamsRequest(this);
-        streamRequest.getStreams(this, 20);
-
         BottomNavigationView navBar = findViewById(R.id.navigation);
         navBar.setOnNavigationItemSelectedListener(navListener);
         navBar.getMenu().findItem(R.id.navigate_stream).setChecked(true);
+
+        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = parent.getItemAtPosition(position).toString();
+
+                // Make a request for the top 20 streams
+                StreamsRequest streamRequest = new StreamsRequest(StreamsActivity.this);
+                streamRequest.getStreams(StreamsActivity.this, selectedItem, 20);
+
+            } // to close the onItemSelected
+
+            public void onNothingSelected(AdapterView<?> parent) {
+                return;
+            }
+        });
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =

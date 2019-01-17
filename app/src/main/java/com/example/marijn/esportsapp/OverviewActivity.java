@@ -24,11 +24,11 @@ public class OverviewActivity extends AppCompatActivity implements MatchesReques
 
         // Make a request for the upcoming match
         MatchesRequest matchRequest = new MatchesRequest(this);
-        matchRequest.getMatches(this, 1);
+        matchRequest.getMatches(this, "lol",1);
 
         // Make a request for the most watched streamer
         StreamsRequest streamRequest = new StreamsRequest(this);
-        streamRequest.getStreams(this, 1);
+        streamRequest.getStreams(this, "League of Legends", 1);
 
         BottomNavigationView navBar = findViewById(R.id.navigation);
         navBar.setOnNavigationItemSelectedListener(navListener);

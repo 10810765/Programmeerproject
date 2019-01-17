@@ -31,14 +31,14 @@ public class MatchesRequest implements Response.Listener<JSONArray>, Response.Er
     }
 
     // Method will attempt to retrieve the categories from the API
-    public void getMatches(Callback activity, int amount) {
+    public void getMatches(Callback activity, String game, int amount) {
         this.activity = activity;
 
         // Create a new request queue
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // Create a JSON object request and add it to the queue
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest("https://api.pandascore.co/lol/matches/upcoming?page[size]="+amount+"&token=flAODiQVW9o9n8lVU1NWnZGfPLIAU9ClcrSxStPz7Wy5qZQVZOk", this, this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest("https://api.pandascore.co/"+game+"/matches/upcoming?page[size]="+amount+"&token=flAODiQVW9o9n8lVU1NWnZGfPLIAU9ClcrSxStPz7Wy5qZQVZOk", this, this);
         queue.add(jsonArrayRequest);
     }
 
