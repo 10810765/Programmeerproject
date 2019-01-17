@@ -8,53 +8,38 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:text="The eSports TV Guide!"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginBottom="16dp"
-            android:text="Welcome to the TV Guide for eSports  events and streams! See when professional matches of your favourite game will be broadcasted or simply check who's streaming your favourite game. In the next screen simply select he game your interested in and start watching!"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            android:textStyle="italic" />
-
-        <Button
-            android:id="@+id/startButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginRight="12dp"
-            android:onClick="onStartClicked"
-            android:text="Start watching" />
-    </LinearLayout>
-
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
+    <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_weight="0"
-        app:menu="@menu/navigation_menu" />
+        android:padding="12dp"
+        android:text="The eSports TV Guide!"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="16dp"
+        android:text="Welcome to the TV Guide for eSports  events and streams! See when professional matches of your favourite game will be broadcasted or simply check who's streaming your favourite game. In the next screen simply select he game your interested in and start watching!"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="italic" />
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="12dp"
+        android:onClick="onStartClicked"
+        android:text="Start watching" />
 
 </LinearLayout>

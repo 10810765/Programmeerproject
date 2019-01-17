@@ -18,7 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CategoriesActivity" />
         <activity android:name=".OverviewActivity" />
         <activity android:name=".MatchesActivity" />
         <activity android:name=".StreamsActivity"></activity>

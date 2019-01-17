@@ -14,40 +14,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        BottomNavigationView navBar = findViewById(R.id.navigation);
-        navBar.setOnNavigationItemSelectedListener(navListener);
-        navBar.getMenu().findItem(R.id.navigate_home).setChecked(true);
     }
-
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                    switch (item.getItemId()) {
-                        case R.id.navigate_home:
-                            Intent home = new Intent(getApplicationContext(), OverviewActivity.class);
-                            startActivity(home);
-                            break;
-                        case R.id.navigate_match:
-                            Intent match = new Intent(getApplicationContext(), MatchesActivity.class);
-                            startActivity(match);
-                            break;
-                        case R.id.navigate_stream:
-                            Intent stream = new Intent(getApplicationContext(), StreamsActivity.class);
-                            startActivity(stream);
-                            break;
-                        case R.id.navigate_refresh:
-                            break;
-                    }
-
-                    return true;
-                }
-            };
 
     // On button click, show Categories
     public void onStartClicked(View view) {
-        startActivity(new Intent(this, CategoriesActivity.class));
+        startActivity(new Intent(this, OverviewActivity.class));
     }
 }
