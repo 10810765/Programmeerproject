@@ -29,3 +29,5 @@ Hierdoor is de CategoryActivity overbodig geworden en dus verwijderd.
 
 ### day 10 (18/01/2019)
 Na overleg ervoor gekozen om de activities die je kan opnenen doormiddel van een klik op de menu balk te vervangen door fragments. Hierdoor is duplicate code verwijderd en hoeft de menu balk niet opnieuw geladen te worden bij het openen van een activity. De activities zijn vandaag omgezet naar fragments en werken naar behoren!
+
+Als laatst is het nu mogelijk om op een stream te klikken, deze wordt dan geopend in je webbrowser.
