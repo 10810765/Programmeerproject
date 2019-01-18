@@ -3,6 +3,7 @@ package com.example.marijn.esportsapp;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,6 +40,7 @@ public class OverviewActivity extends AppCompatActivity implements MatchesReques
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selectedFragment = null;
 
                     switch (item.getItemId()) {
                         case R.id.navigate_home:
@@ -50,8 +52,7 @@ public class OverviewActivity extends AppCompatActivity implements MatchesReques
                             startActivity(match);
                             break;
                         case R.id.navigate_stream:
-                            Intent stream = new Intent(getApplicationContext(), StreamsActivity.class);
-                            startActivity(stream);
+                            selectedFragment = new StreamsFragment();
                             break;
                         case R.id.navigate_refresh:
                             break;
