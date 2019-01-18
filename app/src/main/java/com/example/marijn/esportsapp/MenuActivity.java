@@ -29,7 +29,7 @@ public class MenuActivity extends AppCompatActivity {
                             selectedFragment = new StreamsFragment();
                             break;
                         case R.id.navigate_match:
-                            selectedFragment = new StreamsFragment();
+                            selectedFragment = new MatchesFragment();
                             break;
                         case R.id.navigate_stream:
                             selectedFragment = new StreamsFragment();
