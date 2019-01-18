@@ -18,6 +18,6 @@ public class MainActivity extends AppCompatActivity {
 
     // On button click, show Categories
     public void onStartClicked(View view) {
-        startActivity(new Intent(this, OverviewActivity.class));
+        startActivity(new Intent(this, MenuActivity.class));
     }
 }

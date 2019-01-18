@@ -57,6 +57,9 @@ public class OverviewActivity extends AppCompatActivity implements MatchesReques
                         case R.id.navigate_refresh:
                             break;
                     }
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            selectedFragment).commit();
+
                     return true;
                 }
             };
