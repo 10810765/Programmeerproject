@@ -24,6 +24,7 @@ public class StreamsActivity extends AppCompatActivity implements StreamsRequest
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_streams);
 
+        // Dropdown menu
         Spinner mySpinner = findViewById(R.id.gameSpinner);
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.games));
