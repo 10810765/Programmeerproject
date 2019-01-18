@@ -20,3 +20,11 @@ List adapter voor MatchesInformation (een lijst met professionele matches) bijna
 List adapter voor zowel de matches als de streamers list werkend. Deze halen nu informatie op doormiddel van een API call en laten dit in een listView zien. Tevens na overleg met Martijn ervoor gekozen om wat wijzigingen aan het disign van de app toe te brengen. Zo zal ik een navigatie balk maken die altijd zichtbaar is om sneller tussen verschillende activities te wisselen. Tevens zal de overview activity een featured activity worden waar je suggesties kan zien ipv een voorvertoning van je gekozen game.
 
 ### day 8 (16/01/2019)
+Menu bar toegevoegd aan alle activities voor betere navigatie. Deze is nu volledig werkend en geeft aan op welke pagina je bent door midden van het icoontje een andere kleur te geven in het menu. 
+
+### day 9 (17/01/2019)
+Drop-down menu toegevoegd aan StreamsActivity en MatchesActivity. Hierdoor is het mogelijk om in de activity te kiezen van welke game je informatie wil hebben. Dit is nu volledig werkend in beide activities. Tevens is er nu de optie om in de StreamsActivity meer games toe te voegen dan er bij MatchesActivity mogelijk zijn. Voorheen werd de game keue voor beide Activities gebruikt en was er een limitatie voor 4 games (aangezien de pandascore API er niet meer ondersteund). Dit is nu niet meer het geval (biede individueel).
+
+Hierdoor is de CategoryActivity overbodig geworden en dus verwijderd.
+
+### day 10 (17/01/2019)
