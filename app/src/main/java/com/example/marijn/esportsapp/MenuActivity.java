@@ -16,6 +16,9 @@ public class MenuActivity extends AppCompatActivity {
 
         BottomNavigationView navBar = findViewById(R.id.navigationBar);
         navBar.setOnNavigationItemSelectedListener(navListener);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,
+                new FeaturedFragment()).commit();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -26,15 +29,13 @@ public class MenuActivity extends AppCompatActivity {
 
                     switch (item.getItemId()) {
                         case R.id.navigate_home:
-                            selectedFragment = new StreamsFragment();
+                            selectedFragment = new FeaturedFragment();
                             break;
                         case R.id.navigate_match:
                             selectedFragment = new MatchesFragment();
                             break;
                         case R.id.navigate_stream:
                             selectedFragment = new StreamsFragment();
-                            break;
-                        case R.id.navigate_refresh:
                             break;
                     }
 

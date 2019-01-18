@@ -16,9 +16,4 @@
         android:icon="@drawable/ic_live_tv_black_24dp"
         android:title="Streams" />
 
-    <item
-        android:id="@+id/navigate_refresh"
-        android:icon="@drawable/ic_refresh_black_24dp"
-        android:title="Refresh" />
-
 </menu>
