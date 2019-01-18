@@ -27,4 +27,5 @@ Drop-down menu toegevoegd aan StreamsActivity en MatchesActivity. Hierdoor is he
 
 Hierdoor is de CategoryActivity overbodig geworden en dus verwijderd.
 
-### day 10 (17/01/2019)
+### day 10 (18/01/2019)
+Na overleg ervoor gekozen om de activities die je kan opnenen doormiddel van een klik op de menu balk te vervangen door fragments. Hierdoor is duplicate code verwijderd en hoeft de menu balk niet opnieuw geladen te worden bij het openen van een activity. De activities zijn vandaag omgezet naar fragments en werken naar behoren!
