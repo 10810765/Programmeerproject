@@ -70,10 +70,11 @@ public class StreamsRequest implements Response.Listener<JSONObject>, Response.E
                 String title = channelJSONObject.getString("status");
                 String name = channelJSONObject.getString("display_name");
                 String language = channelJSONObject.getString("language");
+                String twitchUrl = channelJSONObject.getString("url");
                 String imageUrl = channelJSONObject.getString("logo");
 
                 // Add the information to the menu array list
-                streamsArrayList.add(new StreamsInformation(title, name, viewers, language, imageUrl));
+                streamsArrayList.add(new StreamsInformation(title, name, viewers, language, twitchUrl, imageUrl));
 
                 // Pass the array list back to the activity that requested it
                 activity.gotStreams(streamsArrayList);

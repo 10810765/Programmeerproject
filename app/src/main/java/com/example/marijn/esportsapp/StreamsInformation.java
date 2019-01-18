@@ -2,14 +2,15 @@ package com.example.marijn.esportsapp;
 
 public class StreamsInformation {
 
-    private String title, name, viewers, language, imageUrl;
+    private String title, name, viewers, language, twitchUrl, imageUrl;
 
     // Matches information constructor
-    public StreamsInformation(String title, String name, String viewers, String language, String imageUrl) {
+    public StreamsInformation(String title, String name, String viewers, String language, String twitchUrl, String imageUrl) {
         this.title = title;
         this.name = name;
         this.viewers = viewers;
         this.language = language;
+        this.twitchUrl = twitchUrl;
         this.imageUrl = imageUrl;
     }
 
@@ -43,6 +44,14 @@ public class StreamsInformation {
 
     public void setLanguage(String language) {
         this.language = language;
+    }
+
+    public String getTwitchUrl() {
+        return twitchUrl;
+    }
+
+    public void setTwitchUrl(String twitchUrl) {
+        this.twitchUrl = twitchUrl;
     }
 
     public String getImageUrl() {

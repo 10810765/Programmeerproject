@@ -1,5 +1,7 @@
 package com.example.marijn.esportsapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 public class StreamsFragment extends Fragment implements StreamsRequest.Callback {
 
     private View rootView;
+    private ArrayList<StreamsInformation> streamInfo;
 
     @Nullable
     @Override
@@ -29,6 +32,10 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Instantiate an on list item click listener
+        ListView listView = rootView.findViewById(R.id.streamList);
+        listView.setOnItemClickListener(new ItemClickListener());
 
         Spinner mySpinner = rootView.findViewById(R.id.selectGameSpinner);
 
@@ -57,6 +64,8 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
     @Override // Method that handles a successful call to the API
     public void gotStreams(ArrayList<StreamsInformation> streamInf) {
 
+        streamInfo = streamInf;
+
         // Instantiate the adapter
         StreamsAdapter streamAdapter = new StreamsAdapter(getActivity(), R.layout.stream_row, streamInf);
 
@@ -69,5 +78,26 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
     public void gotStreamsError(String message) {
         // Toast the error message to the screen
         Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+    }
+
+    // Create an on menu item clicked listener
+    private class ItemClickListener implements AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            // Get the MenuItem object of the clicked item in the list view
+            StreamsInformation clickedStream = streamInfo.get(position);
+
+            // Put menu item information into the bundle
+            String urlToStream = clickedStream.getTwitchUrl();
+
+            // https://stackoverflow.com/questions/2201917/
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlToStream));
+            startActivity(browserIntent);
+
+//            Uri uri = Uri.parse("www.google.nl");
+//            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//            startActivity(intent);
+        }
     }
 }
