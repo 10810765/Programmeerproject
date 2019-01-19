@@ -34,7 +34,7 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
 
         // Make a request for the most watched streamer
         StreamsRequest streamRequest = new StreamsRequest(getActivity());
-        streamRequest.getStreams(this, "League of Legends", 1);
+        streamRequest.getStreams(this, "League of Legends", "en", 1);
     }
 
     @Override // Method that handles a successful call to the API

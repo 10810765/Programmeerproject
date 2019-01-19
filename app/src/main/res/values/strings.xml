@@ -8,4 +8,12 @@
         <item>Counter-Strike: Global Offensive</item>
     </string-array>
 
+    <string-array name="languages">
+        <item>EN</item>
+        <item>DE</item>
+        <item>FR</item>
+        <item>NL</item>
+        <item>TR</item>
+    </string-array>
+
 </resources>

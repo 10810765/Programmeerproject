@@ -31,14 +31,14 @@ public class StreamsRequest implements Response.Listener<JSONObject>, Response.E
     }
 
     // Method will attempt to retrieve the categories from the API
-    public void getStreams(Callback activity, String game, int amount) {
+    public void getStreams(Callback activity, String game, String language, int amount) {
         this.activity = activity;
 
         // Create a new request queue
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // Create a JSON object request and add it to the queue
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest("https://api.twitch.tv/kraken/streams/?game="+game+"&broadcaster_language=en&limit="+amount+"&client_id=43kgmi902ijvh15g5t0m3kxsjckjfn"
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest("https://api.twitch.tv/kraken/streams/?game="+game+"&broadcaster_language="+language+"&limit="+amount+"&client_id=43kgmi902ijvh15g5t0m3kxsjckjfn"
                 ,null
                 , this
                 , this);

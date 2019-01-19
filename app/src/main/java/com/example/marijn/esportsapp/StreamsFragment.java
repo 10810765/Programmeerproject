@@ -21,6 +21,8 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
 
     private View rootView;
     private ArrayList<StreamsInformation> streamInfo;
+    private String selectedGame = "League of legends";
+    private String selectedLanguage = "EN";
 
     @Nullable
     @Override
@@ -44,13 +46,36 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner.setAdapter(myAdapter);
 
+        Spinner mySecondSpinner = rootView.findViewById(R.id.selectLanguageSpinner);
+
+        ArrayAdapter<String> mySecondAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.languages));
+
+        mySecondAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySecondSpinner.setAdapter(mySecondAdapter);
+
         mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItem = parent.getItemAtPosition(position).toString();
+                selectedGame = parent.getItemAtPosition(position).toString();
 
                 // Make a request for the top 20 streams
                 StreamsRequest streamRequest = new StreamsRequest(getActivity());
-                streamRequest.getStreams(StreamsFragment.this, selectedItem, 20);
+                streamRequest.getStreams(StreamsFragment.this, selectedGame, selectedLanguage, 20);
+
+
+            } // to close the onItemSelected
+
+            public void onNothingSelected(AdapterView<?> parent) {
+                return;
+            }
+        });
+
+        mySecondSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedLanguage = parent.getItemAtPosition(position).toString();
+
+                // Make a request for the top 20 streams
+                StreamsRequest streamRequest = new StreamsRequest(getActivity());
+                streamRequest.getStreams(StreamsFragment.this, selectedGame, selectedLanguage, 20);
 
 
             } // to close the onItemSelected
@@ -94,10 +119,6 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
             // https://stackoverflow.com/questions/2201917/
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlToStream));
             startActivity(browserIntent);
-
-//            Uri uri = Uri.parse("www.google.nl");
-//            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//            startActivity(intent);
         }
     }
 }
