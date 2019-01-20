@@ -34,3 +34,6 @@ Als laatst is het nu mogelijk om op een stream te klikken, deze wordt dan geopen
 
 ### day 11 (19/01/2019)
 Afbeeldingen toegevoegd aan de macthes en streamer listview. Daarnaast is het nu bij streamers mogelijk om een taal te kiezen. De streams worden dan hierop gefilterd.
+
+### day 12 (20/01/2019)
+Begonnen met werken aan de mogelijkheid streams te favouriten. ToggleButton is toegevoegd aan de listview maar nog niet werkend.
