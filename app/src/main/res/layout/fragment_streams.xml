@@ -5,22 +5,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:orientation="horizontal">
+        android:layout_weight="0">
 
         <Spinner
             android:id="@+id/selectGameSpinner"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true" />
 
         <Spinner
             android:id="@+id/selectLanguageSpinner"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/streamList"
