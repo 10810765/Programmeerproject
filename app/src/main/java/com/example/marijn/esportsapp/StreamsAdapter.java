@@ -7,10 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.squareup.picasso.Picasso;
@@ -19,7 +21,7 @@ import java.util.ArrayList;
 
 public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
 
-    private ToggleButton favouriteButton;
+    private Button favouriteButton;
 
     public StreamsAdapter(@NonNull Context context, int resource, @NonNull ArrayList<StreamsInformation> objects) {
         super(context, resource, objects);
@@ -27,7 +29,7 @@ public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
 
     @NonNull
     @Override // Method that will be called every time a new list item (streamer) is to be displayed
-    public View getView(int position, @NonNull View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, @NonNull View convertView, @NonNull ViewGroup parent) {
 
         // Get the index of the stream that we want to display
         StreamsInformation streamInfo = getItem(position);
@@ -62,6 +64,14 @@ public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
 //            }
 //    });
 
+
+        favouriteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                favouriteButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.yellow_star));
+//                Toast.makeText(getPosition(favouriteButton), Toast.LENGTH_LONG).show();
+            }
+        });
         return convertView;
     }
 }

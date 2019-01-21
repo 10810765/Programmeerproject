@@ -59,7 +59,7 @@
                     android:text="TextView" />
             </LinearLayout>
 
-            <ToggleButton
+            <Button
                 android:id="@+id/favouriteButton"
                 android:layout_width="40dp"
                 android:layout_height="35dp"
@@ -67,6 +67,9 @@
                 android:layout_marginLeft="6dp"
                 android:layout_marginRight="18dp"
                 android:layout_marginBottom="6dp"
+                android:clickable="true"
+                android:focusedByDefault="false"
+                android:focusable="false"
                 android:textOff=""
                 android:textOn="" />
 
