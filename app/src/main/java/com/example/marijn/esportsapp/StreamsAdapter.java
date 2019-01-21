@@ -1,6 +1,7 @@
 package com.example.marijn.esportsapp;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
@@ -20,6 +21,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
 
     public StreamsAdapter(@NonNull Context context, int resource, @NonNull ArrayList<StreamsInformation> objects) {
@@ -32,8 +35,6 @@ public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
 
         // Get the index of the stream that we want to display
         StreamsInformation streamInfo = getItem(position);
-
-        final int pos = position;
 
         // If the convert view is null, inflate a new one
         if (convertView == null) {
@@ -55,9 +56,19 @@ public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
         // Load image from the internet into an image view using Picasso
         Picasso.get().load(streamInfo.getImageUrl()).into(logo);
 
-        //favouriteButton.setTag(Integer.valueOf(position));
+        // Get a previously stored favourite boolean (title+time for a unique combination)
+        SharedPreferences prefsFav = getContext().getSharedPreferences("favourite", MODE_PRIVATE);
+        Boolean isFav = prefsFav.getBoolean((streamInfo.getName()), false);
 
-        favButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.grey_star));
+        // Set the previously stored favourite state
+        if (isFav) { // If this person was a favourite
+            favButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.yellow_star));
+
+        } else { // If this person was NOT a favourite
+            favButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.grey_star));
+        }
+
+        favButton.setTag(streamInfo.getName());
 
         favButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -71,9 +82,12 @@ public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
                     favButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.grey_star));
                 }
 
-//                int position = (Integer) buttonView.getTag();
-//
-               // Toast.makeText(buttonView.getContext(), buttonView.get(position), Toast.LENGTH_SHORT).show();
+                String streamerName = (String) buttonView.getTag();
+
+                // Edit the old favourite Boolean and store the new value
+                SharedPreferences.Editor editor = getContext().getSharedPreferences("favourite", MODE_PRIVATE).edit();
+                editor.putBoolean((streamerName), isChecked);
+                editor.apply();
 
 
             }
