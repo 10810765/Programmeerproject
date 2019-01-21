@@ -6,6 +6,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -21,8 +22,6 @@ import java.util.ArrayList;
 
 public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
 
-    private Button favouriteButton;
-
     public StreamsAdapter(@NonNull Context context, int resource, @NonNull ArrayList<StreamsInformation> objects) {
         super(context, resource, objects);
     }
@@ -34,6 +33,8 @@ public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
         // Get the index of the stream that we want to display
         StreamsInformation streamInfo = getItem(position);
 
+        final int pos = position;
+
         // If the convert view is null, inflate a new one
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.stream_row, parent, false);
@@ -44,7 +45,7 @@ public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
         TextView name = convertView.findViewById(R.id.nameView);
         TextView views = convertView.findViewById(R.id.viewersView);
         ImageView logo = convertView.findViewById(R.id.logoView);
-        favouriteButton = convertView.findViewById(R.id.favouriteButton);
+        ToggleButton favButton = convertView.findViewById(R.id.favouriteButton);
 
         // Set the name, title and viewer count of the streamer
         title.setText(streamInfo.getTitle());
@@ -54,24 +55,38 @@ public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
         // Load image from the internet into an image view using Picasso
         Picasso.get().load(streamInfo.getImageUrl()).into(logo);
 
-        favouriteButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.grey_star));
+        //favouriteButton.setTag(Integer.valueOf(position));
 
-//        favouriteButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if (isChecked)
-//                    favouriteButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.yellow_star));
+        favButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.grey_star));
+
+        favButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                // https://stackoverflow.com/questions/16821419/
+                ToggleButton favButton = (ToggleButton) buttonView;
+
+                if (isChecked) { // If favourited
+                    favButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.yellow_star));
+                } else { // If unfavourited
+                    favButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.grey_star));
+                }
+
+//                int position = (Integer) buttonView.getTag();
 //
-//            }
-//    });
+               // Toast.makeText(buttonView.getContext(), buttonView.get(position), Toast.LENGTH_SHORT).show();
 
 
-        favouriteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                favouriteButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.yellow_star));
-//                Toast.makeText(getPosition(favouriteButton), Toast.LENGTH_LONG).show();
             }
-        });
+    });
+
+
+//        favouriteButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                favouriteButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.yellow_star));
+////                Toast.makeText(getPosition(favouriteButton), Toast.LENGTH_LONG).show();
+//            }
+//        });
         return convertView;
     }
 }
