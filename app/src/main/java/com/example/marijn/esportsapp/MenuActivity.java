@@ -18,8 +18,10 @@ public class MenuActivity extends AppCompatActivity {
         BottomNavigationView navBar = findViewById(R.id.navigationBar);
         navBar.setOnNavigationItemSelectedListener(navListener);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,
-                new FeaturedFragment()).commit();
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,
+                    new FeaturedFragment()).commit();
+        }
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
