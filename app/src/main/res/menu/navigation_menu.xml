@@ -15,5 +15,9 @@
         android:id="@+id/navigate_stream"
         android:icon="@drawable/ic_live_tv_black_24dp"
         android:title="Streams" />
+    <item
+        android:id="@+id/navigate_favourite"
+        android:icon="@drawable/ic_star_black_24dp"
+        android:title="Favourites" />
 
 </menu>

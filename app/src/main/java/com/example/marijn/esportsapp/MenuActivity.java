@@ -40,6 +40,9 @@ public class MenuActivity extends AppCompatActivity {
                         case R.id.navigate_stream:
                             selectedFragment = new StreamsFragment();
                             break;
+                        case R.id.navigate_favourite:
+                            selectedFragment = new FavouritesFragment();
+                            break;
                     }
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,

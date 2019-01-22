@@ -86,10 +86,8 @@ public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
 
                 // Edit the old favourite Boolean and store the new value
                 SharedPreferences.Editor editor = getContext().getSharedPreferences("favourite", MODE_PRIVATE).edit();
-                editor.putBoolean((streamerName), isChecked);
+                editor.putBoolean(streamerName, isChecked);
                 editor.apply();
-
-
             }
     });
 
