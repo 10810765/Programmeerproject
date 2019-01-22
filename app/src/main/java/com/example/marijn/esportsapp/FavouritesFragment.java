@@ -17,6 +17,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -48,13 +49,19 @@ public class FavouritesFragment extends Fragment implements FavouritesRequest.Ca
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        StringJoiner joiner = new StringJoiner(",");
+
         for (String streamer : favouriteStreamers) {
-
-            Toast.makeText(getActivity(), streamer, Toast.LENGTH_LONG).show();
-
-            FavouritesRequest favouriteStreamRequest = new FavouritesRequest(getActivity());
-            favouriteStreamRequest.getFavourite(FavouritesFragment.this, streamer);
+            joiner.add(streamer);
         }
+
+        String joinedString = joiner.toString();
+
+        FavouritesRequest favouriteStreamRequest = new FavouritesRequest(getActivity());
+        favouriteStreamRequest.getFavourite(FavouritesFragment.this, joinedString);
+
+//        Toast.makeText(getActivity(), joinedString, Toast.LENGTH_LONG).show();
+
     }
 
     @Override // Method that handles a successful call to the API

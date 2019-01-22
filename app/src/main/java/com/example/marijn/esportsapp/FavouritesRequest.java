@@ -30,14 +30,14 @@ public class FavouritesRequest implements Response.Listener<JSONObject>, Respons
     }
 
     // Method will attempt to retrieve the categories from the API
-    public void getFavourite(FavouritesRequest.Callback activity, String streamerName) {
+    public void getFavourite(FavouritesRequest.Callback activity, String streamerNames) {
         this.activity = activity;
 
         // Create a new request queue
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // Create a JSON object request and add it to the queue
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest("https://api.twitch.tv/kraken/streams/" + streamerName + "?client_id=43kgmi902ijvh15g5t0m3kxsjckjfn"
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(" https://api.twitch.tv/kraken/streams?channel=" + streamerNames + "&client_id=43kgmi902ijvh15g5t0m3kxsjckjfn"
                 ,null
                 , this
                 , this);
@@ -58,24 +58,29 @@ public class FavouritesRequest implements Response.Listener<JSONObject>, Respons
             // Instantiate array list
             ArrayList<StreamsInformation> favouriteStreamsArrayList = new ArrayList<>();
 
-            JSONObject resultsObject = response.getJSONObject("stream");
+            JSONArray resultsArray = response.getJSONArray("streams");
 
-            String viewers = resultsObject.getString("viewers");
+            for (int i = 0; i < resultsArray.length(); i++) {
 
-            JSONObject channelJSONObject = resultsObject.getJSONObject("channel");
+                JSONObject resultsObject = resultsArray.getJSONObject(i);
 
-            // Add the incorrect answers to the incAnsArrayList
-            String title = channelJSONObject.getString("status");
-            String name = channelJSONObject.getString("display_name");
-            String language = channelJSONObject.getString("language");
-            String twitchUrl = channelJSONObject.getString("url");
-            String imageUrl = channelJSONObject.getString("logo");
+                String viewers = resultsObject.getString("viewers");
 
-            // Add the information to the menu array list
-            favouriteStreamsArrayList.add(new StreamsInformation(title, name, viewers, language, twitchUrl, imageUrl));
+                JSONObject channelJSONObject = resultsObject.getJSONObject("channel");
 
-            // Pass the array list back to the activity that requested it
-            activity.gotFavourite(favouriteStreamsArrayList);
+                // Add the incorrect answers to the incAnsArrayList
+                String title = channelJSONObject.getString("status");
+                String name = channelJSONObject.getString("display_name");
+                String language = channelJSONObject.getString("language");
+                String twitchUrl = channelJSONObject.getString("url");
+                String imageUrl = channelJSONObject.getString("logo");
+
+                // Add the information to the menu array list
+                favouriteStreamsArrayList.add(new StreamsInformation(title, name, viewers, language, twitchUrl, imageUrl));
+
+                // Pass the array list back to the activity that requested it
+                activity.gotFavourite(favouriteStreamsArrayList);
+            }
 
         } catch (JSONException e) {
             // If an error occurs, print the error
