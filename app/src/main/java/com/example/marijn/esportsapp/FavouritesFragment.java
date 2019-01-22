@@ -25,7 +25,7 @@ public class FavouritesFragment extends Fragment implements FavouritesRequest.Ca
 
     private View rootView;
     private List<String> favouriteStreamers = new ArrayList<>();
-    private ArrayList<StreamsInformation> favouriteInfo;
+    private ArrayList<FavouritesInformation> favouriteInfo;
 
     @Nullable
     @Override
@@ -65,12 +65,12 @@ public class FavouritesFragment extends Fragment implements FavouritesRequest.Ca
     }
 
     @Override // Method that handles a successful call to the API
-    public void gotFavourite(ArrayList<StreamsInformation> streamerInf) {
+    public void gotFavourite(ArrayList<FavouritesInformation> favouriteInf) {
 
-        favouriteInfo = streamerInf;
+        favouriteInfo = favouriteInf;
 
         // Instantiate the adapter
-        StreamsAdapter favouriteAdapter = new StreamsAdapter(getActivity(), R.layout.stream_row, favouriteInfo);
+        FavouritesAdapter favouriteAdapter = new FavouritesAdapter(getActivity(), R.layout.favourite_row, favouriteInfo);
 
         // Get list view ID and attach the adapter to it
         ListView favouriteList = rootView.findViewById(R.id.favouriteList);

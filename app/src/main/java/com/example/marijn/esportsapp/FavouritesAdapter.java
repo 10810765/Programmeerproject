@@ -23,9 +23,9 @@ import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
+public class FavouritesAdapter extends ArrayAdapter<FavouritesInformation> {
 
-    public StreamsAdapter(@NonNull Context context, int resource, @NonNull ArrayList<StreamsInformation> objects) {
+    public FavouritesAdapter(@NonNull Context context, int resource, @NonNull ArrayList<FavouritesInformation> objects) {
         super(context, resource, objects);
     }
 
@@ -33,32 +33,34 @@ public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
     @Override // Method that will be called every time a new list item (streamer) is to be displayed
     public View getView(final int position, @NonNull View convertView, @NonNull ViewGroup parent) {
 
-        // Get the index of the stream that we want to display
-        StreamsInformation streamInfo = getItem(position);
+        // Get the index of the fav streamer that we want to display
+        FavouritesInformation favouriteInfo = getItem(position);
 
         // If the convert view is null, inflate a new one
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.stream_row, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.favourite_row, parent, false);
         }
 
         // Get the ID's of various TextViews and an ImageView
         TextView title = convertView.findViewById(R.id.titleView);
+        TextView game = convertView.findViewById(R.id.gameView);
         TextView name = convertView.findViewById(R.id.nameView);
         TextView views = convertView.findViewById(R.id.viewersView);
         ImageView logo = convertView.findViewById(R.id.logoView);
         ToggleButton favButton = convertView.findViewById(R.id.favouriteButton);
 
         // Set the name, title and viewer count of the streamer
-        title.setText(streamInfo.getTitle());
-        name.setText(streamInfo.getName());
-        views.setText(streamInfo.getViewers());
+        title.setText(favouriteInfo.getTitle());
+        game.setText(favouriteInfo.getGame());
+        name.setText(favouriteInfo.getName());
+        views.setText(favouriteInfo.getViewers());
 
         // Load image from the internet into an image view using Picasso
-        Picasso.get().load(streamInfo.getImageUrl()).into(logo);
+        Picasso.get().load(favouriteInfo.getImageUrl()).into(logo);
 
         // Get a previously stored favourite boolean (title+time for a unique combination)
         SharedPreferences prefsFav = getContext().getSharedPreferences("favourite", MODE_PRIVATE);
-        Boolean isFav = prefsFav.getBoolean(streamInfo.getName(), false);
+        Boolean isFav = prefsFav.getBoolean(favouriteInfo.getName(), false);
 
         // Set the previously stored favourite state
         if (isFav) { // If this person was a favourite
@@ -68,7 +70,7 @@ public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
             favButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.grey_star));
         }
 
-        favButton.setTag(streamInfo.getName());
+        favButton.setTag(favouriteInfo.getName());
 
         favButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -89,7 +91,7 @@ public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
                 editor.putBoolean(streamerName, isChecked);
                 editor.apply();
             }
-    });
+        });
 
 
 //        favouriteButton.setOnClickListener(new View.OnClickListener() {

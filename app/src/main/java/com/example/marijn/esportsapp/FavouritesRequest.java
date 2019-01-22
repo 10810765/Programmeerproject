@@ -21,7 +21,7 @@ public class FavouritesRequest implements Response.Listener<JSONObject>, Respons
 
     // Notify the activity that instantiated the request through callback
     public interface Callback {
-        void gotFavourite(ArrayList<StreamsInformation> streams);
+        void gotFavourite(ArrayList<FavouritesInformation> streams);
         void gotFavouriteError(String message);
     }
 
@@ -47,7 +47,7 @@ public class FavouritesRequest implements Response.Listener<JSONObject>, Respons
     @Override // Handle on API error response
     public void onErrorResponse(VolleyError error) {
         activity.gotFavouriteError(error.getMessage());
-        Log.d("gotFavouriteStreamsError", error.getMessage());
+        Log.d("gotFavouritesError", error.getMessage());
     }
 
     @Override // Handle on API response
@@ -56,7 +56,7 @@ public class FavouritesRequest implements Response.Listener<JSONObject>, Respons
         try {
 
             // Instantiate array list
-            ArrayList<StreamsInformation> favouriteStreamsArrayList = new ArrayList<>();
+            ArrayList<FavouritesInformation> favouriteArrayList = new ArrayList<>();
 
             JSONArray resultsArray = response.getJSONArray("streams");
 
@@ -64,6 +64,7 @@ public class FavouritesRequest implements Response.Listener<JSONObject>, Respons
 
                 JSONObject resultsObject = resultsArray.getJSONObject(i);
 
+                String game = resultsObject.getString("game");
                 String viewers = resultsObject.getString("viewers");
 
                 JSONObject channelJSONObject = resultsObject.getJSONObject("channel");
@@ -76,10 +77,10 @@ public class FavouritesRequest implements Response.Listener<JSONObject>, Respons
                 String imageUrl = channelJSONObject.getString("logo");
 
                 // Add the information to the menu array list
-                favouriteStreamsArrayList.add(new StreamsInformation(title, name, viewers, language, twitchUrl, imageUrl));
+                favouriteArrayList.add(new FavouritesInformation(game, title, name, viewers, language, twitchUrl, imageUrl));
 
                 // Pass the array list back to the activity that requested it
-                activity.gotFavourite(favouriteStreamsArrayList);
+                activity.gotFavourite(favouriteArrayList);
             }
 
         } catch (JSONException e) {
