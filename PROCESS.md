@@ -37,3 +37,7 @@ Afbeeldingen toegevoegd aan de macthes en streamer listview. Daarnaast is het nu
 
 ### day 12 (20/01/2019)
 Begonnen met werken aan de mogelijkheid streams te favouriten. ToggleButton is toegevoegd aan de listview maar nog niet werkend.
+
+
+### day 13 (21/01/2019)
+Het is nu mogelijk om streams te favouriten (toggle button in listview). Tevens worden de favourites onthouden als je de app draait of afsluit. Verder wat kleine aanpassingen gedaan ter verbeteing van de app, hier en daar wat state-restoration.
