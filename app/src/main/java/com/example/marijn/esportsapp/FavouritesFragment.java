@@ -64,7 +64,7 @@ public class FavouritesFragment extends Fragment implements FavouritesRequest.Ca
         favouriteStreamRequest.getFavourite(FavouritesFragment.this, joinedString);
 
         // Instantiate an on list item click listener
-        ListView listView = rootView.findViewById(R.id.streamList);
+        ListView listView = rootView.findViewById(R.id.favouriteList);
         listView.setOnItemClickListener(new FavouritesFragment.ItemClickListener());
     }
 
