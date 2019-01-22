@@ -1,6 +1,8 @@
 package com.example.marijn.esportsapp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ShareActionProvider;
 import android.widget.TextView;
@@ -60,8 +63,9 @@ public class FavouritesFragment extends Fragment implements FavouritesRequest.Ca
         FavouritesRequest favouriteStreamRequest = new FavouritesRequest(getActivity());
         favouriteStreamRequest.getFavourite(FavouritesFragment.this, joinedString);
 
-//        Toast.makeText(getActivity(), joinedString, Toast.LENGTH_LONG).show();
-
+        // Instantiate an on list item click listener
+        ListView listView = rootView.findViewById(R.id.streamList);
+        listView.setOnItemClickListener(new FavouritesFragment.ItemClickListener());
     }
 
     @Override // Method that handles a successful call to the API
@@ -102,4 +106,21 @@ public class FavouritesFragment extends Fragment implements FavouritesRequest.Ca
 //        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
 //        Log.d("error", message);
 //    }
+
+    // Create an on menu item clicked listener
+    private class ItemClickListener implements AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            // Get the MenuItem object of the clicked item in the list view
+            FavouritesInformation clickedFavouriteStream = favouriteInfo.get(position);
+
+            // Put menu item information into the bundle
+            String urlToStream = clickedFavouriteStream.getTwitchUrl();
+
+            // https://stackoverflow.com/questions/2201917/
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlToStream));
+            startActivity(browserIntent);
+        }
+    }
 }

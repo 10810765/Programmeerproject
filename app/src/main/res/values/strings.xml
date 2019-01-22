@@ -8,6 +8,14 @@
         <item>Counter-Strike: Global Offensive</item>
     </string-array>
 
+    <string-array name="streamedGames">
+        <item>League of Legends</item>
+        <item>Overwatch</item>
+        <item>Dota 2</item>
+        <item>Counter-Strike: Global Offensive</item>
+        <item>Fortnite</item>
+    </string-array>
+
     <string-array name="languages">
         <item>EN</item>
         <item>DE</item>

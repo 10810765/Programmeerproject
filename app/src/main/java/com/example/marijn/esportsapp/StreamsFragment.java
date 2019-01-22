@@ -41,7 +41,7 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
 
         Spinner mySpinner = rootView.findViewById(R.id.selectGameSpinner);
 
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.games));
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.streamedGames));
 
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner.setAdapter(myAdapter);
