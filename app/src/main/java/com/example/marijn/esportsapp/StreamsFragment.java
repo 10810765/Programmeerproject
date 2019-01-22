@@ -75,8 +75,14 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
 
                 // Make a request for the top 20 streams
                 StreamsRequest streamRequest = new StreamsRequest(getActivity());
-                streamRequest.getStreams(StreamsFragment.this, selectedGame, selectedLanguage, 20);
 
+                if (selectedLanguage.equals("ANY")) {
+
+                    streamRequest.getStreams(StreamsFragment.this, selectedGame, "", 20);
+
+                } else {
+                    streamRequest.getStreams(StreamsFragment.this, selectedGame, selectedLanguage, 20);
+                }
 
             } // to close the onItemSelected
 

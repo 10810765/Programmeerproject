@@ -22,6 +22,7 @@
         <item>FR</item>
         <item>NL</item>
         <item>TR</item>
+        <item>ANY</item>
     </string-array>
 
 </resources>
