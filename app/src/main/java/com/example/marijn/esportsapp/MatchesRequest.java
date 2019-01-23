@@ -75,7 +75,7 @@ public class MatchesRequest implements Response.Listener<JSONArray>, Response.Er
                 String eventUrl = leagueJSONObject.getString("url");
                 String imageUrl = leagueJSONObject.getString("image_url");
 
-                matchesArrayList.add( new MatchesInformation(date, game, title, teams, eventUrl, imageUrl));
+                matchesArrayList.add( new MatchesInformation(date, title, game, teams, eventUrl, imageUrl));
 
                 // Pass the list back to the activity that requested it
                 activity.gotMatches(matchesArrayList);

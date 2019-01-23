@@ -105,19 +105,19 @@ public class MatchesFragment extends Fragment implements MatchesRequest.Callback
             String urlToMatch = clickedMatch.getEventUrl();
             String game = clickedMatch.getGame();
 
-            if (urlToMatch.equals("")) {
+            if (urlToMatch.equals("null")) {
 
                 switch (game) {
                     case "LoL":
-                        urlToMatch = "https://play.euw.leagueoflegends.com/en_GB";
+                        urlToMatch = "https://euw.leagueoflegends.com/";
                         break;
-                    case "Ow":
-                        urlToMatch = "https://playoverwatch.com/en-us/";
+                    case "ow":
+                        urlToMatch = "https://playoverwatch.com/";
                         break;
-                    case "dota2":
-                        urlToMatch = "http://blog.dota2.com/?l=english";
+                    case "Dota 2":
+                        urlToMatch = "http://dota2.com/";
                         break;
-                    case "csgo":
+                    case "CS:GO":
                         urlToMatch = "https://blog.counter-strike.net/";
                         break;
                 }
