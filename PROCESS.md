@@ -41,3 +41,9 @@ Begonnen met werken aan de mogelijkheid streams te favouriten. ToggleButton is t
 
 ### day 13 (21/01/2019)
 Het is nu mogelijk om streams te favouriten (toggle button in listview). Tevens worden de favourites onthouden als je de app draait of afsluit. Verder wat kleine aanpassingen gedaan ter verbeteing van de app, hier en daar wat state-restoration.
+
+### day 14 (22/01/2019)
+Verder gewerkt aan de mogelijkheid om streamers te favouriten. Dit is nu volledig werkend. Na overleg met een TA besloten om alle streamers die iemand heeft geselecteerd als favoriet in een eigen fragment weer te geven. Op deze manier blijft het overzicht behouden, anders zou de StreamersFragment nogal druk worden. Nu kan de gebruiker simpelweg op het sterretje recht op de menu balk drukken en alle streamers die hij heeft aangegeven als favoriet worden daar wergegeven, mits deze streamers ook live zijn. Zo kan het voorkomen dat iemand 2 streamers als favoriet heeft maar er geen in de favorieten fragment staan. Dit geeft aan dat er geen favoriete streamers streamen op dat moment. Daarnaast wordt bij de favoriete streamers aangegeven welk spel ze op dat moment streamen en kan je ze zowel in de streamers als favourites fragment weer on-favorieten.
+
+### day 15 (23/01/2019)
+Vandaag de on click listener van de matches fragment gemaakt. Deze had wat meer tijd nodig aangezien het ook voor kan komen dat een bepaalde match geen url heeft (url is dan null). Om dit te verhelpen worden alle cases waar een url null is deze vervangen door de officiele website van het desbetreffende spel!
