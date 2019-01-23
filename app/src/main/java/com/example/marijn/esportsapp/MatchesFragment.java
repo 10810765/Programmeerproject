@@ -1,5 +1,7 @@
 package com.example.marijn.esportsapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 public class MatchesFragment extends Fragment implements MatchesRequest.Callback {
 
     private View rootView;
+    private ArrayList<MatchesInformation> matchInfo;
 
     @Nullable
     @Override
@@ -29,6 +32,10 @@ public class MatchesFragment extends Fragment implements MatchesRequest.Callback
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Instantiate an on list item click listener
+        ListView listView = rootView.findViewById(R.id.matchList);
+        listView.setOnItemClickListener(new MatchesFragment.ItemClickListener());
 
         Spinner mySpinner = rootView.findViewById(R.id.selectGameSpinner);
 
@@ -70,6 +77,8 @@ public class MatchesFragment extends Fragment implements MatchesRequest.Callback
     @Override // Method that handles a successful call to the API
     public void gotMatches(ArrayList<MatchesInformation> matchInf) {
 
+        matchInfo = matchInf;
+
         // Instantiate the adapter
         MatchesAdapter matchAdapter = new MatchesAdapter(getActivity(), R.layout.match_row, matchInf);
 
@@ -82,5 +91,41 @@ public class MatchesFragment extends Fragment implements MatchesRequest.Callback
     public void gotMatchesError(String message) {
         // Toast the error message to the screen
         Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+    }
+
+    // Create an on menu item clicked listener
+    private class ItemClickListener implements AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            // Get the MenuItem object of the clicked item in the list view
+            MatchesInformation clickedMatch = matchInfo.get(position);
+
+            // Put menu item information into the bundle
+            String urlToMatch = clickedMatch.getEventUrl();
+            String game = clickedMatch.getGame();
+
+            if (urlToMatch.equals("")) {
+
+                switch (game) {
+                    case "League of Legends":
+                        urlToMatch = "";
+                        break;
+                    case "Overwatch":
+                        urlToMatch = "";
+                        break;
+                    case "Dota 2":
+                        urlToMatch = "";
+                        break;
+                    case "Counter-Strike: Global Offensive":
+                        urlToMatch = "";
+                        break;
+                }
+            }
+
+            // https://stackoverflow.com/questions/2201917/
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlToMatch));
+            startActivity(browserIntent);
+        }
     }
 }
