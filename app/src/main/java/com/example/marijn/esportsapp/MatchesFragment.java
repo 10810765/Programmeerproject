@@ -108,17 +108,17 @@ public class MatchesFragment extends Fragment implements MatchesRequest.Callback
             if (urlToMatch.equals("")) {
 
                 switch (game) {
-                    case "League of Legends":
-                        urlToMatch = "";
+                    case "LoL":
+                        urlToMatch = "https://play.euw.leagueoflegends.com/en_GB";
                         break;
-                    case "Overwatch":
-                        urlToMatch = "";
+                    case "Ow":
+                        urlToMatch = "https://playoverwatch.com/en-us/";
                         break;
-                    case "Dota 2":
-                        urlToMatch = "";
+                    case "dota2":
+                        urlToMatch = "http://blog.dota2.com/?l=english";
                         break;
-                    case "Counter-Strike: Global Offensive":
-                        urlToMatch = "";
+                    case "csgo":
+                        urlToMatch = "https://blog.counter-strike.net/";
                         break;
                 }
             }
