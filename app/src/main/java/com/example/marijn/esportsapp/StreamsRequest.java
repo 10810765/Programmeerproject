@@ -78,10 +78,10 @@ public class StreamsRequest implements Response.Listener<JSONObject>, Response.E
 
                 // Add the information to the menu array list
                 streamsArrayList.add(new StreamsInformation(title, name, viewers, language, twitchUrl, imageUrl));
-
-                // Pass the array list back to the activity that requested it
-                activity.gotStreams(streamsArrayList);
             }
+
+            // Pass the array list back to the activity that requested it
+            activity.gotStreams(streamsArrayList);
 
         } catch (JSONException e) {
             // If an error occurs, print the error

@@ -1,17 +1,21 @@
 package com.example.marijn.esportsapp;
 
+import java.util.ArrayList;
+
 public class MatchesInformation {
 
     private String date, title, game, teams, eventUrl, imageUrl;
+    private ArrayList teamLogos;
 
     // Matches information constructor
-    public MatchesInformation(String date, String title, String game, String teams, String eventUrl, String imageUrl) {
+    public MatchesInformation(String date, String title, String game, String teams, String eventUrl, String imageUrl, ArrayList teamLogos) {
         this.date = date;
         this.title = title;
         this.game = game;
         this.teams = teams;
         this.eventUrl = eventUrl;
         this.imageUrl = imageUrl;
+        this.teamLogos = teamLogos;
     }
 
     // Getters and setters
@@ -61,6 +65,14 @@ public class MatchesInformation {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public ArrayList getTeamLogos() {
+        return teamLogos;
+    }
+
+    public void setTeamLogos(ArrayList teamLogos) {
+        this.teamLogos = teamLogos;
     }
 }
 

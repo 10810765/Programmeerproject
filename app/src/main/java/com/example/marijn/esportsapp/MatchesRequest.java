@@ -75,11 +75,26 @@ public class MatchesRequest implements Response.Listener<JSONArray>, Response.Er
                 String eventUrl = leagueJSONObject.getString("url");
                 String imageUrl = leagueJSONObject.getString("image_url");
 
-                matchesArrayList.add( new MatchesInformation(date, title, game, teams, eventUrl, imageUrl));
+                // Instantiate a second array list (used for logo's of the teams)
+                ArrayList<String> teamLogosArrayList = new ArrayList<>();
 
-                // Pass the list back to the activity that requested it
-                activity.gotMatches(matchesArrayList);
+                JSONArray opponentsJSONArray = match.getJSONArray("opponents");
+
+                for (int j = 0; j < opponentsJSONArray.length(); j++) {
+
+                    JSONObject opponentsObject = opponentsJSONArray.getJSONObject(j);
+
+                    JSONObject opponentJSONObject = opponentsObject.getJSONObject("opponent");
+
+                    teamLogosArrayList.add(opponentJSONObject.getString("image_url"));
+                }
+
+                matchesArrayList.add( new MatchesInformation(date, title, game, teams, eventUrl, imageUrl, teamLogosArrayList));
+
             }
+
+            // Pass the list back to the activity that requested it
+            activity.gotMatches(matchesArrayList);
 
         } catch (JSONException e) {
             // If an error occurs, print the error

@@ -8,14 +8,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class FeaturedFragment extends Fragment implements MatchesRequest.Callback, StreamsRequest.Callback {
 
     private View rootView;
+    private ArrayList<String> teamLogoUrls;
 
     @Nullable
     @Override
@@ -40,13 +45,26 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
     @Override // Method that handles a successful call to the API
     public void gotMatches(ArrayList<MatchesInformation> matchInf) {
 
-        TextView date= rootView.findViewById(R.id.dateView);
-        TextView title = rootView.findViewById(R.id.titleView);
-        TextView url = rootView.findViewById(R.id.urlView);
+        teamLogoUrls = matchInf.get(0).getTeamLogos();
 
-        date.setText(matchInf.get(0).getDate());
+        TextView title = rootView.findViewById(R.id.titleView);
+        TextView teams = rootView.findViewById(R.id.teamsView);
+        TextView game = rootView.findViewById(R.id.gameView);
+        TextView date = rootView.findViewById(R.id.dateView);
+
+        ImageView logoOne = rootView.findViewById(R.id.teamOneImage);
+        ImageView logoTwo = rootView.findViewById(R.id.teamTwoImage);
+        ImageView league = rootView.findViewById(R.id.leagueImage);
+
+        // Load image from the internet into an image view using Picasso
+        Picasso.get().load(teamLogoUrls.get(0)).into(logoOne);
+        Picasso.get().load(teamLogoUrls.get(1)).into(logoTwo);
+        Picasso.get().load(matchInf.get(0).getImageUrl()).into(league);
+
         title.setText(matchInf.get(0).getTitle());
-        url.setText(matchInf.get(0).getEventUrl());
+        teams.setText(matchInf.get(0).getTeams());
+        game.setText("Game tag: " + matchInf.get(0).getGame());
+        date.setText("Starts at: " + matchInf.get(0).getDate());
     }
 
     @Override // Method that handles an unsuccessful to the the API
@@ -63,9 +81,9 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
         TextView name = rootView.findViewById(R.id.streamerName);
         TextView views = rootView.findViewById(R.id.viewerCount);
 
-        title.setText(streamInf.get(0).getTitle());
-        name.setText(streamInf.get(0).getName());
-        views.setText(streamInf.get(0).getViewers());
+//        title.setText(streamInf.get(0).getTitle());
+//        name.setText(streamInf.get(0).getName());
+//        views.setText(streamInf.get(0).getViewers());
     }
 
     @Override // Method that handles an unsuccessful to the the API
