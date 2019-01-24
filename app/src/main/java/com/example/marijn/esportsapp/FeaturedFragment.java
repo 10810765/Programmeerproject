@@ -49,22 +49,18 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
 
         TextView title = rootView.findViewById(R.id.titleView);
         TextView teams = rootView.findViewById(R.id.teamsView);
-        TextView game = rootView.findViewById(R.id.gameView);
         TextView date = rootView.findViewById(R.id.dateView);
 
         ImageView logoOne = rootView.findViewById(R.id.teamOneImage);
         ImageView logoTwo = rootView.findViewById(R.id.teamTwoImage);
-        ImageView league = rootView.findViewById(R.id.leagueImage);
 
         // Load image from the internet into an image view using Picasso
         Picasso.get().load(teamLogoUrls.get(0)).into(logoOne);
         Picasso.get().load(teamLogoUrls.get(1)).into(logoTwo);
-        Picasso.get().load(matchInf.get(0).getImageUrl()).into(league);
 
-        title.setText(matchInf.get(0).getTitle());
+        title.setText(matchInf.get(0).getGame() + " - " + matchInf.get(0).getTitle());
         teams.setText(matchInf.get(0).getTeams());
-        game.setText("Game tag: " + matchInf.get(0).getGame());
-        date.setText("Starts at: " + matchInf.get(0).getDate());
+        date.setText(matchInf.get(0).getDate());
     }
 
     @Override // Method that handles an unsuccessful to the the API
@@ -77,13 +73,15 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
     @Override // Method that handles a successful call to the API
     public void gotStreams(ArrayList<StreamsInformation> streamInf) {
 
-        TextView title= rootView.findViewById(R.id.streamTitle);
         TextView name = rootView.findViewById(R.id.streamerName);
         TextView views = rootView.findViewById(R.id.viewerCount);
+        ImageView preview = rootView.findViewById(R.id.previewImage);
 
-//        title.setText(streamInf.get(0).getTitle());
-//        name.setText(streamInf.get(0).getName());
-//        views.setText(streamInf.get(0).getViewers());
+        // Load image from the internet into an image view using Picasso
+        Picasso.get().load(streamInf.get(0).getPreviewUrl()).into(preview);
+
+        name.setText(streamInf.get(0).getGame() + " - " + streamInf.get(0).getName());
+        views.setText(streamInf.get(0).getViewers());
     }
 
     @Override // Method that handles an unsuccessful to the the API

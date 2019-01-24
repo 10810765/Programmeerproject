@@ -65,6 +65,7 @@ public class StreamsRequest implements Response.Listener<JSONObject>, Response.E
 
                 JSONObject resultsObject = resultsArray.getJSONObject(i);
 
+                String game = resultsObject.getString("game");
                 String viewers = resultsObject.getString("viewers");
 
                 JSONObject channelJSONObject = resultsObject.getJSONObject("channel");
@@ -76,8 +77,12 @@ public class StreamsRequest implements Response.Listener<JSONObject>, Response.E
                 String twitchUrl = channelJSONObject.getString("url");
                 String imageUrl = channelJSONObject.getString("logo");
 
+                JSONObject previewJSONObject = resultsObject.getJSONObject("preview");
+
+                String previewUrl = previewJSONObject.getString("large");
+
                 // Add the information to the menu array list
-                streamsArrayList.add(new StreamsInformation(title, name, viewers, language, twitchUrl, imageUrl));
+                streamsArrayList.add(new StreamsInformation(title, game, name, viewers, language, twitchUrl, imageUrl, previewUrl));
             }
 
             // Pass the array list back to the activity that requested it
