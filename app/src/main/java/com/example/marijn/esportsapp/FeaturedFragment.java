@@ -1,5 +1,8 @@
 package com.example.marijn.esportsapp;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,7 +11,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +27,7 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
 
     private View rootView;
     private ArrayList<String> teamLogoUrls;
+    private String matchUrl, streamUrl, game;
 
     @Nullable
     @Override
@@ -40,12 +47,54 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
         // Make a request for the most watched streamer
         StreamsRequest streamRequest = new StreamsRequest(getActivity());
         streamRequest.getStreams(this, "League of Legends", "en", 1);
+
+        LinearLayout matchLayout = rootView.findViewById(R.id.matchClickable);
+        matchLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (matchUrl.equals("null")) {
+
+                    switch (game) {
+                        case "LoL":
+                            matchUrl = "https://euw.leagueoflegends.com/";
+                            break;
+                        case "ow":
+                            matchUrl = "https://playoverwatch.com/";
+                            break;
+                        case "Dota 2":
+                            matchUrl = "http://dota2.com/";
+                            break;
+                        case "CS:GO":
+                            matchUrl = "https://blog.counter-strike.net/";
+                            break;
+                    }
+                }
+
+                // https://stackoverflow.com/questions/2201917/
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(matchUrl));
+                startActivity(browserIntent);
+            }
+        });
+
+        LinearLayout streamLayout = rootView.findViewById(R.id.streamClickable);
+        streamLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // https://stackoverflow.com/questions/2201917/
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(streamUrl));
+                startActivity(browserIntent);
+            }
+        });
     }
 
     @Override // Method that handles a successful call to the API
     public void gotMatches(ArrayList<MatchesInformation> matchInf) {
 
         teamLogoUrls = matchInf.get(0).getTeamLogos();
+        matchUrl = matchInf.get(0).getEventUrl();
+        game = matchInf.get(0).getGame();
 
         TextView title = rootView.findViewById(R.id.titleView);
         TextView teams = rootView.findViewById(R.id.teamsView);
@@ -58,7 +107,7 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
         Picasso.get().load(teamLogoUrls.get(0)).into(logoOne);
         Picasso.get().load(teamLogoUrls.get(1)).into(logoTwo);
 
-        title.setText(matchInf.get(0).getGame() + " - " + matchInf.get(0).getTitle());
+        title.setText(game + " - " + matchInf.get(0).getTitle());
         teams.setText(matchInf.get(0).getTeams());
         date.setText(matchInf.get(0).getDate());
     }
@@ -72,6 +121,8 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
 
     @Override // Method that handles a successful call to the API
     public void gotStreams(ArrayList<StreamsInformation> streamInf) {
+
+        streamUrl = streamInf.get(0).getTwitchUrl();
 
         TextView name = rootView.findViewById(R.id.streamerName);
         TextView views = rootView.findViewById(R.id.viewerCount);
