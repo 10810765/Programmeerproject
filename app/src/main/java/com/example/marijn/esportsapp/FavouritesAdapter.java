@@ -41,7 +41,7 @@ public class FavouritesAdapter extends ArrayAdapter<FavouritesInformation> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.favourite_row, parent, false);
         }
 
-        // Get the ID's of various TextViews and an ImageView
+        // Get various ID's
         TextView title = convertView.findViewById(R.id.titleView);
         TextView game = convertView.findViewById(R.id.gameView);
         TextView name = convertView.findViewById(R.id.nameView);
@@ -49,16 +49,16 @@ public class FavouritesAdapter extends ArrayAdapter<FavouritesInformation> {
         ImageView logo = convertView.findViewById(R.id.logoView);
         ToggleButton favButton = convertView.findViewById(R.id.favouriteButton);
 
-        // Set the name, title and viewer count of the streamer
+        // Set the name, title, game and viewer count of the streamer
         title.setText(favouriteInfo.getTitle());
         game.setText(favouriteInfo.getGame());
         name.setText(favouriteInfo.getName());
         views.setText(favouriteInfo.getViewers());
 
-        // Load image from the internet into an image view using Picasso
+        // Load the streamer's logo into an image view using Picasso
         Picasso.get().load(favouriteInfo.getImageUrl()).resize(250, 250).onlyScaleDown().into(logo);
 
-        // Get a previously stored favourite boolean (title+time for a unique combination)
+        // Get a previously stored favourite boolean
         SharedPreferences prefsFav = getContext().getSharedPreferences("favourite", MODE_PRIVATE);
         Boolean isFav = prefsFav.getBoolean(favouriteInfo.getName(), false);
 
@@ -72,27 +72,36 @@ public class FavouritesAdapter extends ArrayAdapter<FavouritesInformation> {
 
         favButton.setTag(favouriteInfo.getName());
 
-        favButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                // https://stackoverflow.com/questions/16821419/
-                ToggleButton favButton = (ToggleButton) buttonView;
-
-                if (isChecked) { // If favourited
-                    favButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.yellow_star));
-                } else { // If unfavourited
-                    favButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.grey_star));
-                }
-
-                String streamerName = (String) buttonView.getTag();
-
-                // Edit the old favourite Boolean and store the new value
-                SharedPreferences.Editor editor = getContext().getSharedPreferences("favourite", MODE_PRIVATE).edit();
-                editor.putBoolean(streamerName, isChecked);
-                editor.apply();
-            }
-        });
+        // Set on check change listener (toggle button)
+        favButton.setOnCheckedChangeListener(new OnCheckedChangeListener());
 
         return convertView;
     }
+
+    // Create an on favourite button click listener
+    private class OnCheckedChangeListener implements CompoundButton.OnCheckedChangeListener {
+        @Override
+        public void onCheckedChanged (CompoundButton buttonView, boolean isChecked){
+
+        // https://stackoverflow.com/questions/16821419/
+        ToggleButton favButton = (ToggleButton) buttonView;
+
+        if (isChecked) { // If favourited
+            favButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.yellow_star));
+        } else { // If unfavourited
+            favButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.grey_star));
+        }
+
+        String streamerName = (String) buttonView.getTag();
+
+        // Edit the old favourite Boolean and store the new value
+        SharedPreferences.Editor editor = getContext().getSharedPreferences("favourite", MODE_PRIVATE).edit();
+        editor.putBoolean(streamerName, isChecked);
+        editor.apply();
+        }
+    }
 }
+
+
+
+
