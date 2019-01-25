@@ -47,3 +47,11 @@ Verder gewerkt aan de mogelijkheid om streamers te favouriten. Dit is nu volledi
 
 ### day 15 (23/01/2019)
 Vandaag de on click listener van de matches fragment gemaakt. Deze had wat meer tijd nodig aangezien het ook voor kan komen dat een bepaalde match geen url heeft (url is dan null). Om dit te verhelpen worden alle cases waar een url null is deze vervangen door de officiele website van het desbetreffende spel!
+
+
+### day 16 (24/01/2019)
+Bezig geweest met de featured pagina. Deze is nu qua inhoud helemaal compleet! Hiervoor moest de macthRequest (met de API call) nog wat worden aangepast om de logo's van de teams op te halen. Daarnaast is de streamRequest ook iets aangepest om een preview van de stream te kunnen tonen op de featured pagina. De match en stream worden weergegeven in een clickable linearLayout zodat je direct naar de match of wedstrijd kan gaan door erop te klikken. Aangezien de linear layout clickable gemaakt kon worden door de "background" optie aan te passen kon ik de kleur niet meer veranderen. Daarom zit er nog een linearLayout achter de clickable linearLayout (precies dezelfde afmetingen) om ook de kleur te kunnen veranderen.
+
+### day 17 (25/01/2019)
+Alvast begonnen aan het opschonen van de code. Daarnaast hier en daar de layout veranderd (nog niet klaar). Tijdens het testen van de app verschillende bugs tegen gekomen die nu verholpen zijn, vooral dit heeft redelijk wat tijd gekost.
+
