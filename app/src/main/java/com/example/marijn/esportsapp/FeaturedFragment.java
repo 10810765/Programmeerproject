@@ -42,11 +42,11 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
 
         // Make a request for the upcoming match
         MatchesRequest matchRequest = new MatchesRequest(getActivity());
-        matchRequest.getMatches(this, "lol",1);
+        matchRequest.getMatches(this, "",1);
 
         // Make a request for the most watched streamer
         StreamsRequest streamRequest = new StreamsRequest(getActivity());
-        streamRequest.getStreams(this, "League of Legends", "en", 1);
+        streamRequest.getStreams(this, "", "", 1);
 
         LinearLayout matchLayout = rootView.findViewById(R.id.matchClickable);
         matchLayout.setOnClickListener(new View.OnClickListener() {
@@ -107,7 +107,7 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
         Picasso.get().load(teamLogoUrls.get(0)).into(logoOne);
         Picasso.get().load(teamLogoUrls.get(1)).into(logoTwo);
 
-        title.setText(game + " - " + matchInf.get(0).getTitle());
+        title.setText(matchInf.get(0).getTitle()+ " (" + game + ")");
         teams.setText(matchInf.get(0).getTeams());
         date.setText(matchInf.get(0).getDate());
     }
@@ -131,8 +131,8 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
         // Load image from the internet into an image view using Picasso
         Picasso.get().load(streamInf.get(0).getPreviewUrl()).into(preview);
 
-        name.setText(streamInf.get(0).getGame() + " - " + streamInf.get(0).getName());
-        views.setText(streamInf.get(0).getViewers());
+        name.setText(streamInf.get(0).getName() + " is streaming " + streamInf.get(0).getGame());
+        views.setText("Viewers: " + streamInf.get(0).getViewers());
     }
 
     @Override // Method that handles an unsuccessful to the the API

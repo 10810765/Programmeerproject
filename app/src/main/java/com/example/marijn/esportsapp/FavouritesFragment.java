@@ -84,7 +84,7 @@ public class FavouritesFragment extends Fragment implements FavouritesRequest.Ca
     @Override // Method that handles an unsuccessful to the the API
     public void gotFavouriteError(String message) {
         // Toast the error message to the screen
-        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
         Log.d("error", message);
     }
 //

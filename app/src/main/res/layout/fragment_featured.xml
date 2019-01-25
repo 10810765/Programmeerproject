@@ -31,6 +31,7 @@
                     android:id="@+id/titleView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:text="Event name" />
 
                 <LinearLayout
@@ -104,6 +105,7 @@
                     android:id="@+id/streamerName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:text="Streamer name" />
 
                 <ImageView
@@ -111,12 +113,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:srcCompat="@tools:sample/avatars" />
-
-                <TextView
-                    android:id="@+id/streamTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Stream title" />
 
                 <TextView
                     android:id="@+id/viewerCount"

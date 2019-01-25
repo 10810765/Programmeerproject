@@ -78,7 +78,8 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
 
                 if (selectedLanguage.equals("ANY")) {
 
-                    streamRequest.getStreams(StreamsFragment.this, selectedGame, "", 20);
+                    selectedLanguage = "";
+                    streamRequest.getStreams(StreamsFragment.this, selectedGame, selectedLanguage, 20);
 
                 } else {
                     streamRequest.getStreams(StreamsFragment.this, selectedGame, selectedLanguage, 20);
