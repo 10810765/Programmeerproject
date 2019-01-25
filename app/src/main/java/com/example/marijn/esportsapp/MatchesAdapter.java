@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -21,7 +20,7 @@ public class MatchesAdapter extends ArrayAdapter<MatchesInformation> {
     }
 
     @NonNull
-    @Override // Method that will be called every time a new list item (menu item) is to be displayed
+    @Override // Method that will be called every time a new list item (match) is to be displayed
     public View getView(int position, @NonNull View convertView, @NonNull ViewGroup parent) {
 
         // Get the index of the match that we want to display
@@ -38,14 +37,13 @@ public class MatchesAdapter extends ArrayAdapter<MatchesInformation> {
         TextView teams = convertView.findViewById(R.id.teamsView);
         ImageView logo = convertView.findViewById(R.id.logoView);
 
-        // Set the date, tile and teams of the match
+        // Set the date, tile and teams names of the match
         date.setText(matchInfo.getDate());
         title.setText(matchInfo.getTitle());
         teams.setText(matchInfo.getTeams());
 
-        // Load image from the internet into an image view using Picasso
+        // Load the league logo into an image view using Picasso
         Picasso.get().load(matchInfo.getImageUrl()).resize(250, 250).onlyScaleDown().into(logo);
-
 
         return convertView;
     }
