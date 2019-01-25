@@ -39,7 +39,7 @@ public class MatchesFragment extends Fragment implements MatchesRequest.Callback
 
         Spinner mySpinner = rootView.findViewById(R.id.selectGameSpinner);
 
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.games));
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.games));
 
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner.setAdapter(myAdapter);
@@ -79,18 +79,23 @@ public class MatchesFragment extends Fragment implements MatchesRequest.Callback
 
         matchInfo = matchInf;
 
-        // Instantiate the adapter
-        MatchesAdapter matchAdapter = new MatchesAdapter(getActivity(), R.layout.match_row, matchInf);
+        // If statement to make sure the app doesn't crash when a fragment is clicked multiple times
+        // With help from: https://stackoverflow.com/questions/39532507/
+        if (getActivity() != null) {
 
-        // Get list view ID and attach the adapter to it
-        ListView matchList = rootView.findViewById(R.id.matchList);
-        matchList.setAdapter(matchAdapter);
+            // Instantiate the adapter
+            MatchesAdapter matchAdapter = new MatchesAdapter(getActivity(), R.layout.match_row, matchInf);
+
+            // Get list view ID and attach the adapter to it
+            ListView matchList = rootView.findViewById(R.id.matchList);
+            matchList.setAdapter(matchAdapter);
+        }
     }
 
     @Override // Method that handles an unsuccessful to the the API
     public void gotMatchesError(String message) {
         // Toast the error message to the screen
-        Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
     }
 
     // Create an on menu item clicked listener

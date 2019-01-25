@@ -73,39 +73,25 @@ public class FavouritesFragment extends Fragment implements FavouritesRequest.Ca
 
         favouriteInfo = favouriteInf;
 
-        // Instantiate the adapter
-        FavouritesAdapter favouriteAdapter = new FavouritesAdapter(getActivity(), R.layout.favourite_row, favouriteInfo);
+        // If statement to make sure the app doesn't crash when a fragment is clicked multiple times
+        // With help from: https://stackoverflow.com/questions/39532507/
+        if (getActivity() != null) {
 
-        // Get list view ID and attach the adapter to it
-        ListView favouriteList = rootView.findViewById(R.id.favouriteList);
-        favouriteList.setAdapter(favouriteAdapter);
+            // Instantiate the adapter
+            FavouritesAdapter favouriteAdapter = new FavouritesAdapter(getActivity(), R.layout.favourite_row, favouriteInfo);
+
+            // Get list view ID and attach the adapter to it
+            ListView favouriteList = rootView.findViewById(R.id.favouriteList);
+            favouriteList.setAdapter(favouriteAdapter);
+        }
     }
 
     @Override // Method that handles an unsuccessful to the the API
     public void gotFavouriteError(String message) {
         // Toast the error message to the screen
-        Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
         Log.d("error", message);
     }
-//
-//    @Override // Method that handles a successful call to the API
-//    public void gotStreams(ArrayList<StreamsInformation> streamInf) {
-//
-//        TextView title= rootView.findViewById(R.id.streamTitle);
-//        TextView name = rootView.findViewById(R.id.streamerName);
-//        TextView views = rootView.findViewById(R.id.viewerCount);
-//
-//        title.setText(streamInf.get(0).getTitle());
-//        name.setText(streamInf.get(0).getName());
-//        views.setText(streamInf.get(0).getViewers());
-//    }
-//
-//    @Override // Method that handles an unsuccessful to the the API
-//    public void gotStreamsError(String message) {
-//        // Toast the error message to the screen
-//        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
-//        Log.d("error", message);
-//    }
 
     // Create an on menu item clicked listener
     private class ItemClickListener implements AdapterView.OnItemClickListener {

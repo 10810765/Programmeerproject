@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -35,17 +36,16 @@ public class MatchesAdapter extends ArrayAdapter<MatchesInformation> {
         TextView date = convertView.findViewById(R.id.dateView);
         TextView title = convertView.findViewById(R.id.titleView);
         TextView teams = convertView.findViewById(R.id.teamsView);
-        TextView link = convertView.findViewById(R.id.urlView);
         ImageView logo = convertView.findViewById(R.id.logoView);
 
         // Set the date, tile and teams of the match
         date.setText(matchInfo.getDate());
         title.setText(matchInfo.getTitle());
         teams.setText(matchInfo.getTeams());
-        link.setText(matchInfo.getEventUrl());
 
         // Load image from the internet into an image view using Picasso
-        Picasso.get().load(matchInfo.getImageUrl()).into(logo);
+        Picasso.get().load(matchInfo.getImageUrl()).resize(250, 250).onlyScaleDown().into(logo);
+
 
         return convertView;
     }

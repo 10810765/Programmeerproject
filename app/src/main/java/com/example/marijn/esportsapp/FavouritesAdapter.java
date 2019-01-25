@@ -56,7 +56,7 @@ public class FavouritesAdapter extends ArrayAdapter<FavouritesInformation> {
         views.setText(favouriteInfo.getViewers());
 
         // Load image from the internet into an image view using Picasso
-        Picasso.get().load(favouriteInfo.getImageUrl()).into(logo);
+        Picasso.get().load(favouriteInfo.getImageUrl()).resize(250, 250).onlyScaleDown().into(logo);
 
         // Get a previously stored favourite boolean (title+time for a unique combination)
         SharedPreferences prefsFav = getContext().getSharedPreferences("favourite", MODE_PRIVATE);
@@ -93,14 +93,6 @@ public class FavouritesAdapter extends ArrayAdapter<FavouritesInformation> {
             }
         });
 
-
-//        favouriteButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                favouriteButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.yellow_star));
-////                Toast.makeText(getPosition(favouriteButton), Toast.LENGTH_LONG).show();
-//            }
-//        });
         return convertView;
     }
 }

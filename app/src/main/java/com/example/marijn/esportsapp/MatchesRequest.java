@@ -38,7 +38,9 @@ public class MatchesRequest implements Response.Listener<JSONArray>, Response.Er
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // Create a JSON object request and add it to the queue
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest("https://api.pandascore.co/"+game+"/matches/upcoming?page[size]="+amount+"&token=flAODiQVW9o9n8lVU1NWnZGfPLIAU9ClcrSxStPz7Wy5qZQVZOk"
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest("https://api.pandascore.co/"
+                + game + "/matches/upcoming?page[size]="
+                + amount + "&token=flAODiQVW9o9n8lVU1NWnZGfPLIAU9ClcrSxStPz7Wy5qZQVZOk"
                 , this
                 , this);
         queue.add(jsonArrayRequest);
@@ -96,10 +98,10 @@ public class MatchesRequest implements Response.Listener<JSONArray>, Response.Er
             // Pass the list back to the activity that requested it
             activity.gotMatches(matchesArrayList);
 
-        } catch (JSONException e) {
-            // If an error occurs, print the error
-            e.printStackTrace();
-        }
+    } catch (JSONException e) {
+        // If an error occurs, print the error
+        e.printStackTrace();
+    }
     }
 }
 

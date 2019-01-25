@@ -41,14 +41,14 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
 
         Spinner mySpinner = rootView.findViewById(R.id.selectGameSpinner);
 
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.streamedGames));
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.streamedGames));
 
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner.setAdapter(myAdapter);
 
         Spinner mySecondSpinner = rootView.findViewById(R.id.selectLanguageSpinner);
 
-        ArrayAdapter<String> mySecondAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.languages));
+        ArrayAdapter<String> mySecondAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.languages));
 
         mySecondAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySecondSpinner.setAdapter(mySecondAdapter);
@@ -98,12 +98,17 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
 
         streamInfo = streamInf;
 
-        // Instantiate the adapter
-        StreamsAdapter streamAdapter = new StreamsAdapter(getActivity(), R.layout.stream_row, streamInf);
+        // If statement to make sure the app doesn't crash when a fragment is clicked multiple times
+        // With help from: https://stackoverflow.com/questions/39532507/
+        if (getActivity() != null) {
 
-        // Get list view ID and attach the adapter to it
-        ListView streamList = rootView.findViewById(R.id.streamList);
-        streamList.setAdapter(streamAdapter);
+            // Instantiate the adapter
+            StreamsAdapter streamAdapter = new StreamsAdapter(getActivity(), R.layout.stream_row, streamInf);
+
+            // Get list view ID and attach the adapter to it
+            ListView streamList = rootView.findViewById(R.id.streamList);
+            streamList.setAdapter(streamAdapter);
+        }
     }
 
     @Override // Method that handles an unsuccessful to the the API

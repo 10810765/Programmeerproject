@@ -138,7 +138,6 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
     @Override // Method that handles an unsuccessful to the the API
     public void gotStreamsError(String message) {
         // Toast the error message to the screen
-        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
         Log.d("error", message);
     }
 }

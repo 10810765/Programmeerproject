@@ -54,7 +54,7 @@ public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
         views.setText(streamInfo.getViewers());
 
         // Load image from the internet into an image view using Picasso
-        Picasso.get().load(streamInfo.getImageUrl()).into(logo);
+        Picasso.get().load(streamInfo.getImageUrl()).resize(250, 250).onlyScaleDown().into(logo);
 
         // Get a previously stored favourite boolean (title+time for a unique combination)
         SharedPreferences prefsFav = getContext().getSharedPreferences("favourite", MODE_PRIVATE);
@@ -91,14 +91,6 @@ public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
             }
     });
 
-
-//        favouriteButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                favouriteButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.yellow_star));
-////                Toast.makeText(getPosition(favouriteButton), Toast.LENGTH_LONG).show();
-//            }
-//        });
         return convertView;
     }
 }
