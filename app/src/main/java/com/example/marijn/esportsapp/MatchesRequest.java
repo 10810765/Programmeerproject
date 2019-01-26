@@ -30,14 +30,14 @@ public class MatchesRequest implements Response.Listener<JSONArray>, Response.Er
         this.context = context;
     }
 
-    // Method will attempt to retrieve the categories from the API
+    // Method that will attempt to retrieve the matches from the API
     public void getMatches(Callback activity, String game, int amount) {
         this.activity = activity;
 
         // Create a new request queue
         RequestQueue queue = Volley.newRequestQueue(context);
 
-        // Create a JSON object request and add it to the queue
+        // Create a JSON array request and add it to the queue
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest("https://api.pandascore.co/"
                 + game + "/matches/upcoming?page[size]="
                 + amount + "&token=flAODiQVW9o9n8lVU1NWnZGfPLIAU9ClcrSxStPz7Wy5qZQVZOk"
@@ -60,19 +60,23 @@ public class MatchesRequest implements Response.Listener<JSONArray>, Response.Er
             // Instantiate array list
             ArrayList<MatchesInformation> matchesArrayList = new ArrayList<>();
 
+            // Loop over the JSON array and extract the strings in it
             for (int i = 0; i < response.length(); i++) {
 
                 JSONObject match = response.getJSONObject(i);
 
+                // Extract the date and teams from the response JSON Array
                 String date = match.getString("begin_at");
                 String teams = match.getString("name");
 
                 JSONObject gameJSONObject = match.getJSONObject("videogame");
 
+                // Extract the game from the game JSON Object
                 String game = gameJSONObject.getString("name");
 
                 JSONObject leagueJSONObject = match.getJSONObject("league");
 
+                // Extract the title, url and image of the league JSON Object
                 String title = leagueJSONObject.getString("name");
                 String eventUrl = leagueJSONObject.getString("url");
                 String imageUrl = leagueJSONObject.getString("image_url");
@@ -82,26 +86,28 @@ public class MatchesRequest implements Response.Listener<JSONArray>, Response.Er
 
                 JSONArray opponentsJSONArray = match.getJSONArray("opponents");
 
+                // Loop over the opponents JSON array and extract the logo's of the teams
                 for (int j = 0; j < opponentsJSONArray.length(); j++) {
 
                     JSONObject opponentsObject = opponentsJSONArray.getJSONObject(j);
 
                     JSONObject opponentJSONObject = opponentsObject.getJSONObject("opponent");
 
+                    // Add the logo's of the teams to the teamLogosArrayList
                     teamLogosArrayList.add(opponentJSONObject.getString("image_url"));
                 }
 
+                // Add the information to the matches array list
                 matchesArrayList.add( new MatchesInformation(date, title, game, teams, eventUrl, imageUrl, teamLogosArrayList));
-
             }
 
             // Pass the list back to the activity that requested it
             activity.gotMatches(matchesArrayList);
 
-    } catch (JSONException e) {
-        // If an error occurs, print the error
-        e.printStackTrace();
-    }
+        } catch (JSONException e) {
+            // If an error occurs, print the error
+            e.printStackTrace();
+        }
     }
 }
 

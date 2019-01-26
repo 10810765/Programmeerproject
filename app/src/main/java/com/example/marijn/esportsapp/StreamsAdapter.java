@@ -78,7 +78,7 @@ public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
 
-            // https://stackoverflow.com/questions/16821419/
+            // Get the button that was clicked
             ToggleButton favButton = (ToggleButton) buttonView;
 
             if (isChecked) { // If favourited
