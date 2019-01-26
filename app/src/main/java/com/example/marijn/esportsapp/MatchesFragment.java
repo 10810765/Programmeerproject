@@ -1,6 +1,7 @@
 package com.example.marijn.esportsapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class MatchesFragment extends Fragment implements MatchesRequest.Callback {
 
@@ -45,6 +48,13 @@ public class MatchesFragment extends Fragment implements MatchesRequest.Callback
         gamesSpinner.setAdapter(gamesAdapter);
 
         gamesSpinner.setOnItemSelectedListener(new OnItemSelectedListener());
+
+        // Get a previously stored selected game
+        SharedPreferences prefs = getContext().getSharedPreferences("matchesFragment", MODE_PRIVATE);
+        int storedGame = prefs.getInt("game", 0);
+
+        // Set the previously stored selected game
+        gamesSpinner.setSelection(storedGame);
     }
 
     @Override // Method that handles a successful call to the API
@@ -93,6 +103,12 @@ public class MatchesFragment extends Fragment implements MatchesRequest.Callback
                     matchRequest.getMatches(MatchesFragment.this, "csgo", 20);
                     break;
             }
+
+            // Edit the old selected game value (position) and store the new value
+            SharedPreferences.Editor editor = getContext().getSharedPreferences("matchesFragment", MODE_PRIVATE).edit();
+            editor.putInt("game", position);
+            editor.apply();
+
         } // to close the onItemSelected
 
         public void onNothingSelected(AdapterView<?> parent) {

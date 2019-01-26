@@ -1,6 +1,7 @@
 package com.example.marijn.esportsapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class StreamsFragment extends Fragment implements StreamsRequest.Callback {
 
@@ -60,6 +63,16 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
         gamesSpinner.setOnItemSelectedListener(new OnGameSelectedListener());
 
         languagesSpinner.setOnItemSelectedListener(new OnLanguageSelectedListener());
+
+        // Get a previously stored selected game and language
+        SharedPreferences prefs = getContext().getSharedPreferences("streamsFragment", MODE_PRIVATE);
+        int storedGame = prefs.getInt("game", 0);
+        int storedLanguage = prefs.getInt("language", 0);
+
+        // Set the previously stored selected game and language
+        gamesSpinner.setSelection(storedGame);
+        languagesSpinner.setSelection(storedLanguage);
+
     }
 
     @Override // Method that handles a successful call to the API
@@ -95,6 +108,11 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
             // Make a request for the top 20 streams
             StreamsRequest streamRequest = new StreamsRequest(getActivity());
             streamRequest.getStreams(StreamsFragment.this, selectedGame, selectedLanguage, 20);
+
+            // Edit the old selected game value (position) and store the new value
+            SharedPreferences.Editor editor = getContext().getSharedPreferences("streamsFragment", MODE_PRIVATE).edit();
+            editor.putInt("game", position);
+            editor.apply();
         } // to close the onItemSelected
 
         public void onNothingSelected(AdapterView<?> parent) {
@@ -118,6 +136,11 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
             } else {
                 streamRequest.getStreams(StreamsFragment.this, selectedGame, selectedLanguage, 20);
             }
+
+            // Edit the old selected game value (position) and store the new value
+            SharedPreferences.Editor editor = getContext().getSharedPreferences("streamsFragment", MODE_PRIVATE).edit();
+            editor.putInt("language", position);
+            editor.apply();
         } // to close the onItemSelected
 
         public void onNothingSelected(AdapterView<?> parent) {
