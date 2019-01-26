@@ -17,13 +17,19 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class FeaturedFragment extends Fragment implements MatchesRequest.Callback, StreamsRequest.Callback {
 
     private View rootView;
     private ArrayList<String> teamLogoUrls;
     private String matchUrl, streamUrl, game;
+    private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
     @Nullable
     @Override
@@ -62,7 +68,7 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
 
         TextView title = rootView.findViewById(R.id.titleView);
         TextView teams = rootView.findViewById(R.id.teamsView);
-        TextView date = rootView.findViewById(R.id.dateView);
+        TextView dateView = rootView.findViewById(R.id.dateView);
 
         ImageView logoOne = rootView.findViewById(R.id.teamOneImage);
         ImageView logoTwo = rootView.findViewById(R.id.teamTwoImage);
@@ -71,9 +77,22 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
         Picasso.get().load(teamLogoUrls.get(0)).into(logoOne);
         Picasso.get().load(teamLogoUrls.get(1)).into(logoTwo);
 
+        // With help from: https://stackoverflow.com/questions/4216745/
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        Date date = null;
+
+        try {
+            date = dateFormat.parse(matchInf.get(0).getDate());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        DateFormat formatter = new SimpleDateFormat("HH:mm  dd-MM-yyyy");
+        String dateString = formatter.format(date);
+
         title.setText(matchInf.get(0).getTitle()+ " (" + game + ")");
         teams.setText(matchInf.get(0).getTeams());
-        date.setText(matchInf.get(0).getDate());
+        dateView.setText(dateString + " (GMT)");
     }
 
     @Override // Method that handles an unsuccessful to the the API

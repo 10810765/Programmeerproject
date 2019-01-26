@@ -11,7 +11,14 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class MatchesAdapter extends ArrayAdapter<MatchesInformation> {
 
@@ -32,13 +39,26 @@ public class MatchesAdapter extends ArrayAdapter<MatchesInformation> {
         }
 
         // Get the ID's of various TextViews and an ImageView
-        TextView date = convertView.findViewById(R.id.dateView);
+        TextView dateView = convertView.findViewById(R.id.dateView);
         TextView title = convertView.findViewById(R.id.titleView);
         TextView teams = convertView.findViewById(R.id.teamsView);
         ImageView logo = convertView.findViewById(R.id.logoView);
 
+        // With help from: https://stackoverflow.com/questions/4216745/
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        Date date = null;
+
+        try {
+            date = dateFormat.parse(matchInfo.getDate());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        DateFormat formatter = new SimpleDateFormat("HH:mm  dd-MM-yyyy");
+        String dateString = formatter.format(date);
+
         // Set the date, tile and teams names of the match
-        date.setText(matchInfo.getDate());
+        dateView.setText(dateString + " (GMT)");
         title.setText(matchInfo.getTitle());
         teams.setText(matchInfo.getTeams());
 
