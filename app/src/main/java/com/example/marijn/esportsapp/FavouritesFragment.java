@@ -13,8 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.ShareActionProvider;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -65,7 +63,7 @@ public class FavouritesFragment extends Fragment implements FavouritesRequest.Ca
 
         // Instantiate an on list item click listener
         ListView listView = rootView.findViewById(R.id.favouriteList);
-        listView.setOnItemClickListener(new FavouritesFragment.ItemClickListener());
+        listView.setOnItemClickListener(new FavouritesFragment.FavouriteClickListener());
     }
 
     @Override // Method that handles a successful call to the API
@@ -94,7 +92,7 @@ public class FavouritesFragment extends Fragment implements FavouritesRequest.Ca
     }
 
     // Create an on menu item clicked listener
-    private class ItemClickListener implements AdapterView.OnItemClickListener {
+    private class FavouriteClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 

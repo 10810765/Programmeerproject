@@ -37,41 +37,14 @@ public class MatchesFragment extends Fragment implements MatchesRequest.Callback
         ListView listView = rootView.findViewById(R.id.matchList);
         listView.setOnItemClickListener(new MatchesFragment.ItemClickListener());
 
-        Spinner mySpinner = rootView.findViewById(R.id.selectGameSpinner);
+        Spinner gamesSpinner = rootView.findViewById(R.id.selectGameSpinner);
 
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.games));
+        ArrayAdapter<String> gamesAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.games));
 
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner.setAdapter(myAdapter);
+        gamesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        gamesSpinner.setAdapter(gamesAdapter);
 
-        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItem = parent.getItemAtPosition(position).toString();
-
-                // Make a request for the top 20 streams
-                MatchesRequest matchRequest = new MatchesRequest(getActivity());
-
-                switch (selectedItem) {
-                    case "League of Legends":
-                        matchRequest.getMatches(MatchesFragment.this, "lol", 20);
-                        break;
-                    case "Overwatch":
-                        matchRequest.getMatches(MatchesFragment.this, "ow", 20);
-                        break;
-                    case "Dota 2":
-                        matchRequest.getMatches(MatchesFragment.this, "dota2", 20);
-                        break;
-                    case "Counter-Strike: Global Offensive":
-                        matchRequest.getMatches(MatchesFragment.this, "csgo", 20);
-                        break;
-                }
-
-            } // to close the onItemSelected
-
-            public void onNothingSelected(AdapterView<?> parent) {
-                return;
-            }
-        });
+        gamesSpinner.setOnItemSelectedListener(new OnItemSelectedListener());
     }
 
     @Override // Method that handles a successful call to the API
@@ -96,6 +69,35 @@ public class MatchesFragment extends Fragment implements MatchesRequest.Callback
     public void gotMatchesError(String message) {
         // Toast the error message to the screen
         Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+    }
+
+    private class OnItemSelectedListener implements AdapterView.OnItemSelectedListener {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            String selectedItem = parent.getItemAtPosition(position).toString();
+
+            // Make a request for the first 20 upcoming matches
+            MatchesRequest matchRequest = new MatchesRequest(getActivity());
+
+            switch (selectedItem) {
+                case "League of Legends":
+                    matchRequest.getMatches(MatchesFragment.this, "lol", 20);
+                    break;
+                case "Overwatch":
+                    matchRequest.getMatches(MatchesFragment.this, "ow", 20);
+                    break;
+                case "Dota 2":
+                    matchRequest.getMatches(MatchesFragment.this, "dota2", 20);
+                    break;
+                case "Counter-Strike: Global Offensive":
+                    matchRequest.getMatches(MatchesFragment.this, "csgo", 20);
+                    break;
+            }
+        } // to close the onItemSelected
+
+        public void onNothingSelected(AdapterView<?> parent) {
+            return;
+        }
     }
 
     // Create an on menu item clicked listener

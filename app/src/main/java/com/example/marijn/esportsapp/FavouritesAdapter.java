@@ -70,13 +70,13 @@ public class FavouritesAdapter extends ArrayAdapter<FavouritesInformation> {
         favButton.setTag(favouriteInfo.getName());
 
         // Set an on check change listener for the favourite button
-        favButton.setOnCheckedChangeListener(new OnCheckedChangeListener());
+        favButton.setOnCheckedChangeListener(new OnFavouriteChangeListener());
 
         return convertView;
     }
 
     // Create an on favourite button click listener
-    private class OnCheckedChangeListener implements CompoundButton.OnCheckedChangeListener {
+    private class OnFavouriteChangeListener implements CompoundButton.OnCheckedChangeListener {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
 

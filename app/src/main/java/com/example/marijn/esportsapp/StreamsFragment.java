@@ -37,60 +37,29 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
 
         // Instantiate an on list item click listener
         ListView listView = rootView.findViewById(R.id.streamList);
-        listView.setOnItemClickListener(new ItemClickListener());
+        listView.setOnItemClickListener(new StreamClickListener());
 
-        Spinner mySpinner = rootView.findViewById(R.id.selectGameSpinner);
+        Spinner gamesSpinner = rootView.findViewById(R.id.selectGameSpinner);
 
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.streamedGames));
+        ArrayAdapter<String> gamesAdapter = new ArrayAdapter<>(getContext(),
+                android.R.layout.simple_list_item_1,
+                getResources().getStringArray(R.array.streamedGames));
 
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner.setAdapter(myAdapter);
+        gamesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        gamesSpinner.setAdapter(gamesAdapter);
 
-        Spinner mySecondSpinner = rootView.findViewById(R.id.selectLanguageSpinner);
+        Spinner languagesSpinner = rootView.findViewById(R.id.selectLanguageSpinner);
 
-        ArrayAdapter<String> mySecondAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.languages));
+        ArrayAdapter<String> languagesAdapter = new ArrayAdapter<>(getContext(),
+                android.R.layout.simple_list_item_1,
+                getResources().getStringArray(R.array.languages));
 
-        mySecondAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySecondSpinner.setAdapter(mySecondAdapter);
+        languagesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        languagesSpinner.setAdapter(languagesAdapter);
 
-        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectedGame = parent.getItemAtPosition(position).toString();
+        gamesSpinner.setOnItemSelectedListener(new OnGameSelectedListener());
 
-                // Make a request for the top 20 streams
-                StreamsRequest streamRequest = new StreamsRequest(getActivity());
-                streamRequest.getStreams(StreamsFragment.this, selectedGame, selectedLanguage, 20);
-
-
-            } // to close the onItemSelected
-
-            public void onNothingSelected(AdapterView<?> parent) {
-                return;
-            }
-        });
-
-        mySecondSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectedLanguage = parent.getItemAtPosition(position).toString();
-
-                // Make a request for the top 20 streams
-                StreamsRequest streamRequest = new StreamsRequest(getActivity());
-
-                if (selectedLanguage.equals("ANY")) {
-
-                    selectedLanguage = "";
-                    streamRequest.getStreams(StreamsFragment.this, selectedGame, selectedLanguage, 20);
-
-                } else {
-                    streamRequest.getStreams(StreamsFragment.this, selectedGame, selectedLanguage, 20);
-                }
-
-            } // to close the onItemSelected
-
-            public void onNothingSelected(AdapterView<?> parent) {
-                return;
-            }
-        });
+        languagesSpinner.setOnItemSelectedListener(new OnLanguageSelectedListener());
     }
 
     @Override // Method that handles a successful call to the API
@@ -117,8 +86,47 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
         Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
     }
 
+
+    private class OnGameSelectedListener implements AdapterView.OnItemSelectedListener {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            selectedGame = parent.getItemAtPosition(position).toString();
+
+            // Make a request for the top 20 streams
+            StreamsRequest streamRequest = new StreamsRequest(getActivity());
+            streamRequest.getStreams(StreamsFragment.this, selectedGame, selectedLanguage, 20);
+        } // to close the onItemSelected
+
+        public void onNothingSelected(AdapterView<?> parent) {
+            return;
+        }
+    }
+
+    private class OnLanguageSelectedListener implements AdapterView.OnItemSelectedListener {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            selectedLanguage = parent.getItemAtPosition(position).toString();
+
+            // Make a request for the top 20 streams
+            StreamsRequest streamRequest = new StreamsRequest(getActivity());
+
+            if (selectedLanguage.equals("ANY")) {
+
+                selectedLanguage = "";
+                streamRequest.getStreams(StreamsFragment.this, selectedGame, selectedLanguage, 20);
+
+            } else {
+                streamRequest.getStreams(StreamsFragment.this, selectedGame, selectedLanguage, 20);
+            }
+        } // to close the onItemSelected
+
+        public void onNothingSelected(AdapterView<?> parent) {
+            return;
+        }
+    }
+
     // Create an on menu item clicked listener
-    private class ItemClickListener implements AdapterView.OnItemClickListener {
+    private class StreamClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 

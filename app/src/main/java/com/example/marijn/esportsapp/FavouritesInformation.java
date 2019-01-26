@@ -4,7 +4,7 @@ public class FavouritesInformation {
 
     private String game, title, name, viewers, language, twitchUrl, imageUrl;
 
-    // Matches information constructor
+    // Favourite streams information constructor
     public FavouritesInformation(String game, String title, String name, String viewers, String language, String twitchUrl, String imageUrl) {
         this.game = game;
         this.title = title;
@@ -15,6 +15,7 @@ public class FavouritesInformation {
         this.imageUrl = imageUrl;
     }
 
+    // Getters and setters
     public String getGame() {
         return game;
     }

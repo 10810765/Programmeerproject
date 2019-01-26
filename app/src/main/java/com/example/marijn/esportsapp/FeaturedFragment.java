@@ -1,7 +1,6 @@
 package com.example.marijn.esportsapp;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,16 +10,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class FeaturedFragment extends Fragment implements MatchesRequest.Callback, StreamsRequest.Callback {
@@ -40,53 +36,21 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Make a request for the upcoming match
+        // Make an API request for the first upcoming match
         MatchesRequest matchRequest = new MatchesRequest(getActivity());
         matchRequest.getMatches(this, "",1);
 
-        // Make a request for the most watched streamer
+        // Make an API request for the most watched streamer
         StreamsRequest streamRequest = new StreamsRequest(getActivity());
         streamRequest.getStreams(this, "", "", 1);
 
+        // Set an on click listener for the match LinearLayout
         LinearLayout matchLayout = rootView.findViewById(R.id.matchClickable);
-        matchLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        matchLayout.setOnClickListener(new OnMatchClickListener());
 
-                if (matchUrl.equals("null")) {
-
-                    switch (game) {
-                        case "LoL":
-                            matchUrl = "https://euw.leagueoflegends.com/";
-                            break;
-                        case "ow":
-                            matchUrl = "https://playoverwatch.com/";
-                            break;
-                        case "Dota 2":
-                            matchUrl = "http://dota2.com/";
-                            break;
-                        case "CS:GO":
-                            matchUrl = "https://blog.counter-strike.net/";
-                            break;
-                    }
-                }
-
-                // https://stackoverflow.com/questions/2201917/
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(matchUrl));
-                startActivity(browserIntent);
-            }
-        });
-
+        // Set an on click listener for the stream LinearLayout
         LinearLayout streamLayout = rootView.findViewById(R.id.streamClickable);
-        streamLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                // https://stackoverflow.com/questions/2201917/
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(streamUrl));
-                startActivity(browserIntent);
-            }
-        });
+        streamLayout.setOnClickListener(new OnStreamClickListener());
     }
 
     @Override // Method that handles a successful call to the API
@@ -114,6 +78,7 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
 
     @Override // Method that handles an unsuccessful to the the API
     public void gotMatchesError(String message) {
+
         // Toast the error message to the screen
         Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
         Log.d("error", message);
@@ -138,6 +103,45 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
     @Override // Method that handles an unsuccessful to the the API
     public void gotStreamsError(String message) {
         // Toast the error message to the screen
+        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
         Log.d("error", message);
+    }
+
+    private class OnMatchClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+
+            if (matchUrl.equals("null")) {
+
+                switch (game) {
+                    case "LoL":
+                        matchUrl = "https://euw.leagueoflegends.com/";
+                        break;
+                    case "ow":
+                        matchUrl = "https://playoverwatch.com/";
+                        break;
+                    case "Dota 2":
+                        matchUrl = "http://dota2.com/";
+                        break;
+                    case "CS:GO":
+                        matchUrl = "https://blog.counter-strike.net/";
+                        break;
+                }
+            }
+
+            // https://stackoverflow.com/questions/2201917/
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(matchUrl));
+            startActivity(browserIntent);
+        }
+    }
+
+    private class OnStreamClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+
+            // https://stackoverflow.com/questions/2201917/
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(streamUrl));
+            startActivity(browserIntent);
+        }
     }
 }

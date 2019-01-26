@@ -4,7 +4,7 @@ public class StreamsInformation {
 
     private String title, game,  name, viewers, language, twitchUrl, imageUrl, previewUrl;
 
-    // Matches information constructor
+    // Streams information constructor
     public StreamsInformation(String title, String game, String name, String viewers, String language, String twitchUrl, String imageUrl, String previewUrl) {
         this.title = title;
         this.game = game;
@@ -16,6 +16,7 @@ public class StreamsInformation {
         this.previewUrl = previewUrl;
     }
 
+    // Getters and setters
     public String getTitle() {
         return title;
     }
