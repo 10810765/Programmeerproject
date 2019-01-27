@@ -36,59 +36,69 @@ public class MatchesFragment extends Fragment implements MatchesRequest.Callback
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Instantiate an on list item click listener
-        ListView listView = rootView.findViewById(R.id.matchList);
-        listView.setOnItemClickListener(new MatchesFragment.ItemClickListener());
+        // Instantiate the games adapter (for the spinners)
+        // With help from: https://stackoverflow.com/questions/13377361/
+        ArrayAdapter<String> gamesAdapter = new ArrayAdapter<>(getContext(),
+                android.R.layout.simple_spinner_dropdown_item,
+                getResources().getStringArray(R.array.games));
 
+        // Get the ID of the games spinner and attach the adapter to it
         Spinner gamesSpinner = rootView.findViewById(R.id.selectGameSpinner);
-
-        ArrayAdapter<String> gamesAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.games));
-
-        gamesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         gamesSpinner.setAdapter(gamesAdapter);
-
-        gamesSpinner.setOnItemSelectedListener(new OnItemSelectedListener());
 
         // Get a previously stored selected game
         SharedPreferences prefs = getContext().getSharedPreferences("matchesFragment", MODE_PRIVATE);
         int storedGame = prefs.getInt("game", 0);
 
-        // Set the previously stored selected game
+        // Set the previously selected game
         gamesSpinner.setSelection(storedGame);
+
+        // Instantiate an on game selected listener
+        gamesSpinner.setOnItemSelectedListener(new OnGameSelectedListener());
+
+        // Instantiate an on match click listener
+        ListView listView = rootView.findViewById(R.id.matchesList);
+        listView.setOnItemClickListener(new MatchesFragment.MatchClickListener());
     }
 
     @Override // Method that handles a successful call to the API
     public void gotMatches(ArrayList<MatchesInformation> matchInf) {
 
+        // Store the retrieved match information in a private variable
         matchInfo = matchInf;
 
         // If statement to make sure the app doesn't crash when a fragment is clicked multiple times
         // With help from: https://stackoverflow.com/questions/39532507/
         if (getActivity() != null) {
 
-            // Instantiate the adapter
+            // Instantiate the matches adapter
             MatchesAdapter matchAdapter = new MatchesAdapter(getActivity(), R.layout.match_row, matchInf);
 
-            // Get list view ID and attach the adapter to it
-            ListView matchList = rootView.findViewById(R.id.matchList);
-            matchList.setAdapter(matchAdapter);
+            // Get matches list view ID and attach the adapter to it
+            ListView matchesList = rootView.findViewById(R.id.matchesList);
+            matchesList.setAdapter(matchAdapter);
         }
     }
 
     @Override // Method that handles an unsuccessful to the the API
     public void gotMatchesError(String message) {
+
         // Toast the error message to the screen
         Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
     }
 
-    private class OnItemSelectedListener implements AdapterView.OnItemSelectedListener {
+    // Create an on game selected listener
+    private class OnGameSelectedListener implements AdapterView.OnItemSelectedListener {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            // Get the position of the selected game (to determine which game was selected)
             String selectedItem = parent.getItemAtPosition(position).toString();
 
-            // Make a request for the first 20 upcoming matches
+            // Instantiate a matches API request
             MatchesRequest matchRequest = new MatchesRequest(getActivity());
 
+            // Replace the full name of the selected game with the acroym and make an API request for that game
             switch (selectedItem) {
                 case "League of Legends":
                     matchRequest.getMatches(MatchesFragment.this, "lol", 20);
@@ -108,28 +118,29 @@ public class MatchesFragment extends Fragment implements MatchesRequest.Callback
             SharedPreferences.Editor editor = getContext().getSharedPreferences("matchesFragment", MODE_PRIVATE).edit();
             editor.putInt("game", position);
             editor.apply();
+        }
 
-        } // to close the onItemSelected
-
+        // If no game selected do nothing (return)
         public void onNothingSelected(AdapterView<?> parent) {
             return;
         }
     }
 
-    // Create an on menu item clicked listener
-    private class ItemClickListener implements AdapterView.OnItemClickListener {
+    // Create an on match clicked listener
+    private class MatchClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            // Get the MenuItem object of the clicked item in the list view
+            // Get the position of the clicked match (to determine which match was clicked)
             MatchesInformation clickedMatch = matchInfo.get(position);
 
-            // Put menu item information into the bundle
+            // Retrieve the url and game of the clicked match
             String urlToMatch = clickedMatch.getEventUrl();
             String game = clickedMatch.getGame();
 
+            // If the retrieved url to an official match of a game equals null,
+            // replace it with the url of the games' official website
             if (urlToMatch.equals("null")) {
-
                 switch (game) {
                     case "LoL":
                         urlToMatch = "https://euw.leagueoflegends.com/";
@@ -146,6 +157,7 @@ public class MatchesFragment extends Fragment implements MatchesRequest.Callback
                 }
             }
 
+            // Open the url of the clicked favourite stream in a web browser
             // https://stackoverflow.com/questions/2201917/
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlToMatch));
             startActivity(browserIntent);

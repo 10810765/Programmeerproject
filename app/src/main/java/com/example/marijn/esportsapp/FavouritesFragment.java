@@ -79,6 +79,7 @@ public class FavouritesFragment extends Fragment implements FavouritesRequest.Ca
     @Override // Method that handles a successful call to the API
     public void gotFavourite(ArrayList<FavouritesInformation> favouriteInf) {
 
+        // Store the retrieved favourite stream information in a private variable
         favouriteInfo = favouriteInf;
 
         // If statement to make sure the app doesn't crash when a fragment is clicked multiple times
@@ -107,7 +108,7 @@ public class FavouritesFragment extends Fragment implements FavouritesRequest.Ca
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            // Get the position of the clicked favourite stream (to determine which one was clicked)
+            // Get the position of the clicked favourite stream (to determine which stream was clicked)
             FavouritesInformation clickedFavouriteStream = favouriteInfo.get(position);
 
             // Get the url of the clicked favourite stream

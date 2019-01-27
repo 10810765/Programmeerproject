@@ -38,74 +38,76 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Instantiate an on list item click listener
-        ListView listView = rootView.findViewById(R.id.streamList);
-        listView.setOnItemClickListener(new StreamClickListener());
-
-        Spinner gamesSpinner = rootView.findViewById(R.id.selectGameSpinner);
-
+        // Instantiate the games and languages adapters (for the spinners)
+        // With help from: https://stackoverflow.com/questions/13377361/
         ArrayAdapter<String> gamesAdapter = new ArrayAdapter<>(getContext(),
-                android.R.layout.simple_list_item_1,
+                android.R.layout.simple_spinner_dropdown_item,
                 getResources().getStringArray(R.array.streamedGames));
-
-        gamesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        gamesSpinner.setAdapter(gamesAdapter);
-
-        Spinner languagesSpinner = rootView.findViewById(R.id.selectLanguageSpinner);
-
         ArrayAdapter<String> languagesAdapter = new ArrayAdapter<>(getContext(),
-                android.R.layout.simple_list_item_1,
+                android.R.layout.simple_spinner_dropdown_item,
                 getResources().getStringArray(R.array.languages));
 
-        languagesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Get the ID of the games spinner and attach the adapter to it
+        Spinner gamesSpinner = rootView.findViewById(R.id.selectGameSpinner);
+        gamesSpinner.setAdapter(gamesAdapter);
+
+        // Get the ID of the languages spinner and attach the adapter to it
+        Spinner languagesSpinner = rootView.findViewById(R.id.selectLanguageSpinner);
         languagesSpinner.setAdapter(languagesAdapter);
 
-        gamesSpinner.setOnItemSelectedListener(new OnGameSelectedListener());
-
-        languagesSpinner.setOnItemSelectedListener(new OnLanguageSelectedListener());
-
-        // Get a previously stored selected game and language
+        // Get the previously stored selected game and language
         SharedPreferences prefs = getContext().getSharedPreferences("streamsFragment", MODE_PRIVATE);
         int storedGame = prefs.getInt("game", 0);
         int storedLanguage = prefs.getInt("language", 0);
 
-        // Set the previously stored selected game and language
+        // Set the previously selected game and language
         gamesSpinner.setSelection(storedGame);
         languagesSpinner.setSelection(storedLanguage);
 
+        // Instantiate an on game selected and an on language selected listener
+        gamesSpinner.setOnItemSelectedListener(new OnGameSelectedListener());
+        languagesSpinner.setOnItemSelectedListener(new OnLanguageSelectedListener());
+
+        // Instantiate an on stream click listener
+        ListView listView = rootView.findViewById(R.id.streamsList);
+        listView.setOnItemClickListener(new StreamClickListener());
     }
 
     @Override // Method that handles a successful call to the API
     public void gotStreams(ArrayList<StreamsInformation> streamInf) {
 
+        // Store the retrieved stream information in a private variable
         streamInfo = streamInf;
 
         // If statement to make sure the app doesn't crash when a fragment is clicked multiple times
         // With help from: https://stackoverflow.com/questions/39532507/
         if (getActivity() != null) {
 
-            // Instantiate the adapter
+            // Instantiate the streams adapter
             StreamsAdapter streamAdapter = new StreamsAdapter(getActivity(), R.layout.stream_row, streamInf);
 
-            // Get list view ID and attach the adapter to it
-            ListView streamList = rootView.findViewById(R.id.streamList);
-            streamList.setAdapter(streamAdapter);
+            // Get streams list view ID and attach the adapter to it
+            ListView streamsList = rootView.findViewById(R.id.streamsList);
+            streamsList.setAdapter(streamAdapter);
         }
     }
 
     @Override // Method that handles an unsuccessful to the the API
     public void gotStreamsError(String message) {
+
         // Toast the error message to the screen
         Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
     }
 
-
+    // Create an on game selected listener
     private class OnGameSelectedListener implements AdapterView.OnItemSelectedListener {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            // Get the position of the selected game (to determine which game was selected)
             selectedGame = parent.getItemAtPosition(position).toString();
 
-            // Make a request for the top 20 streams
+            // Make a request for the top 20 (currently most watched) streams
             StreamsRequest streamRequest = new StreamsRequest(getActivity());
             streamRequest.getStreams(StreamsFragment.this, selectedGame, selectedLanguage, 20);
 
@@ -113,52 +115,62 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
             SharedPreferences.Editor editor = getContext().getSharedPreferences("streamsFragment", MODE_PRIVATE).edit();
             editor.putInt("game", position);
             editor.apply();
-        } // to close the onItemSelected
+        }
 
+        // If no game selected do nothing (return)
         public void onNothingSelected(AdapterView<?> parent) {
             return;
         }
     }
 
+    // Create an on language selected listener
     private class OnLanguageSelectedListener implements AdapterView.OnItemSelectedListener {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            // Get the position of the selected language (to determine which language was selected)
             selectedLanguage = parent.getItemAtPosition(position).toString();
 
-            // Make a request for the top 20 streams
+            // Instantiate a streams API request
             StreamsRequest streamRequest = new StreamsRequest(getActivity());
 
+            // If the selected language equals any, replace it with an empty string (necessary for API call)
             if (selectedLanguage.equals("ANY")) {
-
                 selectedLanguage = "";
+
+                // Make a request for the top 20 (currently most watched) streams
                 streamRequest.getStreams(StreamsFragment.this, selectedGame, selectedLanguage, 20);
 
             } else {
+
+                // Make a request for the top 20 (currently most watched) streams
                 streamRequest.getStreams(StreamsFragment.this, selectedGame, selectedLanguage, 20);
             }
 
-            // Edit the old selected game value (position) and store the new value
+            // Edit the old selected language value (position) and store the new value
             SharedPreferences.Editor editor = getContext().getSharedPreferences("streamsFragment", MODE_PRIVATE).edit();
             editor.putInt("language", position);
             editor.apply();
-        } // to close the onItemSelected
+        }
 
+        // If no language selected do nothing (return)
         public void onNothingSelected(AdapterView<?> parent) {
             return;
         }
     }
 
-    // Create an on menu item clicked listener
+    // Create an on stream clicked listener
     private class StreamClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            // Get the MenuItem object of the clicked item in the list view
+            // Get the position of the clicked stream (to determine which stream was clicked)
             StreamsInformation clickedStream = streamInfo.get(position);
 
-            // Put menu item information into the bundle
+            // Retrieve the url of the clicked stream
             String urlToStream = clickedStream.getTwitchUrl();
 
+            // Open the url of the clicked favourite stream in a web browser
             // https://stackoverflow.com/questions/2201917/
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlToStream));
             startActivity(browserIntent);
