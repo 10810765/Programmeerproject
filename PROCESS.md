@@ -55,3 +55,8 @@ Bezig geweest met de featured pagina. Deze is nu qua inhoud helemaal compleet! H
 ### day 17 (25/01/2019)
 Alvast begonnen aan het opschonen van de code. Daarnaast hier en daar de layout veranderd (nog niet klaar). Tijdens het testen van de app verschillende bugs tegen gekomen die nu verholpen zijn, vooral dit heeft redelijk wat tijd gekost.
 
+### day 18 (26/01/2019)
+State restoratie geimplementeerd voor de drop down menu's (spinners) bij het draaien van de app of het volledig afsluiten van de app blijft je voorheen gekozen game en taal geselecteerd. Tevens blijft bij het draaien van de app de fragment die je geopend heb nu ook open, bij het aflsuiten van de app kom je echter wel weer terecht op de featured fragment. Dit is na overleg met een TA e wat user opinies besloten. Tevens is de tijd en datum nu geformateerd, deze had een standaard format wat onhandig las (is nog wel GMT). 
+
+### day 19 (27/01/2019)
+Vandaag de tijd omgezet van GMT naar GMT+1 zodat voor ons de correcte tijd van matches wordt weergegeven. Daarnaast verder gegaan met het opschonen van de code. Het opschonen zou nu (zo goed als) klaar moeten zijn.
