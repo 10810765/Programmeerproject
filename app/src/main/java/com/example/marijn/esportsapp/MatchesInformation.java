@@ -2,6 +2,11 @@ package com.example.marijn.esportsapp;
 
 import java.util.ArrayList;
 
+/**
+ * Marijn Meijering <m.h.j.meijering@uva.nl>
+ * 10810765 Universiteit van Amsterdam
+ * Minor Programmeren 01/02/2019
+ */
 public class MatchesInformation {
 
     private String date, title, game, teams, eventUrl, imageUrl;

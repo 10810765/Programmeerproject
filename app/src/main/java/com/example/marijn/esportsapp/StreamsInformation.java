@@ -1,5 +1,10 @@
 package com.example.marijn.esportsapp;
 
+/**
+ * Marijn Meijering <m.h.j.meijering@uva.nl>
+ * 10810765 Universiteit van Amsterdam
+ * Minor Programmeren 01/02/2019
+ */
 public class StreamsInformation {
 
     private String title, game,  name, viewers, language, twitchUrl, imageUrl, previewUrl;

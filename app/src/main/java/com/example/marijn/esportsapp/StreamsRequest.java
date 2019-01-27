@@ -6,7 +6,6 @@ import android.util.Log;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -16,6 +15,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+/**
+ * Marijn Meijering <m.h.j.meijering@uva.nl>
+ * 10810765 Universiteit van Amsterdam
+ * Minor Programmeren 01/02/2019
+ */
 public class StreamsRequest implements Response.Listener<JSONObject>, Response.ErrorListener {
     private Context context;
     private Callback activity;

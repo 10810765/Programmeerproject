@@ -22,6 +22,11 @@ import java.util.StringJoiner;
 
 import static android.content.Context.MODE_PRIVATE;
 
+/**
+ * Marijn Meijering <m.h.j.meijering@uva.nl>
+ * 10810765 Universiteit van Amsterdam
+ * Minor Programmeren 01/02/2019
+ */
 public class FavouritesFragment extends Fragment implements FavouritesRequest.Callback {
 
     private View rootView;

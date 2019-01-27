@@ -23,6 +23,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Marijn Meijering <m.h.j.meijering@uva.nl>
+ * 10810765 Universiteit van Amsterdam
+ * Minor Programmeren 01/02/2019
+ */
 public class FeaturedFragment extends Fragment implements MatchesRequest.Callback, StreamsRequest.Callback {
 
     private View rootView;
