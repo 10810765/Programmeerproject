@@ -45,20 +45,23 @@ public class MatchesAdapter extends ArrayAdapter<MatchesInformation> {
         ImageView logo = convertView.findViewById(R.id.logoView);
 
         // With help from: https://stackoverflow.com/questions/4216745/
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        DateFormat defaultDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        DateFormat newDateFormat = new SimpleDateFormat("HH:mm  dd-MM-yyyy");
         Date date = null;
 
         try {
-            date = dateFormat.parse(matchInfo.getDate());
+            date = defaultDateFormat.parse(matchInfo.getDate());
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        DateFormat formatter = new SimpleDateFormat("HH:mm  dd-MM-yyyy");
-        String dateString = formatter.format(date);
+        // Add one hour to the time to make it GMT+1
+        date.setTime(date.getTime()+ 3_600_000);
+
+        String formattedDateString = newDateFormat.format(date);
 
         // Set the date, tile and teams names of the match
-        dateView.setText(dateString + " (GMT)");
+        dateView.setText(formattedDateString + "  (GMT+1)");
         title.setText(matchInfo.getTitle());
         teams.setText(matchInfo.getTeams());
 

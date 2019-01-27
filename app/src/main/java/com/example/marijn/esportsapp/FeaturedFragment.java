@@ -78,21 +78,24 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
         Picasso.get().load(teamLogoUrls.get(1)).into(logoTwo);
 
         // With help from: https://stackoverflow.com/questions/4216745/
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        DateFormat defaultDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        DateFormat newDateFormat = new SimpleDateFormat("HH:mm  dd-MM-yyyy");
         Date date = null;
 
         try {
-            date = dateFormat.parse(matchInf.get(0).getDate());
+            date = defaultDateFormat.parse(matchInf.get(0).getDate());
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        DateFormat formatter = new SimpleDateFormat("HH:mm  dd-MM-yyyy");
-        String dateString = formatter.format(date);
+        // Add one hour to the time to make it GMT+1
+        date.setTime(date.getTime()+ 3_600_000);
+
+        String formattedDateString = newDateFormat.format(date);
 
         title.setText(matchInf.get(0).getTitle()+ " (" + game + ")");
         teams.setText(matchInf.get(0).getTeams());
-        dateView.setText(dateString + " (GMT)");
+        dateView.setText(formattedDateString + "  (GMT+1)");
     }
 
     @Override // Method that handles an unsuccessful to the the API
