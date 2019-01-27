@@ -43,7 +43,7 @@ public class FavouritesAdapter extends ArrayAdapter<FavouritesInformation> {
         TextView name = convertView.findViewById(R.id.nameView);
         TextView views = convertView.findViewById(R.id.viewersView);
         ImageView logo = convertView.findViewById(R.id.logoView);
-        ToggleButton favButton = convertView.findViewById(R.id.favouriteButton);
+        ToggleButton favouriteButton = convertView.findViewById(R.id.favouriteButton);
 
         // Set the name, title, game and viewer count of the streamer
         title.setText(favouriteInfo.getTitle());
@@ -55,22 +55,22 @@ public class FavouritesAdapter extends ArrayAdapter<FavouritesInformation> {
         Picasso.get().load(favouriteInfo.getImageUrl()).resize(250, 250).onlyScaleDown().into(logo);
 
         // Get the previously stored favourite button boolean
-        SharedPreferences prefsFav = getContext().getSharedPreferences("favourite", MODE_PRIVATE);
-        Boolean isFav = prefsFav.getBoolean(favouriteInfo.getName(), false);
+        SharedPreferences favouritePrefs = getContext().getSharedPreferences("favourite", MODE_PRIVATE);
+        Boolean isFavourite = favouritePrefs.getBoolean(favouriteInfo.getName(), false);
 
         // Restore stored favourite button state
-        if (isFav) { // If this person was a favourite
-            favButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.yellow_star));
+        if (isFavourite) { // If this person was a favourite
+            favouriteButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.yellow_star));
 
         } else { // If this person was NOT a favourite
-            favButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.grey_star));
+            favouriteButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.grey_star));
         }
 
         // Store the name of the streamer as a tag
-        favButton.setTag(favouriteInfo.getName());
+        favouriteButton.setTag(favouriteInfo.getName());
 
         // Set an on check change listener for the favourite button
-        favButton.setOnCheckedChangeListener(new OnFavouriteChangeListener());
+        favouriteButton.setOnCheckedChangeListener(new OnFavouriteChangeListener());
 
         return convertView;
     }
@@ -81,12 +81,12 @@ public class FavouritesAdapter extends ArrayAdapter<FavouritesInformation> {
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
 
         // Get the button that was clicked
-        ToggleButton favButton = (ToggleButton) buttonView;
+        ToggleButton clickedFavouriteButton = (ToggleButton) buttonView;
 
         if (isChecked) { // If favourited
-            favButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.yellow_star));
+            clickedFavouriteButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.yellow_star));
         } else { // If unfavourited
-            favButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.grey_star));
+            clickedFavouriteButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.grey_star));
         }
 
         // Get the streamer name, used to store the Boolean value

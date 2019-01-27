@@ -14,23 +14,25 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        BottomNavigationView navBar = findViewById(R.id.navigationBar);
-        navBar.setOnNavigationItemSelectedListener(new OnNavigationItemSelectedListener());
+        // Set an on navigation item selected listener for the navigation menu
+        BottomNavigationView navMenu = findViewById(R.id.navigationMenu);
+        navMenu.setOnNavigationItemSelectedListener(new OnNavigationItemSelectedListener());
 
-        // If there is no previously saved fragment, open FeaturedFragment
+        // If there is no previously selected fragment, open FeaturedFragment
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,
                     new FeaturedFragment()).commit();
         }
     }
 
-    // Create an on navigation fragment selected listener (bottom menu bar)
+    // Create an on navigation fragment selected listener (bottom navigation menu)
     // With help from: https://www.youtube.com/watch?v=tPV8xA7m-iw&t=103s
     private class OnNavigationItemSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment selectedFragment = null;
 
+            // Decide which fragment has to be opened (based on navigation menu click)
             switch (item.getItemId()) {
                 case R.id.navigate_home:
                     selectedFragment = new FeaturedFragment();
@@ -46,6 +48,7 @@ public class MenuActivity extends AppCompatActivity {
                     break;
             }
 
+            // Replace the current fragment with the (new) clicked fragment
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,
                     selectedFragment).commit();
 

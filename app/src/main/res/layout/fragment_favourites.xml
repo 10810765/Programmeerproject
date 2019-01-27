@@ -17,9 +17,9 @@
         android:textStyle="bold" />
 
     <ListView
-        android:id="@+id/favouriteList"
+        android:id="@+id/favouritesList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:background="?attr/colorButtonNormal"
         tools:layout_editor_absoluteX="8dp"

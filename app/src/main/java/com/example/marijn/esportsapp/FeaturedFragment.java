@@ -21,7 +21,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
 public class FeaturedFragment extends Fragment implements MatchesRequest.Callback, StreamsRequest.Callback {
@@ -29,7 +28,6 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
     private View rootView;
     private ArrayList<String> teamLogoUrls;
     private String matchUrl, streamUrl, game;
-    private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
     @Nullable
     @Override
@@ -62,37 +60,45 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
     @Override // Method that handles a successful call to the API
     public void gotMatches(ArrayList<MatchesInformation> matchInf) {
 
+        // Store the retrieved logo's, url and game in private variables
         teamLogoUrls = matchInf.get(0).getTeamLogos();
         matchUrl = matchInf.get(0).getEventUrl();
         game = matchInf.get(0).getGame();
 
+        // Get the ID's of various TextViews and ImageViews
         TextView title = rootView.findViewById(R.id.titleView);
         TextView teams = rootView.findViewById(R.id.teamsView);
         TextView dateView = rootView.findViewById(R.id.dateView);
-
         ImageView logoOne = rootView.findViewById(R.id.teamOneImage);
         ImageView logoTwo = rootView.findViewById(R.id.teamTwoImage);
 
-        // Load image from the internet into an image view using Picasso
+        // Load the team logo's into an image view using Picasso
         Picasso.get().load(teamLogoUrls.get(0)).into(logoOne);
         Picasso.get().load(teamLogoUrls.get(1)).into(logoTwo);
 
+        // Specify the default Date Format and the wanted Date Format
         // With help from: https://stackoverflow.com/questions/4216745/
         DateFormat defaultDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         DateFormat newDateFormat = new SimpleDateFormat("HH:mm  dd-MM-yyyy");
         Date date = null;
 
         try {
+
+            // Parse the match date string into Date Format
             date = defaultDateFormat.parse(matchInf.get(0).getDate());
+
         } catch (ParseException e) {
+            // If an error occurs, print the error
             e.printStackTrace();
         }
 
-        // Add one hour to the time to make it GMT+1
+        // Add one hour to the date to make it GMT+1
         date.setTime(date.getTime()+ 3_600_000);
 
+        // Format the default Date Format to the desired (new) Date Format and save as string
         String formattedDateString = newDateFormat.format(date);
 
+        // Set the title, teams and date of the match
         title.setText(matchInf.get(0).getTitle()+ " (" + game + ")");
         teams.setText(matchInf.get(0).getTeams());
         dateView.setText(formattedDateString + "  (GMT+1)");
@@ -109,32 +115,38 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
     @Override // Method that handles a successful call to the API
     public void gotStreams(ArrayList<StreamsInformation> streamInf) {
 
+        // Store the retrieved url in a private variable
         streamUrl = streamInf.get(0).getTwitchUrl();
 
+        // Get the ID's of various TextViews and an ImageView
         TextView name = rootView.findViewById(R.id.streamerName);
         TextView views = rootView.findViewById(R.id.viewerCount);
         ImageView preview = rootView.findViewById(R.id.previewImage);
 
-        // Load image from the internet into an image view using Picasso
+        // Load the stream preview into an image view using Picasso
         Picasso.get().load(streamInf.get(0).getPreviewUrl()).into(preview);
 
+        // Set the name and viewer count of the stream
         name.setText(streamInf.get(0).getName() + " is streaming " + streamInf.get(0).getGame());
         views.setText("Viewers: " + streamInf.get(0).getViewers());
     }
 
     @Override // Method that handles an unsuccessful to the the API
     public void gotStreamsError(String message) {
+
         // Toast the error message to the screen
         Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
         Log.d("error", message);
     }
 
+    // Create an on match clicked listener
     private class OnMatchClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
 
+            // If the retrieved url to an official match of a game equals null,
+            // replace it with the url of the games' official website
             if (matchUrl.equals("null")) {
-
                 switch (game) {
                     case "LoL":
                         matchUrl = "https://euw.leagueoflegends.com/";
@@ -151,16 +163,19 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
                 }
             }
 
+            // Open the url of the clicked match in a web browser
             // https://stackoverflow.com/questions/2201917/
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(matchUrl));
             startActivity(browserIntent);
         }
     }
 
+    // Create an on stream clicked listener
     private class OnStreamClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
 
+            // Open the url of the clicked stream in a web browser
             // https://stackoverflow.com/questions/2201917/
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(streamUrl));
             startActivity(browserIntent);

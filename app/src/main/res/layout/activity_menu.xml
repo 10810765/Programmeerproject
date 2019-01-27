@@ -12,13 +12,13 @@
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/navigationBar"
-        android:layout_weight="1">
+        android:layout_above="@+id/navigationMenu"
+        >
 
     </FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigationBar"
+        android:id="@+id/navigationMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
