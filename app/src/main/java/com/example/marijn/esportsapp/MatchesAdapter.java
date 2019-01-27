@@ -63,7 +63,7 @@ public class MatchesAdapter extends ArrayAdapter<MatchesInformation> {
         String formattedDateString = newDateFormat.format(date);
 
         // Set the date, tile and teams names of the match
-        dateView.setText(formattedDateString + "  (GMT+1)");
+        dateView.setText(formattedDateString + "  (GMT+1) ");
         title.setText(matchInfo.getTitle());
         teams.setText(matchInfo.getTeams());
 
