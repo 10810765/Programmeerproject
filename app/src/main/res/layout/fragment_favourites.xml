@@ -23,6 +23,7 @@
         android:textStyle="bold" />
 
     <LinearLayout
+        android:id="@+id/blackLine"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="0"

@@ -43,21 +43,24 @@ public class FavouritesAdapter extends ArrayAdapter<FavouritesInformation> {
         }
 
         // Get the ID's of various TextViews an ImageView and a ToggleButton
-        TextView title = convertView.findViewById(R.id.titleView);
-        TextView game = convertView.findViewById(R.id.gameView);
-        TextView name = convertView.findViewById(R.id.nameView);
-        TextView views = convertView.findViewById(R.id.viewersView);
-        ImageView logo = convertView.findViewById(R.id.logoView);
+        TextView titleView = convertView.findViewById(R.id.titleView);
+        TextView gameView = convertView.findViewById(R.id.gameView);
+        TextView nameView = convertView.findViewById(R.id.nameView);
+        TextView viewersView = convertView.findViewById(R.id.viewersView);
+        ImageView logoView = convertView.findViewById(R.id.logoView);
         ToggleButton favouriteButton = convertView.findViewById(R.id.favouriteButton);
 
         // Set the name, title, game and viewer count of the streamer
-        title.setText(favouriteInfo.getTitle());
-        game.setText(favouriteInfo.getGame());
-        name.setText(favouriteInfo.getName());
-        views.setText(favouriteInfo.getViewers() + " viewers");
+        titleView.setText(favouriteInfo.getTitle());
+        gameView.setText(favouriteInfo.getGame());
+        nameView.setText(favouriteInfo.getName());
+        viewersView.setText(favouriteInfo.getViewers() + " viewers");
 
         // Load the streamer's logo into an image view using Picasso
-        Picasso.get().load(favouriteInfo.getImageUrl()).resize(250, 250).onlyScaleDown().into(logo);
+        Picasso.get().load(favouriteInfo.getImageUrl())
+                .resize(250, 250)
+                .onlyScaleDown()
+                .into(logoView);
 
         // Get the previously stored favourite button boolean
         SharedPreferences favouritePrefs = getContext().getSharedPreferences("favourite", MODE_PRIVATE);

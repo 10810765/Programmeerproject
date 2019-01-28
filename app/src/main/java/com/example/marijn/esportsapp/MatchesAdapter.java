@@ -42,10 +42,11 @@ public class MatchesAdapter extends ArrayAdapter<MatchesInformation> {
 
         // Get the ID's of various TextViews and an ImageView
         TextView dateView = convertView.findViewById(R.id.dateView);
-        TextView title = convertView.findViewById(R.id.titleView);
-        TextView teams = convertView.findViewById(R.id.teamsView);
-        ImageView logo = convertView.findViewById(R.id.logoView);
+        TextView titleView = convertView.findViewById(R.id.titleView);
+        TextView teamsView = convertView.findViewById(R.id.teamsView);
+        ImageView logoView = convertView.findViewById(R.id.logoView);
 
+        // Specify the default Date Format and the wanted Date Format
         // With help from: https://stackoverflow.com/questions/4216745/
         DateFormat defaultDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         DateFormat newDateFormat = new SimpleDateFormat("HH:mm  dd-MM-yyyy");
@@ -64,11 +65,14 @@ public class MatchesAdapter extends ArrayAdapter<MatchesInformation> {
 
         // Set the date, tile and teams names of the match
         dateView.setText(formattedDateString + "  (GMT+1) ");
-        title.setText(matchInfo.getTitle());
-        teams.setText(matchInfo.getTeams());
+        titleView.setText(matchInfo.getTitle());
+        teamsView.setText(matchInfo.getTeams());
 
         // Load the league logo into an image view using Picasso
-        Picasso.get().load(matchInfo.getImageUrl()).resize(250, 250).onlyScaleDown().into(logo);
+        Picasso.get().load(matchInfo.getImageUrl())
+                .resize(250, 250)
+                .onlyScaleDown()
+                .into(logoView);
 
         return convertView;
     }

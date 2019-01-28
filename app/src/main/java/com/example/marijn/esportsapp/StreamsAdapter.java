@@ -43,19 +43,22 @@ public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
         }
 
         // Get the ID's of various TextViews an ImageView and a ToggleButton
-        TextView title = convertView.findViewById(R.id.titleView);
-        TextView name = convertView.findViewById(R.id.nameView);
-        TextView views = convertView.findViewById(R.id.viewersView);
-        ImageView logo = convertView.findViewById(R.id.logoView);
+        TextView titleView = convertView.findViewById(R.id.titleView);
+        TextView nameView = convertView.findViewById(R.id.nameView);
+        TextView viewersView = convertView.findViewById(R.id.viewersView);
+        ImageView logoView = convertView.findViewById(R.id.logoView);
         ToggleButton favouriteButton = convertView.findViewById(R.id.favouriteButton);
 
         // Set the name, title and viewer count of the streamer
-        title.setText(streamInfo.getTitle());
-        name.setText(streamInfo.getName());
-        views.setText(streamInfo.getViewers() + " viewers");
+        titleView.setText(streamInfo.getTitle());
+        nameView.setText(streamInfo.getName());
+        viewersView.setText(streamInfo.getViewers() + " viewers");
 
         // Load the streamer's logo into an image view using Picasso
-        Picasso.get().load(streamInfo.getImageUrl()).resize(250, 250).onlyScaleDown().into(logo);
+        Picasso.get().load(streamInfo.getImageUrl())
+                .resize(250, 250)
+                .onlyScaleDown()
+                .into(logoView);
 
         // Get the previously stored favourite button boolean
         SharedPreferences favouritePrefs = getContext().getSharedPreferences("favourite", MODE_PRIVATE);

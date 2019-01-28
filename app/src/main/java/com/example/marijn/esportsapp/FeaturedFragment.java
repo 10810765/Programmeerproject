@@ -71,15 +71,15 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
         game = matchInf.get(0).getGame();
 
         // Get the ID's of various TextViews and ImageViews
-        TextView title = rootView.findViewById(R.id.titleView);
-        TextView teams = rootView.findViewById(R.id.teamsView);
+        TextView titleView = rootView.findViewById(R.id.titleView);
+        TextView teamsView = rootView.findViewById(R.id.teamsView);
         TextView dateView = rootView.findViewById(R.id.dateView);
-        ImageView logoOne = rootView.findViewById(R.id.teamOneImage);
-        ImageView logoTwo = rootView.findViewById(R.id.teamTwoImage);
+        ImageView logoOneView = rootView.findViewById(R.id.teamOneView);
+        ImageView logoTwoView = rootView.findViewById(R.id.teamTwoView);
 
         // Load the team logo's into an image view using Picasso
-        Picasso.get().load(teamLogoUrls.get(0)).into(logoOne);
-        Picasso.get().load(teamLogoUrls.get(1)).into(logoTwo);
+        Picasso.get().load(teamLogoUrls.get(0)).into(logoOneView);
+        Picasso.get().load(teamLogoUrls.get(1)).into(logoTwoView);
 
         // Specify the default Date Format and the wanted Date Format
         // With help from: https://stackoverflow.com/questions/4216745/
@@ -104,8 +104,8 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
         String formattedDateString = newDateFormat.format(date);
 
         // Set the title, teams and date of the match
-        title.setText(matchInf.get(0).getTitle()+ " (" + game + ")");
-        teams.setText(matchInf.get(0).getTeams());
+        titleView.setText(matchInf.get(0).getTitle()+ " (" + game + ")");
+        teamsView.setText(matchInf.get(0).getTeams());
         dateView.setText(formattedDateString + "  (GMT+1) ");
     }
 
@@ -124,16 +124,16 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
         streamUrl = streamInf.get(0).getTwitchUrl();
 
         // Get the ID's of various TextViews and an ImageView
-        TextView name = rootView.findViewById(R.id.streamerName);
-        TextView views = rootView.findViewById(R.id.viewerCount);
-        ImageView preview = rootView.findViewById(R.id.previewImage);
+        TextView nameView = rootView.findViewById(R.id.nameView);
+        TextView viewsView = rootView.findViewById(R.id.viewersView);
+        ImageView previewView = rootView.findViewById(R.id.previewView);
 
         // Load the stream preview into an image view using Picasso
-        Picasso.get().load(streamInf.get(0).getPreviewUrl()).into(preview);
+        Picasso.get().load(streamInf.get(0).getPreviewUrl()).into(previewView);
 
         // Set the name and viewer count of the stream
-        name.setText(streamInf.get(0).getName() + " is streaming " + streamInf.get(0).getGame());
-        views.setText(streamInf.get(0).getViewers() + " viewers");
+        nameView.setText(streamInf.get(0).getName() + " is streaming " + streamInf.get(0).getGame());
+        viewsView.setText(streamInf.get(0).getViewers() + " viewers");
     }
 
     @Override // Method that handles an unsuccessful to the the API

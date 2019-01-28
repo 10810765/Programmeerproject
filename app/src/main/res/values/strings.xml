@@ -1,6 +1,20 @@
 <resources>
     <string name="app_name">eSportsApp</string>
     <string name="live_favourite_streamer_s">Live favourite streamer(s)</string>
+    <string name="streamer_name">Streamer name</string>
+    <string name="event_name">Event name</string>
+    <string name="amount_of_viewers">Amount of viewers</string>
+    <string name="date_of_match">Date of match</string>
+    <string name="logo_of_team_two">logo of team two</string>
+    <string name="vs">VS.</string>
+    <string name="logo_of_team_one">logo of team one</string>
+    <string name="preview_of_stream">preview of stream</string>
+    <string name="streamer_logo">streamer logo</string>
+    <string name="title_of_stream">title of stream</string>
+    <string name="streamed_game">streamed game</string>
+    <string name="clickable_favourite_button">clickable favourite button</string>
+    <string name="names_of_teams">names of teams</string>
+    <string name="logo_of_event">logo of event</string>
 
     <string-array name="games">
         <item>League of Legends</item>

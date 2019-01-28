@@ -13,6 +13,7 @@
         android:layout_gravity="center_vertical"
         android:layout_margin="12dp"
         android:layout_weight="1"
+        android:contentDescription="@string/streamer_logo"
         tools:srcCompat="@tools:sample/avatars" />
 
     <LinearLayout
@@ -31,20 +32,18 @@
             android:layout_marginLeft="6dp"
             android:layout_marginTop="12dp"
             android:layout_marginRight="6dp"
-            android:layout_weight="1"
             android:fontFamily="@font/roboto_slab_bold"
-            android:text="TextView"
+            android:text="@string/title_of_stream"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
@@ -57,9 +56,8 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="6dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_weight="1"
                     android:fontFamily="@font/roboto_slab"
-                    android:text="TextView"
+                    android:text="@string/streamer_name"
                     android:textColor="@color/colorPrimary"
                     android:textSize="18sp" />
 
@@ -70,9 +68,8 @@
                     android:layout_marginLeft="6dp"
                     android:layout_marginRight="6dp"
                     android:layout_marginBottom="12dp"
-                    android:layout_weight="1"
                     android:fontFamily="@font/roboto_slab"
-                    android:text="TextView"
+                    android:text="@string/amount_of_viewers"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -81,15 +78,15 @@
                 android:id="@+id/favouriteButton"
                 android:layout_width="45dp"
                 android:layout_height="40dp"
-                android:layout_gravity="bottom|right"
-                android:layout_marginLeft="6dp"
-                android:layout_marginRight="18dp"
+                android:layout_gravity="bottom|end"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="18dp"
                 android:layout_marginBottom="6dp"
                 android:clickable="true"
-                android:focusable="false"
+                android:focusable="true"
                 android:focusedByDefault="false"
                 android:textOff=""
-                android:textOn="" />
+                android:textOn="" tools:targetApi="o"/>
 
         </LinearLayout>
 

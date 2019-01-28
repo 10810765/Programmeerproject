@@ -12,6 +12,7 @@
         android:layout_height="105dp"
         android:layout_margin="12dp"
         android:layout_weight="1"
+        android:contentDescription="@string/logo_of_event"
         tools:srcCompat="@tools:sample/avatars" />
 
     <LinearLayout
@@ -28,9 +29,8 @@
             android:layout_marginLeft="6dp"
             android:layout_marginTop="12dp"
             android:layout_marginRight="6dp"
-            android:layout_weight="1"
             android:fontFamily="@font/roboto_slab_bold"
-            android:text="TextView"
+            android:text="@string/event_name"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="20sp" />
 
@@ -42,9 +42,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="6dp"
             android:layout_marginBottom="10dp"
-            android:layout_weight="1"
             android:fontFamily="@font/roboto_slab"
-            android:text="TextView"
+            android:text="@string/names_of_teams"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp" />
 
@@ -55,9 +54,8 @@
             android:layout_marginLeft="6dp"
             android:layout_marginRight="6dp"
             android:layout_marginBottom="12dp"
-            android:layout_weight="1"
             android:fontFamily="@font/roboto_slab"
-            android:text="TextView"
+            android:text="@string/date_of_match"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
             android:textStyle="italic" />
