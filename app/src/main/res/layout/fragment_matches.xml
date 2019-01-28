@@ -9,6 +9,8 @@
         android:id="@+id/selectGameSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
         android:layout_weight="0" />
 
     <ListView
@@ -17,6 +19,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="?attr/colorButtonNormal"
+        android:divider="@color/design_default_color_primary_dark"
+        android:dividerHeight="1dp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp" />
 

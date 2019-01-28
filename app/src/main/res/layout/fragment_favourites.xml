@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/titleText"
+        android:id="@+id/titleView"
+        style="?android:attr/listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="Live favourite streamers"
+        android:background="?attr/colorButtonNormal"
+        android:fontFamily="@font/roboto_slab_bold"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:text="@string/live_favourite_streamer_s"
         android:textAlignment="center"
         android:textAllCaps="false"
+        android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0"
+        android:background="@android:color/black"
+        android:orientation="horizontal"></LinearLayout>
 
     <ListView
         android:id="@+id/favouritesList"
@@ -22,6 +35,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="?attr/colorButtonNormal"
+        android:divider="@color/design_default_color_primary_dark"
+        android:dividerHeight="1dp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp" />
 

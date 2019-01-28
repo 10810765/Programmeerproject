@@ -52,7 +52,7 @@ public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
         // Set the name, title and viewer count of the streamer
         title.setText(streamInfo.getTitle());
         name.setText(streamInfo.getName());
-        views.setText(streamInfo.getViewers());
+        views.setText(streamInfo.getViewers() + " viewers");
 
         // Load the streamer's logo into an image view using Picasso
         Picasso.get().load(streamInfo.getImageUrl()).resize(250, 250).onlyScaleDown().into(logo);

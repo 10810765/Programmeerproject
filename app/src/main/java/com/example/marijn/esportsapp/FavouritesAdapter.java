@@ -54,7 +54,7 @@ public class FavouritesAdapter extends ArrayAdapter<FavouritesInformation> {
         title.setText(favouriteInfo.getTitle());
         game.setText(favouriteInfo.getGame());
         name.setText(favouriteInfo.getName());
-        views.setText(favouriteInfo.getViewers());
+        views.setText(favouriteInfo.getViewers() + " viewers");
 
         // Load the streamer's logo into an image view using Picasso
         Picasso.get().load(favouriteInfo.getImageUrl()).resize(250, 250).onlyScaleDown().into(logo);
