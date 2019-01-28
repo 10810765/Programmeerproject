@@ -9,8 +9,8 @@
     <LinearLayout
         android:id="@+id/backgroundColorMatch"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_height="match_parent"
+        android:layout_margin="12dp"
         android:layout_weight="1"
         android:background="?attr/colorButtonNormal">
 
@@ -18,13 +18,15 @@
             android:id="@+id/matchClickable"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
                 android:orientation="vertical">
 
                 <TextView
@@ -32,7 +34,41 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Event name" />
+                    android:layout_margin="6dp"
+                    android:layout_weight="0"
+                    android:fontFamily="@font/roboto_slab_bold"
+                    android:text="Event name"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/dateView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="6dp"
+                    android:layout_weight="0"
+                    android:fontFamily="@font/roboto_slab"
+                    android:text="Date"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/teamsView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_weight="0"
+                    android:fontFamily="@font/roboto_slab"
+                    android:text="VS."
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -41,37 +77,19 @@
 
                     <ImageView
                         android:id="@+id/teamOneImage"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        tools:srcCompat="@tools:sample/avatars" />
-
-                    <TextView
-                        android:id="@+id/teamsView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:text="VS."
-                        android:textAlignment="center" />
+                        android:padding="6dp"
+                        tools:srcCompat="@tools:sample/avatars" />
 
                     <ImageView
                         android:id="@+id/teamTwoImage"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        tools:srcCompat="@tools:sample/avatars" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/dateView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Date" />
+                        android:layout_weight="1"
+                        android:padding="6dp"
+                        tools:srcCompat="@tools:sample/avatars" />
 
                 </LinearLayout>
 
@@ -83,8 +101,8 @@
     <LinearLayout
         android:id="@+id/backgroundColorStream"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_height="match_parent"
+        android:layout_margin="12dp"
         android:layout_weight="1"
         android:background="?android:attr/colorButtonNormal">
 
@@ -92,6 +110,7 @@
             android:id="@+id/streamClickable"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:orientation="horizontal">
@@ -99,6 +118,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
                 android:orientation="vertical">
 
                 <TextView
@@ -106,19 +127,31 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Streamer name" />
+                    android:layout_margin="6dp"
+                    android:fontFamily="@font/roboto_slab_bold"
+                    android:text="Streamer name"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/viewerCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:fontFamily="@font/roboto_slab"
+                    android:text="Amount of viewers"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
 
                 <ImageView
                     android:id="@+id/previewImage"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
                     tools:srcCompat="@tools:sample/avatars" />
-
-                <TextView
-                    android:id="@+id/viewerCount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Amount of viewers" />
 
             </LinearLayout>
         </LinearLayout>

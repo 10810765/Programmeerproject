@@ -106,7 +106,7 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
         // Set the title, teams and date of the match
         title.setText(matchInf.get(0).getTitle()+ " (" + game + ")");
         teams.setText(matchInf.get(0).getTeams());
-        dateView.setText(formattedDateString + "  (GMT+1)");
+        dateView.setText(formattedDateString + "  (GMT+1) ");
     }
 
     @Override // Method that handles an unsuccessful to the the API
@@ -133,7 +133,7 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
 
         // Set the name and viewer count of the stream
         name.setText(streamInf.get(0).getName() + " is streaming " + streamInf.get(0).getGame());
-        views.setText("Viewers: " + streamInf.get(0).getViewers());
+        views.setText(streamInf.get(0).getViewers() + " viewers");
     }
 
     @Override // Method that handles an unsuccessful to the the API

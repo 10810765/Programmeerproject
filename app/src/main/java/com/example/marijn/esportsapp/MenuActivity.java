@@ -39,7 +39,7 @@ public class MenuActivity extends AppCompatActivity {
 
             // Decide which fragment has to be opened (based on navigation menu click)
             switch (item.getItemId()) {
-                case R.id.navigate_home:
+                case R.id.navigate_featured:
                     selectedFragment = new FeaturedFragment();
                     break;
                 case R.id.navigate_match:
