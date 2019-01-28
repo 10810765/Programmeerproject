@@ -60,3 +60,6 @@ State restoratie geimplementeerd voor de drop down menu's (spinners) bij het dra
 
 ### day 19 (27/01/2019)
 Vandaag de tijd omgezet van GMT naar GMT+1 zodat voor ons de correcte tijd van matches wordt weergegeven. Daarnaast verder gegaan met het opschonen van de code. Het opschonen zou nu (zo goed als) klaar moeten zijn.
+
+### day 20 (28/01/2019)
+Het design van de app onder de loep genomen en recht getrokken. Alles is nu netjes opgemaakt en verstelt in grootte, lettertype, kleur etc. daarnaast staat het allemaal op de goede plek nu en heb ik landscape functionaliteit toegevoegd. Daarnaast nog wat kleine details in de code veranderd zoals de namen van sommige variabelen voor consistentie.
