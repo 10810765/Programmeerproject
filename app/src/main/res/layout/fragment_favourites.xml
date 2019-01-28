@@ -36,7 +36,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="?attr/colorButtonNormal"
-        android:divider="@color/design_default_color_primary_dark"
+        android:divider="@android:color/black"
         android:dividerHeight="1dp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp" />
