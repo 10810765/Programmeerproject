@@ -92,7 +92,7 @@ public class MatchesFragment extends Fragment implements MatchesRequest.Callback
         Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
     }
 
-    // Create an on game selected listener
+    // Create an on game select listener
     private class OnGameSelectedListener implements AdapterView.OnItemSelectedListener {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -131,7 +131,7 @@ public class MatchesFragment extends Fragment implements MatchesRequest.Callback
         }
     }
 
-    // Create an on match clicked listener
+    // Create an on match click listener
     private class MatchClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

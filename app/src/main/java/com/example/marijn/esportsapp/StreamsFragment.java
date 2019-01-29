@@ -104,7 +104,7 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
         Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
     }
 
-    // Create an on game selected listener
+    // Create an on game select listener
     private class OnGameSelectedListener implements AdapterView.OnItemSelectedListener {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -128,7 +128,7 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
         }
     }
 
-    // Create an on language selected listener
+    // Create an on language select listener
     private class OnLanguageSelectedListener implements AdapterView.OnItemSelectedListener {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -164,7 +164,7 @@ public class StreamsFragment extends Fragment implements StreamsRequest.Callback
         }
     }
 
-    // Create an on stream clicked listener
+    // Create an on stream click listener
     private class StreamClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

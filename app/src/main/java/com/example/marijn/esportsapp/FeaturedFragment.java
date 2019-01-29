@@ -144,7 +144,7 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
         Log.d("error", message);
     }
 
-    // Create an on match clicked listener
+    // Create an on match click listener
     private class OnMatchClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
@@ -175,7 +175,7 @@ public class FeaturedFragment extends Fragment implements MatchesRequest.Callbac
         }
     }
 
-    // Create an on stream clicked listener
+    // Create an on stream click listener
     private class OnStreamClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {

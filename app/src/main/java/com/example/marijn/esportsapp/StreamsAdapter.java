@@ -54,17 +54,17 @@ public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
         nameView.setText(streamInfo.getName());
         viewersView.setText(streamInfo.getViewers() + " viewers");
 
-        // Load the streamer's logo into an image view using Picasso
+        // Load the streamers' logo into an image view using Picasso
         Picasso.get().load(streamInfo.getImageUrl())
                 .resize(250, 250)
                 .onlyScaleDown()
                 .into(logoView);
 
-        // Get the previously stored favourite button boolean
+        // Get the previously stored favourite button state (boolean)
         SharedPreferences favouritePrefs = getContext().getSharedPreferences("favourite", MODE_PRIVATE);
         Boolean isFavourite = favouritePrefs.getBoolean(streamInfo.getName(), false);
 
-        // Restore stored favourite button state
+        // Restore the stored favourite button state
         if (isFavourite) { // If this person was a favourite
             favouriteButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.yellow_star));
 
@@ -95,7 +95,7 @@ public class StreamsAdapter extends ArrayAdapter<StreamsInformation> {
                 clickedFavouriteButton.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.grey_star));
             }
 
-            // Get the streamer name, used to store the Boolean value
+            // Get the streamers' name (used to store the Boolean value)
             String streamerName = (String) buttonView.getTag();
 
             // Edit the old Boolean value and store the new value

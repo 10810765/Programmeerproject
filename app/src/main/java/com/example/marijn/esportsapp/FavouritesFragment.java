@@ -41,7 +41,7 @@ public class FavouritesFragment extends Fragment implements FavouritesRequest.Ca
         // Get the previously stored favourite streams
         SharedPreferences favouritePrefs = getContext().getSharedPreferences("favourite", MODE_PRIVATE);
 
-        // Get all the keys (streamer names) and values (boolean) from favouritePrefs
+        // Get all the keys (streamer names) and values (booleans) from favouritePrefs
         // With help from: https://stackoverflow.com/questions/35536415/
         Map<String, ?> allFavourites = favouritePrefs.getAll();
 
@@ -108,7 +108,7 @@ public class FavouritesFragment extends Fragment implements FavouritesRequest.Ca
         Log.d("error", message);
     }
 
-    // Create an on favourite stream clicked listener
+    // Create an on favourite stream click listener
     private class FavouriteClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
