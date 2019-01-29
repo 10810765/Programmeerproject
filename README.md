@@ -1,10 +1,9 @@
 # eSports Gids
-
 ## Marijn Meijering (10810765)
 De app is gemaakt tijdens de minor programmeren aan de Universiteit van Amsterdam in de maand januari 2019.
 
 #### Doel van de app
-Het hoofddoel van mijn app is het vereenvoudigen van het kijken van eSports wedstrijden en streams van je favoriete spel.  
+Het hoofddoel van mijn app is het vereenvoudigen van het kijken van eSports wedstrijden en streams van je favoriete spel. 
 
 Mijn app is gericht op mensen (voornamelijk jongeren) met een interesse voor *competitive gaming*. Het doel is het kijken van eSports net zo toegankelijk maken als het kijken van bijvoorbeeld voetbal. Mijn app is een stap in deze richting door (per game) aan te geven welke professionele wedstrijden er binnenkort gespeeld gaan worden en aan te geven welke streams op Twitch er momenteel bezig zijn. Daarnaast kan je direct beginnen met kijken door simpelweg op de wedstrijd of streamer die je graag wil zien te klikken. De app is als het ware een moderne TV gids voor eSports!
 
@@ -14,10 +13,6 @@ Mijn app is gericht op mensen (voornamelijk jongeren) met een interesse voor *co
 ![Schets 2](https://github.com/10810765/Programmeerproject/blob/master/doc/Schets_2.png)
 ![Schets 3](https://github.com/10810765/Programmeerproject/blob/master/doc/Schets_3.png)
 ![Schets 4](https://github.com/10810765/Programmeerproject/blob/master/doc/Schets_4.png)
-
-#### Data sources
-https://pandascore.co/
-https://dev.twitch.tv/
 
 **License:** [MIT License](LICENSE)
 
