@@ -42,3 +42,6 @@ Waarschijnlijk kan ik inspiratie voor de layout halen uit apps gemaakt als Tv-gi
 #### Hardest parts
 Het lastigst is denk ik het integreren van de API's, zodat deze de informatie geven die ik nodig heb. Daarnaast lijkt het me best lastig om een duidelijk overzicht te krijgen van alle informatie.
 Tevens zou ik graag een soort calender of tijdlijn willen integreren om wedstrijden aan te kondigen (indien mogelijk).
+
+Copyright
+Wat betreft copyright van de app is de [MIT License](LICENSE) van kracht. Dit houdt onder andere in dat de app vrij te gebruiken, kopiëren, aanpassen en publiceren is. Voor de volledige copyright verwijs ik u graag naar het license document.
