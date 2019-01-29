@@ -1,6 +1,6 @@
 # eSports Gids
 ## Marijn Meijering (10810765)
-De app is gemaakt tijdens de minor programmeren aan de Universiteit van Amsterdam in de maand januari 2019.
+De app is gemaakt tijdens de minor programmeren aan de Universiteit van Amsterdam in de maand januari, 2019.
 
 #### Doel van de app
 Het hoofddoel van mijn app is het vereenvoudigen van het kijken van eSports wedstrijden en streams van je favoriete game. 
