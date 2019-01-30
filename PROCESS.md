@@ -68,4 +68,4 @@ Het design van de app onder de loep genomen en recht getrokken. Alles is nu netj
 Lincese bestand aangemaakt, gewerkt aan de README.md (deze heeft nu alleen nog screenshots nodig), nog wat laatste aanpassingen aan de code en layout van de app gedaan en gewerkt aan het report. Wat betreft het report heb ik alvast een begin gemaakt aan het technical design.
 
 ### day 22 (30/01/2019)
-De code is klaar en dus mooi op tijd voor de deadline. Vandaag vooral bezig geweest met de README en het REPORT. De README is afgezien van het youtube filmpje (wat ik morgen maak) klaar, het verslag is zo goed als af ook deze rond ik morgen af.
+De code is klaar en dus mooi op tijd voor de deadline. Vandaag vooral bezig geweest met de README en het REPORT. De README is afgezien van het een product video (wat ik morgen maak) klaar, het verslag is zo goed als af ook deze rond ik morgen af.
