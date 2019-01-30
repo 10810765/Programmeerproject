@@ -5,9 +5,9 @@
 ### Korte omschrijving App
 Het hoofddoel van mijn app is het vereenvoudigen van het kijken van eSports wedstrijden en streams van je favoriete game. Mijn app maakt dit mogelijk door wedstrijden en streams bij elkaar te brengen in één overzichtelijke app! 
 
-<img src="https://github.com/10810765/Programmeerproject/blob/master/doc/eSports_Gids_Preview_1.png"
+dgfd<img src="https://github.com/10810765/Programmeerproject/blob/master/doc/eSports_Gids_Preview_1.png"
      alt="Screenshot 1"
-     style="float: right;" />
+     style="float: right;" />fgdsz
 
 ### Technisch ontwerp App
 Hieronder is een schets te zien van het technisch ontwerp van de eSports Gids app zoals deze nu is. Zoals op de schets te zien is heeft mijn app slechts één *activity*, namelijk de *MenuActivity*. Wanneer de app wordt opgestart is dit het eerste scherm wat geladen wordt. Vervolgens wordt dit scherm aangevult met een *fragment*, wanneer er niet genavigeerd is, is de eerste *fragment* die geladen wordt altijd de *FeaturedFragment*. Doormiddel van de *MenuActivity* kan er door de app genavigeerd worden. Deze *activity* verzorgt namelijk de menu balk die altijd op de bodem van ieder scherm te zien is. 
