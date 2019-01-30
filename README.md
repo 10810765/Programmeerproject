@@ -12,7 +12,10 @@ Mijn app is gericht op mensen (voornamelijk jongeren) met een interesse voor *co
 Naast de license van de app zelf, maakt de app gebruik van de [Pandascore API](https://pandascore.co/terms) en [Twitch API](https://www.twitch.tv/p/legal/terms-of-service/) voor opgehaalde informatie over wedstrijden en streamers. Tevens komen de ster icoontjes (voor de favoriet knoppen) van [Icons8](https://icons8.com/license). Bij het gebruik van de app dient er aan de licenses van deze partijen gehoor gegeven te worden.
 
 ### Screenshots
-Naast onderstaande screenshots kan er ook een [product video](https://youtube.com/) gekeken worden. Hierin wordt nogmaals kort het doel van de app besproken en worden alle functionaliteiten kort doorgenomen.
+
+**Product Video:** [YouTube Product Video](https://youtube.com/)
+
+Naast onderstaande screenshots kan er ook een product video gekeken worden (link staat hierboven). Hierin wordt nogmaals kort het doel van de app besproken en worden alle functionaliteiten kort doorgenomen.
 
 #### Portrait screenshots
 ![Screenshot 1](https://github.com/10810765/Programmeerproject/blob/master/doc/eSports_Gids_Preview_1.png)
