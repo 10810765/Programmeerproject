@@ -5,7 +5,7 @@
 ### Korte omschrijving App
 <img align="right" width="400" height="220" src="https://github.com/10810765/Programmeerproject/blob/master/doc/eSports_Gids_Preview_5.png">
 Het hoofddoel van mijn app is het vereenvoudigen van het kijken van eSports wedstrijden en streams van je favoriete game.
-Mijn app maakt dit mogelijk door wedstrijden en streams bij elkaar te brengen in één overzichtelijke app!  
+Mijn app maakt dit mogelijk door wedstrijden en streams bij elkaar te brengen in één overzichtelijke app! Navigeer eenvoudig tussen matches en streams en filter deze op de game waar je interesse in heb of de taal die gesproken wordt.
 
 <br/>
 <br/>
