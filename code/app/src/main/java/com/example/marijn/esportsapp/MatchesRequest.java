@@ -52,8 +52,15 @@ public class MatchesRequest implements Response.Listener<JSONArray>, Response.Er
 
     @Override // Handle on API error response
     public void onErrorResponse(VolleyError error) {
-        activity.gotMatchesError(error.getMessage());
-        Log.d("gotMatchesError", error.getMessage());
+
+        // If the message is not null, give back the message
+        if (error.getMessage() != null) {
+            activity.gotMatchesError(error.getMessage());
+            Log.d("gotMatchesError", error.getMessage());
+        } else {
+            activity.gotMatchesError("Something went wrong fetching the data...");
+            Log.d("gotMatchesError", "Something went wrong fetching the data...");
+        }
     }
 
     @Override // Handle on API response
@@ -109,6 +116,7 @@ public class MatchesRequest implements Response.Listener<JSONArray>, Response.Er
             activity.gotMatches(matchesArrayList);
 
         } catch (JSONException e) {
+
             // If an error occurs, print the error
             e.printStackTrace();
         }

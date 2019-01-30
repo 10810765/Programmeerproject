@@ -52,8 +52,15 @@ public class FavouritesRequest implements Response.Listener<JSONObject>, Respons
 
     @Override // Handle on API error response
     public void onErrorResponse(VolleyError error) {
-        activity.gotFavouriteError(error.getMessage());
-        Log.d("gotFavouritesError", error.getMessage());
+
+        // If the message is not null, give back the message
+        if (error.getMessage() != null) {
+            activity.gotFavouriteError(error.getMessage());
+            Log.d("gotMatchesError", error.getMessage());
+        } else {
+            activity.gotFavouriteError("Something went wrong fetching the data...");
+            Log.d("gotFavouritesError", "Something went wrong fetching the data...");
+        }
     }
 
     @Override // Handle on API response
