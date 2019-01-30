@@ -5,7 +5,7 @@ De app is gemaakt tijdens de minor programmeren aan de Universiteit van Amsterda
 #### Doel van de app
 Het hoofddoel van mijn app is het vereenvoudigen van het kijken van eSports wedstrijden en streams van je favoriete game. 
 
-Mijn app is gericht op mensen (voornamelijk jongeren) met een interesse voor *competitive gaming*. Het doel is het kijken van eSports net zo toegankelijk maken als het kijken van bijvoorbeeld voetbal. Mijn app is een stap in deze richting door (per game) aan te geven welke professionele wedstrijden er binnenkort gespeeld gaan worden en aan te geven welke streams op Twitch er momenteel bezig zijn. Daarnaast kan je direct beginnen met kijken door simpelweg op de wedstrijd of streamer die je graag wil zien te klikken. De app is als het ware een TV gids voor eSports maar dan gebouwd voor de 21e eeuw!
+Mijn app is gericht op mensen (voornamelijk jongeren) met een interesse voor *competitive gaming*. Het doel is het kijken van eSports net zo toegankelijk maken als het kijken van bijvoorbeeld voetbal. Mijn app is een stap in deze richting door (per game) aan te geven welke professionele wedstrijden er binnenkort gespeeld gaan worden en aan te geven welke streams op Twitch er momenteel bezig zijn. Daarnaast kan je direct beginnen met kijken door simpelweg op de wedstrijd of streamer die je graag wil zien te klikken. De app is als het ware een TV gids voor eSports maar dan voor de 21e eeuw!
 
 **License:** [MIT License](LICENSE)
 
