@@ -2,6 +2,7 @@
 
 ## Marijn Meijering (10810765)
 <br/>
+
 ### Korte omschrijving App
 <img align="right" width="410" height="220" src="https://github.com/10810765/Programmeerproject/blob/master/doc/eSports_Gids_Preview_5.png">
 Het hoofddoel van mijn app is het vereenvoudigen van het kijken van eSports wedstrijden en streams van je favoriete game.
