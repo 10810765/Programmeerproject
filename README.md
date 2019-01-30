@@ -13,7 +13,7 @@ Naast de license van de app zelf, maakt de app gebruik van de [Pandascore API](h
 
 ### Screenshots
 
-**Product Video:** [YouTube Product Video](https://youtube.com/)
+**Product Video:** [YouTube eSports Gids Video](https://youtube.com/)
 
 Naast onderstaande screenshots kan er ook een product video gekeken worden (link staat hierboven). Hierin wordt nogmaals kort het doel van de app besproken en worden alle functionaliteiten kort doorgenomen.
 
