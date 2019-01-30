@@ -55,7 +55,7 @@ public class StreamsRequest implements Response.Listener<JSONObject>, Response.E
     @Override // Handle on API error response
     public void onErrorResponse(VolleyError error) {
 
-        // If the message is not null, give back the message
+        // If the error message is not null, give back the message
         if (error.getMessage() != null) {
             activity.gotStreamsError(error.getMessage());
             Log.d("gotMatchesError", error.getMessage());

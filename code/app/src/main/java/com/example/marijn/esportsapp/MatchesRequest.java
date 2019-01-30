@@ -53,7 +53,7 @@ public class MatchesRequest implements Response.Listener<JSONArray>, Response.Er
     @Override // Handle on API error response
     public void onErrorResponse(VolleyError error) {
 
-        // If the message is not null, give back the message
+        // If the error message is not null, give back the message
         if (error.getMessage() != null) {
             activity.gotMatchesError(error.getMessage());
             Log.d("gotMatchesError", error.getMessage());
