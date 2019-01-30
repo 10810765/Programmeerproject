@@ -3,8 +3,7 @@
 ## Marijn Meijering (10810765)
 
 ### Korte omschrijving App
-<img style="float: right;" src="https://github.com/10810765/Programmeerproject/blob/master/doc/eSports_Gids_Preview_1.png">
-<img align="left" width="100" height="100" src="http://www.fillmurray.com/100/100">
+<img align="left" width="100" height="100" src="https://github.com/10810765/Programmeerproject/blob/master/doc/eSports_Gids_Preview_1.png">
 Het hoofddoel van mijn app is het vereenvoudigen van het kijken van eSports wedstrijden en streams van je favoriete game.
 Mijn app maakt dit mogelijk door wedstrijden en streams bij elkaar te brengen in één overzichtelijke app! 
 
