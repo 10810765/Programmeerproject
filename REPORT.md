@@ -24,8 +24,10 @@ Naast het feit dat alle *listViews on-click* functies hebben om naar de website 
 
 
 ### Gemaakte keuzes tijdens ontwikkeling
+Under construction
 
 ### Verdediging gemaakte keuzes
+Under construction
 
 
 
