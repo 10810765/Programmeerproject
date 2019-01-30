@@ -96,12 +96,12 @@
                 android:layout_marginStart="6dp"
                 android:layout_marginEnd="18dp"
                 android:layout_marginBottom="6dp"
-                android:clickable="true"
                 android:contentDescription="@string/clickable_favourite_button"
-                android:focusable="true"
+                android:focusable="false"
                 android:focusedByDefault="false"
                 android:textOff=""
-                android:textOn="" tools:targetApi="o"/>
+                android:textOn=""
+                tools:targetApi="o" />
 
         </LinearLayout>
 
