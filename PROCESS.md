@@ -63,3 +63,6 @@ Vandaag de tijd omgezet van GMT naar GMT+1 zodat voor ons de correcte tijd van m
 
 ### day 20 (28/01/2019)
 Het design van de app onder de loep genomen en recht getrokken. Alles is nu netjes opgemaakt en verstelt in grootte, lettertype, kleur etc. daarnaast staat het allemaal op de goede plek nu en heb ik landscape functionaliteit toegevoegd. Daarnaast nog wat kleine details in de code veranderd zoals de namen van sommige variabelen voor consistentie.
+
+### day 21 (29/01/2019)
+Lincese bestand aangemaakt, gewerkt aan de README.md (deze heeft nu alleen nog screenshots nodig), nog wat laatste aanpassingen aan de code en layout van de app gedaan en gewerkt aan het report. Wat betreft het report heb ik alvast een begin gemaakt aan het technical design.
