@@ -12,16 +12,15 @@ Mijn app is gericht op mensen (voornamelijk jongeren) met een interesse voor *co
 Naast de license van de app zelf, maakt de app gebruik van de [Pandascore API](https://pandascore.co/terms) en [Twitch API](https://www.twitch.tv/p/legal/terms-of-service/) voor opgehaalde informatie over wedstrijden en streamers. Tevens komen de ster icoontjes (voor de favoriet knoppen) van [Icons8](https://icons8.com/license). Bij het gebruik van de app dient er aan de licenses van deze partijen gehoor gegeven te worden.
 
 ### Screenshots
-Naast onderstaande screenshots kan er ook een [product video](https://youtube.com/) gekeken worden. Hierin wordt nogmaals kort het doel van de app besproken en alle functionaliteiten doorgenomen.
-
+Naast onderstaande screenshots kan er ook een [product video](https://youtube.com/) gekeken worden. Hierin wordt nogmaals kort het doel van de app besproken en worden alle functionaliteiten kort doorgenomen.
 
 #### Portrait screenshots
-
-![Schets 1](https://github.com/10810765/Programmeerproject/blob/master/doc/Schets_1.png)
-![Schets 2](https://github.com/10810765/Programmeerproject/blob/master/doc/Schets_2.png)
-![Schets 3](https://github.com/10810765/Programmeerproject/blob/master/doc/Schets_3.png)
-![Schets 4](https://github.com/10810765/Programmeerproject/blob/master/doc/Schets_4.png)
+![Screenshot 1](https://github.com/10810765/Programmeerproject/blob/master/doc/eSports_Gids_Preview_1.png)
+![Screenshot 2](https://github.com/10810765/Programmeerproject/blob/master/doc/eSports_Gids_Preview_2.png)
+![Screenshot 3](https://github.com/10810765/Programmeerproject/blob/master/doc/eSports_Gids_Preview_3.png)
+![Screenshot 4](https://github.com/10810765/Programmeerproject/blob/master/doc/eSports_Gids_Preview_4.png)
 
 #### Landscape screenshots
-
+![Screenshot 5](https://github.com/10810765/Programmeerproject/blob/master/doc/eSports_Gids_Preview_5.png)
+![Screenshot 6](https://github.com/10810765/Programmeerproject/blob/master/doc/eSports_Gids_Preview_6.png)
 
