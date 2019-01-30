@@ -42,3 +42,4 @@ Waarschijnlijk kan ik inspiratie voor de layout halen uit apps gemaakt als Tv-gi
 #### Hardest parts
 Het lastigst is denk ik het integreren van de API's, zodat deze de informatie geven die ik nodig heb. Daarnaast lijkt het me best lastig om een duidelijk overzicht te krijgen van alle informatie.
 Tevens zou ik graag een soort calender of tijdlijn willen integreren om wedstrijden aan te kondigen (indien mogelijk).
+
