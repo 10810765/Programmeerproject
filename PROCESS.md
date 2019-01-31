@@ -69,3 +69,6 @@ Lincese bestand aangemaakt, gewerkt aan de README.md (deze heeft nu alleen nog s
 
 ### day 22 (30/01/2019)
 De code is klaar en dus mooi op tijd voor de deadline. Vandaag vooral bezig geweest met de README en het REPORT. De README is afgezien van het een product video (wat ik morgen maak) klaar, het verslag is zo goed als af ook deze rond ik morgen af.
+
+### day 23 (31/01/2019)
+Product video gemaakt en REPORT afgerond, alles is nu klaar!
