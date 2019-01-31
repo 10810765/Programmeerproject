@@ -18,7 +18,7 @@ Dat de *MenuActivity* alle *fragments* aanstuurt is ook te zien in het technisch
 <br/>
 <br/>
 
-![Technisch Ontwerp](https://github.com/10810765/Programmeerproject/blob/master/doc/Technical_design.svg)
+![Technisch Ontwerp](https://github.com/10810765/Programmeerproject/blob/master/doc/Technical_designsvg)
 
 
 ### Gemaakte keuzes tijdens ontwikkeling
