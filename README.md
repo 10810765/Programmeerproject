@@ -9,7 +9,7 @@ Mijn app is gericht op mensen (voornamelijk jongeren) met een interesse voor *co
 
 **License:** [MIT License](LICENSE)
 
-Ook maakt de app gebruik van de [Pandascore API](https://pandascore.co/terms) en [Twitch API](https://www.twitch.tv/p/legal/terms-of-service/) voor het ophalen van informatie over wedstrijden en streamers. Tevens komen de ster icoontjes (voor de favoriet knoppen) van [Icons 8](https://icons8.com/license). Bij het gebruik van de app dient er aan de licenties van deze partijen gehoor gegeven te worden.
+**Externe Licenses:** De app gebruik van de [Pandascore API](https://pandascore.co/terms) en [Twitch API](https://www.twitch.tv/p/legal/terms-of-service/) voor het ophalen van informatie over wedstrijden en streamers. Tevens komen de ster icoontjes (voor de favoriet knoppen) van [Icons 8](https://icons8.com/license). Bij het gebruik van de app dient er aan de licenties van deze partijen gehoor gegeven te worden.
 
 ### Screenshots
 
