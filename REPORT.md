@@ -22,9 +22,9 @@ Dat de *MenuActivity* alle *fragments* aanstuurt is ook te zien in het technisch
 
 
 ### Gemaakte keuzes tijdens ontwikkeling
-Tijdens het maken van de app de afgelopen maand zijn er diverse veranderingen doorgevoerd ten opzichte van het originele design. Het originele design is de vinden in [Design.md](DESIGN.md). Hieronder zal ik de belangrijkste veranderingen ten opzichte van het originele design documenteren.
+Tijdens het maken van de app de afgelopen maand zijn er diverse veranderingen doorgevoerd ten opzichte van het originele design. Het originele design is de vinden in [DESIGN.md](DESIGN.md). Hieronder zal ik de belangrijkste veranderingen ten opzichte van het originele design toelichten.
 
-* 
+* dag 
 
 ### Verdediging gemaakte keuzes
 Under construction
