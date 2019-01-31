@@ -6,7 +6,7 @@
 
 ### Korte omschrijving App
 Het hoofddoel van mijn app is het vereenvoudigen van het kijken van eSports wedstrijden en streams van je favoriete game.
-Mijn app maakt dit mogelijk door wedstrijden en streams bij elkaar te brengen in één overzichtelijke app. Navigeer eenvoudig tussen matches en streams en filter deze op de game waar je interesse in hebt of bewaar je favoriete stream!
+Mijn app maakt dit mogelijk door informatie over wedstrijden en streams bij elkaar te brengen in één overzichtelijke app. Navigeer eenvoudig tussen matches en streams en filter deze op de game waar je interesse in hebt of bewaar je favoriete stream!
 <br/>
 
 ### Technisch ontwerp App
