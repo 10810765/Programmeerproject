@@ -17,7 +17,7 @@ De tweede API geÏmplementeerd (Twitch API), deze haalt nu de juiste informatie 
 List adapter voor MatchesInformation (een lijst met professionele matches) bijna werkend. Daarnaast er na feedback voor gekozen om extra informatie bij matches weer te geven in de overview activity en de matches information activity. 
 
 ### day 7 (15/01/2019)
-List adapter voor zowel de matches als de streamers list werkend. Deze halen nu informatie op doormiddel van een API call en laten dit in een listView zien. Tevens na overleg met Martijn ervoor gekozen om wat wijzigingen aan het disign van de app toe te brengen. Zo zal ik een navigatie balk maken die altijd zichtbaar is om sneller tussen verschillende activities te wisselen. Tevens zal de overview activity een featured activity worden waar je suggesties kan zien ipv een voorvertoning van je gekozen game.
+List adapter voor zowel de matches als de streamers list werkend. Deze halen nu informatie op doormiddel van een API call en laten dit in een listView zien. Tevens na overleg met Martijn ervoor gekozen om wat wijzigingen aan het design van de app toe te brengen. Zo zal ik een navigatie balk maken die altijd zichtbaar is om sneller tussen verschillende activities te wisselen. Tevens zal de overview activity een featured activity worden waar je suggesties kan zien ipv een voorvertoning van je gekozen game.
 
 ### day 8 (16/01/2019)
 Menu bar toegevoegd aan alle activities voor betere navigatie. Deze is nu volledig werkend en geeft aan op welke pagina je bent door midden van het icoontje een andere kleur te geven in het menu. 
@@ -40,7 +40,7 @@ Begonnen met werken aan de mogelijkheid streams te favouriten. ToggleButton is t
 
 
 ### day 13 (21/01/2019)
-Het is nu mogelijk om streams te favouriten (toggle button in listview). Tevens worden de favourites onthouden als je de app draait of afsluit. Verder wat kleine aanpassingen gedaan ter verbeteing van de app, hier en daar wat state-restoration.
+Het is nu mogelijk om streams te favouriten (toggle button in listview). Tevens worden de favourites onthouden als je de app draait of afsluit. Na overleg besloten om favoriete streamers op de mobiel zelf op te slaan in plaats van in een database. Aangezien je voor mijn app geen inlog gegevens nodig heb is het onnodig om een database te gebruiken voor deze functionaliteit, tevens is het opslaan van streamers op de mobiel zelf eenvoudiger in gebruik. Verder wat kleine aanpassingen gedaan ter verbeteing van de app, hier en daar wat state-restoration.
 
 ### day 14 (22/01/2019)
 Verder gewerkt aan de mogelijkheid om streamers te favouriten. Dit is nu volledig werkend. Na overleg met een TA besloten om alle streamers die iemand heeft geselecteerd als favoriet in een eigen fragment weer te geven. Op deze manier blijft het overzicht behouden, anders zou de StreamersFragment nogal druk worden. Nu kan de gebruiker simpelweg op het sterretje recht op de menu balk drukken en alle streamers die hij heeft aangegeven als favoriet worden daar wergegeven, mits deze streamers ook live zijn. Zo kan het voorkomen dat iemand 2 streamers als favoriet heeft maar er geen in de favorieten fragment staan. Dit geeft aan dat er geen favoriete streamers streamen op dat moment. Daarnaast wordt bij de favoriete streamers aangegeven welk spel ze op dat moment streamen en kan je ze zowel in de streamers als favourites fragment weer on-favorieten.
