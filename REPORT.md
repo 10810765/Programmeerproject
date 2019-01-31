@@ -47,10 +47,3 @@ Voor de app zoals deze nu is ben ik eigenlijk blij met alle hierboven genoemde w
 De beste gemaakte keuze is naar mijn idee het maken van een menubalk en het creëren van *spinners* (dag 7). Hier had ik zelf nog niet bij stil gestaan maar dit heeft het navigeren door de app heen een stuk prettiger en logischer gemaakt. De menubalk geeft eigenlijk aan wat er allemaal mogelijk is en de *spinners* verhogen de mate van "customization". Op dit soort momenten merk je hoe handig het is om even met iemand te praten over je idee, zelf als je niet echt een vraag heb kan even vertellen wat je van plan bent al handig zijn. 
 
 De enig keuze die ik in een "ideale wereld" echter wellicht anders had gedaan was de keuze op dag 13 om favoriete streamers lokaal op de mobiel zelf te bewaren in plaats van in een database. Gezien de tijd was dit een verstandige keuze maar wanneer het (wellicht ooit) wel mogelijk zou worden om in te loggen om zo je gegevens te bewaren, zou een database handiger zijn. Zo kunnen de gegevens centraal worden opgeslagen zodat ze niet verloren gaan wanneer iemand de app van zijn telefoon verwijderd (bijvoorbeeld vanwege de aanschaf van een nieuwe telefoon). Nu gaat het alleen nog om favoriete streamers, maar wanneer functies zoals notificaties ook gemaakt zouden worden zou het zonde zijn als deze informatie verloren gaat.
-
-
-
-
-
-
-
